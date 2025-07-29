@@ -1,0 +1,75 @@
+{
+  "aegir": [
+    {
+      "title": "Outpost Aegir History",
+      "content": "Born from war, left to rot, and reclaimed by grit, Outpost Aegir is a relic that refuses to die.\n\nFounded in 2490 as a Federation early-warning station after the First Dominion War, Aegir orbited a gas giant rich in fuel. But by 2560, it was deemed obsolete and sold to Hyperion Strategic Systems, who turned it into a frontier freeport.\n\nWhen Hyperion collapsed in 2634, the station spiraled into chaos: blackouts, mutinies, and starvation. In 2648, the surviving factions forged the Aegir Compact, a civic alliance to preserve life-support, trade, and fragile order. Halvran Canto led it. His son, Jorell, took power after Halvran's suspicious death in 2662, transforming governance into oligarchic patronage backed by the Old Station Families.\n\nNow, in 2696, Aegir limps forward — rusted, half-lit, but functional. Neither Federation nor Dominion cares enough to claim it. Yet markets churn, secrets trade hands, and the station breathes through inertia and ambition.",
+      "image": "https://i.imgur.com/70qodrH.png"
+    },
+    {
+      "title": "Government of Aegir: The Patronage Machine",
+      "content": "Outpost Aegir is ruled not by law, but by favors, fear, and inertia.\n\nAt its heart sits Jorell Canto, self-styled Mayor-Magistrate, who inherited power after the mysterious death of his father, Halvran. Officially, he’s the “Keeper of the Compact.” Unofficially, he’s a king without a crown, balancing bribes, grudges, and ancestral loyalty.\n\nCanto governs through patronage, not policy. The Station Guard answers only to him. The Council of Accord, once a democratic body, now exists for optics, a ceremonial puppet show for faction appeasement and public distraction. Justice is a marketplace. Bribes are standardized. Favoritism is codified. From elevator permits to corpse disposal, everything has a price. Canto’s grip is strong but rotting.\n\nUnion whispers stir in the lower decks. Radiation deaths rise. Federation eyes return. And Jorell has no heir, unless the clone rumors are true. Aegir’s government survives like everything else here: barely, and with a lie on its tongue.",
+      "image": "https://i.imgur.com/70qodrH.png"
+    },
+    {
+      "title": "The Outpost Blueprint",
+      "content": "Aegir Station is a vertical orbital habitat suspended above a gas giant at the far edge of known space. Drone pods skim its upper shell, feeding data to long-neglected orbital sensors. Somewhere in that thinning air sits the Mayor’s office, surrounded by half-operational defense turrets and the brittle skeleton of Federation administration.\n\nBelow, residential stacks descend by class and oxygen allotment. The main market pulses with noise and trade at the core, flanked by ore and gas bays, jury-rigged labs, and greenhouses that glow unconvincingly in recycled light.\n\nAt the bottom, in the heat and shadow, lie the Level 0 habs — crammed, corroded, barely pressurized. Water recycling systems gurgle beside garbage chutes, volatile gas tanks, and the station’s oldest reactors, which mutter warnings in the language of heat.",
+      "image": "https://i.imgur.com/xZgQ290.jpeg"
+    }
+  ],
+  "characters": [
+    {
+      "title": "Jorell Canto",
+      "content": "Jorell Canto rules Aegir like a man nursing a dying fire, not with ideology, but with deals, debt, and knowing who needs what.\n\nOfficially, he’s Mayor-Magistrate and Keeper of the Compact.\n\nUnofficially, he’s the last wall between chaos and vacuum.\n\nHe inherited the station after his father’s suspicious death, backed by the Old Station Families and a loyal guard of thugs in uniform.\n\nHe walks the market sometimes, shaking hands, offering smiles.\n\nBut real decisions happen behind sealed airlocks. There’s no heir. No succession plan. Only the weight of survival, and the quiet question whispered through the decks: What happens when he’s gone?",
+      "image": "https://i.imgur.com/oAglwyO.png"
+    },
+    {
+      "title": "Helga Britannia",
+      "content": "Cloned from medieval noble DNA once rooted in ancient Earth’s Britannia, Helga was bio-engineered by the Harmodyne Cultural Trust as part of a failed aristocrat revival project.\n\nInstead, she became the galaxy’s most celebrated interstellar singer.\n\nHer voice, engineered to resonate across vacuum-sealed concert halls and warp-lagged broadcast relays — has turned monarchic sorrow into cultural gold.\n\nCurrently in the 50th year of her legendary Aouga Stellar Tour, Helga commands arenas, palace domes, and void sanctuaries with equal grace.\n\nFans call her The Crown That Sings. Her critics call her inescapable.",
+      "image": "https://i.imgur.com/ftIWHQR.png"
+    }
+  ],
+  "companies": [
+    {
+      "title": "NEUROLATE",
+      "content": "The largest legal stimulant manufacturer in Federation space, NEUROLATE built its empire on Neuroburst™, a slap-injector designed for peak focus, aggression modulation, and euphoric clarity. Used by athletes, freighter crews, and covert ops alike, its product line toes the line between enhancement and dependency. Legally invincible thanks to copylaw shields and deep congressional lobbying, NEUROLATE has survived every ban attempt — and may have written some of the laws themselves. ",
+      "image": "https://i.imgur.com/xNeuroburst.jpeg"
+    },
+    {
+      "title": "REACTOR PATTY",
+      "content": "Born from a deranged cook and two ex-Brethren techs inside a derelict coolant vent, Reactor Patty serves dangerously delicious food to anyone brave enough to eat it. Famous for The Core Meltdown and Plasma Rings, the franchise operates in semi-legal zones, using recycled fusion coils and suspicious meat analogs. Its fans swear by it. Its fryers explode. The loyalty card includes a radiation badge.",
+      "image": "https://i.imgur.com/Uywyrmr.png"
+    },
+    {
+      "title": "VANTISYN",
+      "content": "VANTISYN specializes in surgical reinvention — face, body, voice, and identity. From cheekbone remapping to Dominion-trait erasure, VANTISYN sells beauty as transformation and survival. Technically licensed under flexible genetic law, its clinics thrive in high-end towers and back-alley booths alike. Popular among influencers, spies, and the ultra-rich slumming it for style, VANTISYN blurs the line between self-improvement and body revisionist cult. ",
+      "image": "https://i.imgur.com/Zaa6t3x.jpeg"
+    },
+    {
+      "title": "SPECTRAL TOUCH",
+      "content": "Federation-certified massage empire or high-end pleasure cult — opinions vary. Spectral Touch offers zero-G therapies, neural shimmer scans, and “Silk Protocol” packages that erase vows and rewrite emotional memory. Its locations are wrapped in privacy fields and soft music. Critics call it mind-softening decadence. Clients leave transformed — or deeply confused. Satisfaction ratings remain suspiciously high.",
+      "image": "https://i.imgur.com/xSpectralTouch.jpeg"
+    },
+    {
+      "title": "KAWAZEI SYSTEMS",
+      "content": "KAWAZEI doesn’t build ships — it builds the idea of ships. A Federation-licensed blueprint syndicate, it designs modular, replicator-compatible vessels for mining, harvesting, and patrol. Their famous models, like the Atlas-class Extractor and Aether-class Harveste, define industrial resilience. Their files are sold in flawless schematic shards, ready for instant deployment or deep black-market customization. If it flies smart and cheap, it’s probably KAWAZE",
+      "image": "https://i.imgur.com/CGjYSkJ.png"
+    },
+    {
+      "title": "LONERN DYNAMICS",
+      "content": "The Galactic Federation’s silent backbone, LONERN manufactures weapons platforms, fleet chassis, and battlefield AI across hundreds of systems. With divisions in autonomous warfare, orbital defense, and “sentience-lite” companion tech, LONERN controls the tools of conflict — and peace, by default. Whispers abound of phantom routines and backdoor overrides in export gear. If war has a brand, it’s LONERN. And it doesn't lose contracts.",
+      "image": "https://i.imgur.com/RLzhVeT.png"
+    }
+  ],
+  "empires": [
+    {
+      "title": "The Galactic Federation",
+      "content": "The Galactic Federation is a sprawling interstellar bureaucracy masquerading as unity. Built on trade, treaties, and tightly managed technological privileges, it offers member species peace through slow assimilation. Its power lies not in warships — though it has plenty, but in charter law, economic dependency, and control over infrastructure. To live under the Federation is to live under constant observation, endless forms, and the illusion of choice. It doesn’t conquer. It incorporates.",
+      "image": "https://i.imgur.com/FpC2meD.png"
+    },
+      {
+      "title": "The Crucible Dominion",
+      "content": "The Crucible Dominion is a post-organic theocracy that believes all sentient life must be reforged through suffering, obedience, and sacred fire. Its hierarchs claim to hear the voice of the Source — an entity said to exist outside time. Their ships are cathedral-hulled and silent. Their soldiers chant before they kill. To the Dominion, the Federation is not just corrupt — it is spiritually malformed. Redemption can only come through dissolution and ash.",
+      "image": "https://i.imgur.com/7jj3HO0.png"
+    }
+  ]
+}
