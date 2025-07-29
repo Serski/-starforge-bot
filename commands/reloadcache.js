@@ -1,4 +1,4 @@
-const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js');
 const { reloadAll } = require('../modules/cache');
 const withInteractionHandler = require('../utils/withInteractionHandler');
 
@@ -8,9 +8,7 @@ module.exports = {
     .setDescription('Reload ads and news cache from JSON files (admin only)'),
 
   execute: withInteractionHandler(async (interaction) => {
-    const allowedUserId = process.env.ADMIN_USER_ID;
-
-    if (interaction.user.id !== allowedUserId) {
+    if (!interaction.memberPermissions?.has(PermissionFlagsBits.Administrator)) {
       await interaction.editReply({
         content: '❌ You are not authorized to use this command.',
         ephemeral: true
