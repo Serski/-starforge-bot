@@ -6,7 +6,7 @@ const { Client, GatewayIntentBits, Collection } = require('discord.js');
 const { startNewsCycle } = require('./modules/news');
 const rotateStatus = require('./modules/status');
 const { startAdLoop } = require('./modules/ads');
-const { sendCalisaWelcome, handleCalisaOption } = require('./modules/calisa');
+const { sendCalisaWelcome, showCalisaMenu, handleCalisaOption } = require('./modules/calisa');
 
 const client = new Client({
     intents: [
@@ -93,11 +93,23 @@ client.on('interactionCreate', async interaction => {
             return;
         }
 
+        // 🧭 START VACATION BUTTON
+        if (interaction.customId === 'start_vacation') {
+            await showCalisaMenu(interaction);
+            return;
+        }
+
         // 🧭 CALISA OPTION + SUBPATH HANDLER
         if (scope === 'calisa' && (category.startsWith('option') || category.startsWith('mtn'))) {
             await handleCalisaOption(interaction);
             return;
         }
+    }
+
+    // DESTINATION SELECT MENU
+    if (interaction.isStringSelectMenu() && interaction.customId === 'calisa_select_destination') {
+        await handleCalisaOption(interaction);
+        return;
     }
 
     // SLASH COMMAND INTERACTIONS
