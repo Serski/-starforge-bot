@@ -3,6 +3,7 @@ const {
   ActionRowBuilder,
   ButtonBuilder,
   ButtonStyle,
+  StringSelectMenuBuilder,
 } = require('discord.js');
 
 async function sendCalisaWelcome(channel, userId) {
@@ -18,28 +19,67 @@ async function sendCalisaWelcome(channel, userId) {
 
   const row = new ActionRowBuilder().addComponents(
     new ButtonBuilder()
-      .setCustomId('calisa_option_hotel')
-      .setLabel('🌴 Check into Skyglass Hotel')
-      .setStyle(ButtonStyle.Secondary),
-    new ButtonBuilder()
-      .setCustomId('calisa_option_beach')
-      .setLabel('🛖 Go to Beach Hut')
-      .setStyle(ButtonStyle.Secondary),
-    new ButtonBuilder()
-      .setCustomId('calisa_option_mountain')
-      .setLabel('🏔 Explore the Mountains')
-      .setStyle(ButtonStyle.Secondary),
-    new ButtonBuilder()
-      .setCustomId('calisa_option_end')
-      .setLabel('🔚 End Vacation')
-      .setStyle(ButtonStyle.Danger)
+      .setCustomId('start_vacation')
+      .setLabel('🌴 Start Vacation')
+      .setStyle(ButtonStyle.Primary)
   );
 
   await channel.send({ embeds: [embed], components: [row] });
 }
 
+async function showCalisaMenu(interaction) {
+  const embed = new EmbedBuilder()
+    .setDescription(
+      '*Breathe in the nectar-thick air. Let the suns kiss your skin. Forget the war, the politics, the void. Just for a little while.*\n\n' +
+        'After months in orbital rust, Calisa VII glows like a hallucination: twin suns, bioluminescent reefs, whispering forests, and gravity set just low enough to make your body feel born again. The shuttle drops you near Coralport \u2014 a coastal node strung between cliffs and lagoons. Your bags are already ashore. Your neural inbox is blissfully silent.\n\n' +
+        '**Where will you go?**'
+    )
+    .setImage('https://i.imgur.com/cMnHiUs.png')
+    .setColor(0xff77aa);
+
+  const select = new StringSelectMenuBuilder()
+    .setCustomId('calisa_select_destination')
+    .setPlaceholder('Choose your destination')
+    .addOptions([
+      {
+        label: 'Skyglass Hotel',
+        value: 'calisa_option_hotel',
+        emoji: '🌴',
+      },
+      {
+        label: 'Beach Hut',
+        value: 'calisa_option_beach',
+        emoji: '🛖',
+      },
+      {
+        label: 'Calisan Mountains',
+        value: 'calisa_option_mountain',
+        emoji: '🏔',
+      },
+    ]);
+
+  const row = new ActionRowBuilder().addComponents(select);
+
+  await interaction.reply({ embeds: [embed], components: [row], ephemeral: true });
+
+  if (interaction.message?.components?.length) {
+    const disabledRow = new ActionRowBuilder().addComponents(
+      interaction.message.components[0].components.map(btn =>
+        ButtonBuilder.from(btn).setDisabled(true)
+      )
+    );
+    try {
+      await interaction.message.edit({ components: [disabledRow] });
+    } catch (err) {
+      console.warn('⚠️ Could not disable buttons:', err.message);
+    }
+  }
+}
+
 async function handleCalisaOption(interaction) {
-  const choice = interaction.customId;
+  const choice = interaction.isStringSelectMenu()
+    ? interaction.values[0]
+    : interaction.customId;
   let text = '';
   let img = null;
 
@@ -85,7 +125,7 @@ async function handleCalisaOption(interaction) {
       await interaction.reply({
         embeds: [mountainEmbed],
         components: [mountainOptions],
-        ephemeral: false,
+        ephemeral: true,
       });
       return;
 
@@ -119,7 +159,7 @@ async function handleCalisaOption(interaction) {
     .setImage(img)
     .setColor(0xff77aa);
 
-  await interaction.reply({ embeds: [embed], ephemeral: false });
+  await interaction.reply({ embeds: [embed], ephemeral: true });
 
   // ⛔ Disable buttons on original message after first choice
   if (interaction.message?.components?.length) {
@@ -139,5 +179,6 @@ async function handleCalisaOption(interaction) {
 
 module.exports = {
   sendCalisaWelcome,
+  showCalisaMenu,
   handleCalisaOption,
 };
