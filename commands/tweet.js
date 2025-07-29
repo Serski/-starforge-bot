@@ -22,11 +22,11 @@ module.exports = {
     ),
 
   execute: withInteractionHandler(async (interaction) => {
-    const text = interaction.options.getString('text');
+    const rawText = interaction.options.getString('text');
     const hashtagsInput = interaction.options.getString('hashtags');
     const imageUrl = interaction.options.getString('image');
 
-    const words = text.trim().split(/\s+/).filter(Boolean);
+    const words = rawText.trim().split(/\s+/).filter(Boolean);
     if (words.length > 400) {
       await interaction.editReply({
         content: '❌ Message must be 400 words or fewer.',
@@ -51,6 +51,15 @@ module.exports = {
       });
       return;
     }
+
+    const members = await interaction.guild.members.fetch();
+    const text = rawText.replace(/@([^\s]+)/g, (match, name) => {
+      const member = members.find(m =>
+        m.user.username.toLowerCase() === name.toLowerCase() ||
+        m.displayName.toLowerCase() === name.toLowerCase()
+      );
+      return member ? `<@${member.id}>` : match;
+    });
 
     const username = interaction.user.username;
     const avatar = interaction.user.displayAvatarURL();
