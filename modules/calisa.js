@@ -66,6 +66,7 @@ async function handleCalisaOption(interaction) {
   let text = '';
   let img = null;
 
+  let components = [];
   switch (choice) {
     case 'calisa_option_hotel':
       text = `You check into the **Skyglass Hotel**, a towering shell of glass and biovine scaffolds overlooking the opal sea. Your room hums with soft ambient synth, a zero-g bath pod awaits, and scent-curtains recall your best memories.`;
@@ -107,32 +108,8 @@ async function handleCalisaOption(interaction) {
           },
         ]);
 
-      const mountainEmbed = new EmbedBuilder()
-        .setDescription(text)
-        .setImage(img)
-        .setColor(0xff77aa);
-
-      await interaction.reply({
-        embeds: [mountainEmbed],
-        components: [new ActionRowBuilder().addComponents(mountainSelect)],
-        ephemeral: true,
-      });
-      if (interaction.message?.components?.length) {
-        const row = interaction.message.components[0];
-        const disabled = row.components.map(comp => {
-          const json = comp.toJSON();
-          return json.type === 3
-            ? StringSelectMenuBuilder.from(comp).setDisabled(true)
-            : ButtonBuilder.from(comp).setDisabled(true);
-        });
-        const disabledRow = new ActionRowBuilder().addComponents(disabled);
-        try {
-          await interaction.message.edit({ components: [disabledRow] });
-        } catch (err) {
-          console.warn('⚠️ Could not disable components:', err.message);
-        }
-      }
-      return;
+      components = [new ActionRowBuilder().addComponents(mountainSelect)];
+      break;
 
     case 'calisa_mtn_hut':
       text = `You settle into a **mountain hut**, heated with volcanic vents and lit by ancient fiber-lanterns. A local elder tells stories of when the stars were closer. Outside, mist curls like memory.`;
@@ -159,7 +136,7 @@ async function handleCalisaOption(interaction) {
       break;
 
     default:
-      await interaction.reply({ content: '⚠️ Unknown option.', ephemeral: true });
+      await interaction.update({ content: '⚠️ Unknown option.', components: [] });
       return;
   }
 
@@ -168,7 +145,7 @@ async function handleCalisaOption(interaction) {
     .setImage(img)
     .setColor(0xff77aa);
 
-  await interaction.reply({ embeds: [embed], ephemeral: true });
+  await interaction.update({ embeds: [embed], components });
 
   if (choice === 'calisa_mtn_forest') {
     const newsChannel = interaction.guild.channels.cache.find(
@@ -183,24 +160,25 @@ async function handleCalisaOption(interaction) {
           '#ForestGlitch #DiscordMythos #SimulationLeak'
       );
     }
+
+    const mysteryRole = interaction.guild.roles.cache.find(
+      r => r.name === 'CALISA VII Mystery'
+    );
+    try {
+      if (mysteryRole && !interaction.member.roles.cache.has(mysteryRole.id)) {
+        await interaction.member.roles.add(mysteryRole);
+      }
+    } catch (err) {
+      console.warn('⚠️ Could not assign mystery role:', err.message);
+    }
+
+    await interaction.followUp({
+      content:
+        "You're home now. But the forest's whisper won't leave.\nThe elf. The Discord. The fracture in the sky.\n\nYou'll be watching. Just in case it wasn't a dream.",
+      ephemeral: true,
+    });
   }
 
-  // ⛔ Disable menu/buttons on original message after first choice
-  if (interaction.message?.components?.length) {
-    const row = interaction.message.components[0];
-    const disabled = row.components.map(comp => {
-      const json = comp.toJSON();
-      return json.type === 3
-        ? StringSelectMenuBuilder.from(comp).setDisabled(true)
-        : ButtonBuilder.from(comp).setDisabled(true);
-    });
-    const disabledRow = new ActionRowBuilder().addComponents(disabled);
-    try {
-      await interaction.message.edit({ components: [disabledRow] });
-    } catch (err) {
-      console.warn('⚠️ Could not disable components:', err.message);
-    }
-  }
 }
 
 module.exports = {
