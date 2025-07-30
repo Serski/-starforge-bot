@@ -24,17 +24,17 @@ async function showCalisaMenu(interaction) {
       {
         label: 'Skyglass Hotel',
         value: 'calisa_option_hotel',
-        emoji: '🌴',
+        emoji: '1399477691278692352',
       },
       {
         label: 'Beach Hut',
         value: 'calisa_option_beach',
-        emoji: '🛖',
+        emoji: '1399477691278692352',
       },
       {
         label: 'Calisan Mountains',
         value: 'calisa_option_mountain',
-        emoji: '🏔',
+        emoji: '1399477691278692352',
       },
     ]);
 
@@ -89,22 +89,22 @@ async function handleCalisaOption(interaction) {
           {
             label: 'Chill in Mountain Hut',
             value: 'calisa_mtn_hut',
-            emoji: '🛖',
+            emoji: '1399477691278692352',
           },
           {
             label: 'Climb to the Mountain Top',
             value: 'calisa_mtn_climb',
-            emoji: '🧗',
+            emoji: '1399477691278692352',
           },
           {
             label: 'Explore the Forest',
             value: 'calisa_mtn_forest',
-            emoji: '🌲',
+            emoji: '1399477691278692352',
           },
           {
             label: 'End Vacation',
             value: 'calisa_option_end',
-            emoji: '🔚',
+            emoji: '1399477691278692352',
           },
         ]);
 
