@@ -160,18 +160,20 @@ async function handleCalisaOption(interaction) {
     }
   }
 
-  // ⛔ Disable buttons on original message after first choice
+  // ⛔ Disable menu/buttons on original message after first choice
   if (interaction.message?.components?.length) {
-    const disabledRow = new ActionRowBuilder().addComponents(
-      interaction.message.components[0].components.map(button =>
-        ButtonBuilder.from(button).setDisabled(true)
-      )
-    );
-
+    const row = interaction.message.components[0];
+    const disabled = row.components.map(comp => {
+      const json = comp.toJSON();
+      return json.type === 3
+        ? StringSelectMenuBuilder.from(comp).setDisabled(true)
+        : ButtonBuilder.from(comp).setDisabled(true);
+    });
+    const disabledRow = new ActionRowBuilder().addComponents(disabled);
     try {
       await interaction.message.edit({ components: [disabledRow] });
     } catch (err) {
-      console.warn('⚠️ Could not disable buttons:', err.message);
+      console.warn('⚠️ Could not disable components:', err.message);
     }
   }
 }
