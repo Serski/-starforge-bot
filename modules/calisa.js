@@ -100,6 +100,11 @@ async function handleCalisaOption(interaction) {
             value: 'calisa_mtn_forest',
             emoji: '🌲',
           },
+          {
+            label: 'End Vacation',
+            value: 'calisa_option_end',
+            emoji: '🔚',
+          },
         ]);
 
       const mountainEmbed = new EmbedBuilder()
