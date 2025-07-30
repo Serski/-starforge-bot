@@ -37,4 +37,28 @@ describe('calisa module', () => {
     const menu = components[0].components[0];
     expect(menu).toBeInstanceOf(StringSelectMenuBuilder);
   });
+
+  test('forest option grants mystery role and pings', async () => {
+    const send = jest.fn().mockResolvedValue();
+    const followUp = jest.fn().mockResolvedValue();
+    const guild = {
+      channels: { cache: { find: jest.fn(() => ({ send })) } },
+      roles: { cache: { find: jest.fn(() => ({ id: '123' })) } },
+    };
+    const member = { roles: { add: jest.fn().mockResolvedValue(), cache: new Map() } };
+    const interaction = {
+      isStringSelectMenu: () => true,
+      values: ['calisa_mtn_forest'],
+      update: jest.fn().mockResolvedValue(),
+      followUp,
+      guild,
+      member,
+      message: { components: [] },
+    };
+
+    await handleCalisaOption(interaction);
+
+    expect(member.roles.add).toHaveBeenCalled();
+    expect(followUp).toHaveBeenCalledWith(expect.objectContaining({ ephemeral: true }));
+  });
 });

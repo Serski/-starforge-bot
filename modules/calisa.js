@@ -160,6 +160,23 @@ async function handleCalisaOption(interaction) {
           '#ForestGlitch #DiscordMythos #SimulationLeak'
       );
     }
+
+    const mysteryRole = interaction.guild.roles.cache.find(
+      r => r.name === 'CALISA VII Mystery'
+    );
+    try {
+      if (mysteryRole && !interaction.member.roles.cache.has(mysteryRole.id)) {
+        await interaction.member.roles.add(mysteryRole);
+      }
+    } catch (err) {
+      console.warn('⚠️ Could not assign mystery role:', err.message);
+    }
+
+    await interaction.followUp({
+      content:
+        "You're home now. But the forest's whisper won't leave.\nThe elf. The Discord. The fracture in the sky.\n\nYou'll be watching. Just in case it wasn't a dream.",
+      ephemeral: true,
+    });
   }
 
 }
