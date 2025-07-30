@@ -15,7 +15,7 @@ async function showCalisaMenu(interaction) {
         '**Where will you go?**'
     )
     .setImage('https://i.imgur.com/cMnHiUs.png')
-    .setColor(0xff77aa);
+    .setColor(0x2c3e50);
 
   const select = new StringSelectMenuBuilder()
     .setCustomId('calisa_select_destination')
@@ -143,7 +143,7 @@ async function handleCalisaOption(interaction) {
   const embed = new EmbedBuilder()
     .setDescription(text)
     .setImage(img)
-    .setColor(0xff77aa);
+    .setColor(0x2c3e50);
 
   await interaction.update({ embeds: [embed], components });
 
