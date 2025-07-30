@@ -41,22 +41,6 @@ async function showCalisaMenu(interaction) {
   const row = new ActionRowBuilder().addComponents(select);
 
   await interaction.reply({ embeds: [embed], components: [row], ephemeral: true });
-
-  if (interaction.message?.components?.length) {
-    const row = interaction.message.components[0];
-    const disabled = row.components.map(comp => {
-      const json = comp.toJSON();
-      return json.type === 3
-        ? StringSelectMenuBuilder.from(comp).setDisabled(true)
-        : ButtonBuilder.from(comp).setDisabled(true);
-    });
-    const disabledRow = new ActionRowBuilder().addComponents(disabled);
-    try {
-      await interaction.message.edit({ components: [disabledRow] });
-    } catch (err) {
-      console.warn('⚠️ Could not disable components:', err.message);
-    }
-  }
 }
 
 async function handleCalisaOption(interaction) {
