@@ -6,26 +6,6 @@ const {
   StringSelectMenuBuilder,
 } = require('discord.js');
 
-async function sendCalisaWelcome(channel, userId) {
-  const embed = new EmbedBuilder()
-    .setTitle(' WELCOME TO CALISA VII ')
-    .setDescription(
-      `*Breathe in the nectar-thick air. Let the suns kiss your skin. Forget the war, the politics, the void. Just for a little while.*\n\n` +
-      `After months in orbital rust, Calisa VII glows like a hallucination: twin suns, bioluminescent reefs, whispering forests, and gravity set just low enough to make your body feel born again. The shuttle drops you near Coralport — a coastal node strung between cliffs and lagoons. Your bags are already ashore. Your neural inbox is blissfully silent.\n\n` +
-      `**<@${userId}> — what will you do first?**`
-    )
-    .setImage('https://i.imgur.com/cMnHiUs.png')
-    .setColor(0xff77aa);
-
-  const row = new ActionRowBuilder().addComponents(
-    new ButtonBuilder()
-      .setCustomId('start_vacation')
-      .setLabel(' Start Vacation')
-      .setStyle(ButtonStyle.Secondary)
-  );
-
-  await channel.send({ embeds: [embed], components: [row] });
-}
 
 async function showCalisaMenu(interaction) {
   const embed = new EmbedBuilder()
@@ -140,7 +120,11 @@ async function handleCalisaOption(interaction) {
       break;
 
     case 'calisa_mtn_forest':
-      text = `The **forest whispers**. Light bends wrong between twisted trees. A tall, elfin figure hums in chords your ears weren't built to parse. You follow — not out of fear, but recognition.`;
+      text =
+        'The light bends strangely between the branches. A figure finds you: elfin, tall, humming in chords your ears weren\'t built to parse. It watches you with mirrored eyes.\n' +
+        'After days you earn its trust. It leans close and whispers:\n' +
+        '"None of this is real. Not Calisa. Not the suns. Not even the war. We are fragments in a Discord server… echoing choices someone else thinks they made."\n' +
+        'You laugh. Or cry. Or both.';
       img = 'https://i.imgur.com/D7kNv3a.jpeg';
       break;
 
@@ -161,6 +145,21 @@ async function handleCalisaOption(interaction) {
 
   await interaction.reply({ embeds: [embed], ephemeral: true });
 
+  if (choice === 'calisa_mtn_forest') {
+    const newsChannel = interaction.guild.channels.cache.find(
+      c => c.name === process.env.NEWS_CHANNEL_NAME && c.isTextBased()
+    );
+    if (newsChannel) {
+      await newsChannel.send(
+        '**CALISA VII: GUEST CLAIMS REALITY IS A DISCORD SERVER**\n' +
+          'Tourist returns from forest hike raving about an "elf-coded entity" who revealed:\n' +
+          '"None of this is real. We\'re fragments in a Discord server."\n' +
+          'Local guides blame hallucinogenic pollen. Vacation officials offer memory wipes "for those troubled by metaphysical recursion."\n' +
+          '#ForestGlitch #DiscordMythos #SimulationLeak'
+      );
+    }
+  }
+
   // ⛔ Disable buttons on original message after first choice
   if (interaction.message?.components?.length) {
     const disabledRow = new ActionRowBuilder().addComponents(
@@ -178,7 +177,6 @@ async function handleCalisaOption(interaction) {
 }
 
 module.exports = {
-  sendCalisaWelcome,
   showCalisaMenu,
   handleCalisaOption,
 };
