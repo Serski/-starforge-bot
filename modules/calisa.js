@@ -174,7 +174,7 @@ async function handleCalisaOption(interaction) {
 
     await interaction.followUp({
       content:
-        "You're home now. But the forest's whisper won't leave.\nThe elf. The Discord. The fracture in the sky.\n\nYou'll be watching. Just in case it wasn't a dream.",
+        "You're home now. But the forest's whisper won't leave.\nThe elf. The Discord. The fracture in the sky.\n\nYou'll be watching. Just in case it wasn't a dream. Calisa VII Mystery role granted!",
       ephemeral: true,
     });
   }
