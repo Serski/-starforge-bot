@@ -96,12 +96,12 @@ async function handleCalisaOption(interaction) {
       break;
 
     case 'calisa_mtn_hut':
-      text = `You settle into a **mountain hut**, heated with volcanic vents and lit by ancient fiber-lanterns. A local elder tells stories of when the stars were closer. Outside, mist curls like memory.`;
+      text = `You settle into a **mountain hut**, heated with volcanic vents and lit by ancient fiber-lanterns. A local elder tells stories of when the stars were closer. Outside, mist curls like memory.After a week on Calisa VII, you return home, sun-warmed, dream-fed, and quietly reborn.`;
       img = 'https://i.imgur.com/KDrgMG0.png';
       break;
 
     case 'calisa_mtn_climb':
-      text = `You climb the final ridge, air crisp and light. At the **mountaintop**, the sky unfolds like a scroll. Time pauses. You feel your name dissolving into something older.`;
+      text = `You climb the final ridge, air crisp and light. At the **mountaintop**, the sky unfolds like a scroll. Time pauses. You feel your name dissolving into something older.After a week on Calisa VII, you return home, sun-warmed, dream-fed, and quietly reborn.`;
       img = 'https://i.imgur.com/latmlhe.png';
       break;
 
