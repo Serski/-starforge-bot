@@ -40,7 +40,6 @@ describe('calisa module', () => {
 
   test('forest option grants mystery role and pings', async () => {
     const send = jest.fn().mockResolvedValue();
-    const followUp = jest.fn().mockResolvedValue();
     const guild = {
       channels: { cache: { find: jest.fn(() => ({ send })) } },
       roles: { cache: { find: jest.fn(() => ({ id: '123' })) } },
@@ -50,7 +49,7 @@ describe('calisa module', () => {
       isStringSelectMenu: () => true,
       values: ['calisa_mtn_forest'],
       update: jest.fn().mockResolvedValue(),
-      followUp,
+      user: { id: 'user1' },
       guild,
       member,
       message: { components: [] },
@@ -59,6 +58,6 @@ describe('calisa module', () => {
     await handleCalisaOption(interaction);
 
     expect(member.roles.add).toHaveBeenCalled();
-    expect(followUp).toHaveBeenCalledWith(expect.objectContaining({ ephemeral: true }));
+    expect(send).toHaveBeenCalled();
   });
 });

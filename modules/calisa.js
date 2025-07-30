@@ -15,7 +15,7 @@ async function showCalisaMenu(interaction) {
         '**Where will you go?**'
     )
     .setImage('https://i.imgur.com/cMnHiUs.png')
-    .setColor(0xff77aa);
+    .setColor(0x2c3e50);
 
   const select = new StringSelectMenuBuilder()
     .setCustomId('calisa_select_destination')
@@ -143,7 +143,7 @@ async function handleCalisaOption(interaction) {
   const embed = new EmbedBuilder()
     .setDescription(text)
     .setImage(img)
-    .setColor(0xff77aa);
+    .setColor(0x2c3e50);
 
   await interaction.update({ embeds: [embed], components });
 
@@ -172,11 +172,20 @@ async function handleCalisaOption(interaction) {
       console.warn('⚠️ Could not assign mystery role:', err.message);
     }
 
-    await interaction.followUp({
-      content:
-        "You're home now. But the forest's whisper won't leave.\nThe elf. The Discord. The fracture in the sky.\n\nYou'll be watching. Just in case it wasn't a dream.",
-      ephemeral: true,
-    });
+    const calisaChannel = interaction.guild.channels.cache.find(
+      c => c.name === process.env.CALISA_CHANNEL_NAME && c.isTextBased()
+    );
+    if (calisaChannel) {
+      const pingEmbed = new EmbedBuilder()
+        .setDescription(
+          "You're home now. But the forest's whisper won't leave.\nThe elf. The Discord. The fracture in the sky.\n\nYou'll be watching. Just in case it wasn't a dream."
+        )
+        .setColor(0x2c3e50);
+      await calisaChannel.send({
+        content: `<@${interaction.user.id}>`,
+        embeds: [pingEmbed],
+      });
+    }
   }
 
 }
