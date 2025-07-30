@@ -8,7 +8,7 @@ const {
 
 async function sendCalisaWelcome(channel, userId) {
   const embed = new EmbedBuilder()
-    .setTitle('🌺 WELCOME TO CALISA VII 🌺')
+    .setTitle(' WELCOME TO CALISA VII ')
     .setDescription(
       `*Breathe in the nectar-thick air. Let the suns kiss your skin. Forget the war, the politics, the void. Just for a little while.*\n\n` +
       `After months in orbital rust, Calisa VII glows like a hallucination: twin suns, bioluminescent reefs, whispering forests, and gravity set just low enough to make your body feel born again. The shuttle drops you near Coralport — a coastal node strung between cliffs and lagoons. Your bags are already ashore. Your neural inbox is blissfully silent.\n\n` +
@@ -20,8 +20,8 @@ async function sendCalisaWelcome(channel, userId) {
   const row = new ActionRowBuilder().addComponents(
     new ButtonBuilder()
       .setCustomId('start_vacation')
-      .setLabel('🌴 Start Vacation')
-      .setStyle(ButtonStyle.Primary)
+      .setLabel(' Start Vacation')
+      .setStyle(ButtonStyle.Secondary)
   );
 
   await channel.send({ embeds: [embed], components: [row] });
