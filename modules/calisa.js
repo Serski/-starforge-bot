@@ -69,18 +69,18 @@ async function handleCalisaOption(interaction) {
   let components = [];
   switch (choice) {
     case 'calisa_option_hotel':
-      text = `You check into the **Skyglass Hotel**, a towering shell of glass and biovine scaffolds overlooking the opal sea. Your room hums with soft ambient synth, a zero-g bath pod awaits, and scent-curtains recall your best memories.`;
-      img = 'https://i.imgur.com/qUk9kAk.jpeg';
+      text = `You check into the **Skyglass Hotel**, a towering shell of glass and biovine scaffolds overlooking the opal sea. Your room hums with soft ambient synth, a zero-g bath pod awaits, and scent-curtains recall your best memories. After a week on Calisa VII, you return home, sun-warmed, dream-fed, and quietly reborn.`;
+      img = 'https://i.imgur.com/hN5Ua6Z.png';
       break;
 
     case 'calisa_option_beach':
-      text = `You head to a **private beach hut** — wood and silk, open to the breeze. The sand glows faintly. A kelp-skinned host offers fermented fruit that tastes like childhood and rebellion.`;
-      img = 'https://i.imgur.com/SCF2Cev.jpeg';
+      text = `You head to a **private beach hut** — wood and silk, open to the breeze. The sand glows faintly. A kelp-skinned host offers fermented fruit that tastes like childhood and rebellion. After a week on Calisa VII, you return home, sun-warmed, dream-fed, and quietly reborn.`;
+      img = 'https://i.imgur.com/qIxbQ7O.png';
       break;
 
     case 'calisa_option_mountain':
       text = `You hike into the **Calisan mountains**, draped in shifting mist and alien birdsong. A gravity-adaptive cloak lets you float over gaps. Locals say the trails change when unobserved.`;
-      img = 'https://i.imgur.com/s4s5LmX.jpeg'; // updated working image
+      img = 'https://i.imgur.com/8r0EY2x.png'; // updated working image
 
       const mountainSelect = new StringSelectMenuBuilder()
         .setCustomId('calisa_select_mountain')
@@ -127,7 +127,7 @@ async function handleCalisaOption(interaction) {
         'After days you earn its trust. It leans close and whispers:\n' +
         '"None of this is real. Not Calisa. Not the suns. Not even the war. We are fragments in a Discord server… echoing choices someone else thinks they made."\n' +
         'You laugh. Or cry. Or both.';
-      img = 'https://i.imgur.com/D7kNv3a.jpeg';
+      img = 'https://i.imgur.com/C9oTdId.png';
       break;
 
     case 'calisa_option_end':
@@ -154,7 +154,7 @@ async function handleCalisaOption(interaction) {
     if (newsChannel) {
       await newsChannel.send(
         '**CALISA VII: GUEST CLAIMS REALITY IS A DISCORD SERVER**\n' +
-          'Tourist returns from forest hike raving about an "elf-coded entity" who revealed:\n' +
+          'Tourist returns from Calisa VII raving about an "elf-coded entity" who revealed:\n' +
           '"None of this is real. We\'re fragments in a Discord server."\n' +
           'Local guides blame hallucinogenic pollen. Vacation officials offer memory wipes "for those troubled by metaphysical recursion."\n' +
           '#ForestGlitch #DiscordMythos #SimulationLeak'
