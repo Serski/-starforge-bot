@@ -6,7 +6,7 @@ const { Client, GatewayIntentBits, Collection } = require('discord.js');
 const { startNewsCycle } = require('./modules/news');
 const rotateStatus = require('./modules/status');
 const { startAdLoop } = require('./modules/ads');
-const { sendCalisaWelcome, showCalisaMenu, handleCalisaOption } = require('./modules/calisa');
+const { showCalisaMenu, handleCalisaOption } = require('./modules/calisa');
 
 const client = new Client({
     intents: [
@@ -71,10 +71,9 @@ client.on('interactionCreate', async interaction => {
             const member = interaction.member;
             const guild = interaction.guild;
             const calisaRole = guild.roles.cache.find(r => r.name === 'CALISA VII');
-            const calisaChannel = guild.channels.cache.find(c => c.name === 'calisa-vii' && c.isTextBased());
 
-            if (!calisaRole || !calisaChannel) {
-                await interaction.reply({ content: '❌ Calisa role or channel not found.', ephemeral: true });
+            if (!calisaRole) {
+                await interaction.reply({ content: '❌ Calisa role not found.', ephemeral: true });
                 return;
             }
 
@@ -84,21 +83,13 @@ client.on('interactionCreate', async interaction => {
             }
 
             await member.roles.add(calisaRole);
-            await calisaChannel.send({ content: `🌺 <@${member.id}> has arrived on **Calisa VII**.` });
-            await sendCalisaWelcome(calisaChannel, member.id);
 
-            await interaction.reply({
-                content: '🎫 Welcome aboard. You’re being transported to Calisa VII...',
-                ephemeral: true,
-            });
-            return;
-        }
+            await interaction.channel.send({ content: `🌺 <@${member.id}> has departed for **Calisa VII**...` });
 
-        // 🧭 START VACATION BUTTON
-        if (interaction.customId === 'start_vacation') {
             await showCalisaMenu(interaction);
             return;
         }
+
 
         // 🧭 CALISA OPTION + SUBPATH HANDLER
         if (scope === 'calisa' && (category.startsWith('option') || category.startsWith('mtn'))) {
@@ -108,7 +99,11 @@ client.on('interactionCreate', async interaction => {
     }
 
     // DESTINATION SELECT MENU
-    if (interaction.isStringSelectMenu() && interaction.customId === 'calisa_select_destination') {
+    if (
+        interaction.isStringSelectMenu() &&
+        (interaction.customId === 'calisa_select_destination' ||
+         interaction.customId === 'calisa_select_mountain')
+    ) {
         await handleCalisaOption(interaction);
         return;
     }

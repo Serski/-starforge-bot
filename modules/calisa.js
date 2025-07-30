@@ -6,26 +6,6 @@ const {
   StringSelectMenuBuilder,
 } = require('discord.js');
 
-async function sendCalisaWelcome(channel, userId) {
-  const embed = new EmbedBuilder()
-    .setTitle(' WELCOME TO CALISA VII ')
-    .setDescription(
-      `*Breathe in the nectar-thick air. Let the suns kiss your skin. Forget the war, the politics, the void. Just for a little while.*\n\n` +
-      `After months in orbital rust, Calisa VII glows like a hallucination: twin suns, bioluminescent reefs, whispering forests, and gravity set just low enough to make your body feel born again. The shuttle drops you near Coralport — a coastal node strung between cliffs and lagoons. Your bags are already ashore. Your neural inbox is blissfully silent.\n\n` +
-      `**<@${userId}> — what will you do first?**`
-    )
-    .setImage('https://i.imgur.com/cMnHiUs.png')
-    .setColor(0xff77aa);
-
-  const row = new ActionRowBuilder().addComponents(
-    new ButtonBuilder()
-      .setCustomId('start_vacation')
-      .setLabel(' Start Vacation')
-      .setStyle(ButtonStyle.Secondary)
-  );
-
-  await channel.send({ embeds: [embed], components: [row] });
-}
 
 async function showCalisaMenu(interaction) {
   const embed = new EmbedBuilder()
@@ -63,15 +43,18 @@ async function showCalisaMenu(interaction) {
   await interaction.reply({ embeds: [embed], components: [row], ephemeral: true });
 
   if (interaction.message?.components?.length) {
-    const disabledRow = new ActionRowBuilder().addComponents(
-      interaction.message.components[0].components.map(btn =>
-        ButtonBuilder.from(btn).setDisabled(true)
-      )
-    );
+    const row = interaction.message.components[0];
+    const disabled = row.components.map(comp => {
+      const json = comp.toJSON();
+      return json.type === 3
+        ? StringSelectMenuBuilder.from(comp).setDisabled(true)
+        : ButtonBuilder.from(comp).setDisabled(true);
+    });
+    const disabledRow = new ActionRowBuilder().addComponents(disabled);
     try {
       await interaction.message.edit({ components: [disabledRow] });
     } catch (err) {
-      console.warn('⚠️ Could not disable buttons:', err.message);
+      console.warn('⚠️ Could not disable components:', err.message);
     }
   }
 }
@@ -98,24 +81,26 @@ async function handleCalisaOption(interaction) {
       text = `You hike into the **Calisan mountains**, draped in shifting mist and alien birdsong. A gravity-adaptive cloak lets you float over gaps. Locals say the trails change when unobserved.`;
       img = 'https://i.imgur.com/s4s5LmX.jpeg'; // updated working image
 
-      const mountainOptions = new ActionRowBuilder().addComponents(
-        new ButtonBuilder()
-          .setCustomId('calisa_mtn_hut')
-          .setLabel('🛖 Chill in Mountain Hut')
-          .setStyle(ButtonStyle.Secondary),
-        new ButtonBuilder()
-          .setCustomId('calisa_mtn_climb')
-          .setLabel('🧗 Climb to the Mountain Top')
-          .setStyle(ButtonStyle.Secondary),
-        new ButtonBuilder()
-          .setCustomId('calisa_mtn_forest')
-          .setLabel('🌲 Explore the Forest')
-          .setStyle(ButtonStyle.Secondary),
-        new ButtonBuilder()
-          .setCustomId('calisa_option_end')
-          .setLabel('🔙 End Vacation')
-          .setStyle(ButtonStyle.Danger)
-      );
+      const mountainSelect = new StringSelectMenuBuilder()
+        .setCustomId('calisa_select_mountain')
+        .setPlaceholder('Choose an activity')
+        .addOptions([
+          {
+            label: 'Chill in Mountain Hut',
+            value: 'calisa_mtn_hut',
+            emoji: '🛖',
+          },
+          {
+            label: 'Climb to the Mountain Top',
+            value: 'calisa_mtn_climb',
+            emoji: '🧗',
+          },
+          {
+            label: 'Explore the Forest',
+            value: 'calisa_mtn_forest',
+            emoji: '🌲',
+          },
+        ]);
 
       const mountainEmbed = new EmbedBuilder()
         .setDescription(text)
@@ -124,7 +109,7 @@ async function handleCalisaOption(interaction) {
 
       await interaction.reply({
         embeds: [mountainEmbed],
-        components: [mountainOptions],
+        components: [new ActionRowBuilder().addComponents(mountainSelect)],
         ephemeral: true,
       });
       return;
@@ -140,7 +125,11 @@ async function handleCalisaOption(interaction) {
       break;
 
     case 'calisa_mtn_forest':
-      text = `The **forest whispers**. Light bends wrong between twisted trees. A tall, elfin figure hums in chords your ears weren't built to parse. You follow — not out of fear, but recognition.`;
+      text =
+        'The light bends strangely between the branches. A figure finds you: elfin, tall, humming in chords your ears weren\'t built to parse. It watches you with mirrored eyes.\n' +
+        'After days you earn its trust. It leans close and whispers:\n' +
+        '"None of this is real. Not Calisa. Not the suns. Not even the war. We are fragments in a Discord server… echoing choices someone else thinks they made."\n' +
+        'You laugh. Or cry. Or both.';
       img = 'https://i.imgur.com/D7kNv3a.jpeg';
       break;
 
@@ -161,24 +150,40 @@ async function handleCalisaOption(interaction) {
 
   await interaction.reply({ embeds: [embed], ephemeral: true });
 
-  // ⛔ Disable buttons on original message after first choice
-  if (interaction.message?.components?.length) {
-    const disabledRow = new ActionRowBuilder().addComponents(
-      interaction.message.components[0].components.map(button =>
-        ButtonBuilder.from(button).setDisabled(true)
-      )
+  if (choice === 'calisa_mtn_forest') {
+    const newsChannel = interaction.guild.channels.cache.find(
+      c => c.name === process.env.NEWS_CHANNEL_NAME && c.isTextBased()
     );
+    if (newsChannel) {
+      await newsChannel.send(
+        '**CALISA VII: GUEST CLAIMS REALITY IS A DISCORD SERVER**\n' +
+          'Tourist returns from forest hike raving about an "elf-coded entity" who revealed:\n' +
+          '"None of this is real. We\'re fragments in a Discord server."\n' +
+          'Local guides blame hallucinogenic pollen. Vacation officials offer memory wipes "for those troubled by metaphysical recursion."\n' +
+          '#ForestGlitch #DiscordMythos #SimulationLeak'
+      );
+    }
+  }
 
+  // ⛔ Disable menu/buttons on original message after first choice
+  if (interaction.message?.components?.length) {
+    const row = interaction.message.components[0];
+    const disabled = row.components.map(comp => {
+      const json = comp.toJSON();
+      return json.type === 3
+        ? StringSelectMenuBuilder.from(comp).setDisabled(true)
+        : ButtonBuilder.from(comp).setDisabled(true);
+    });
+    const disabledRow = new ActionRowBuilder().addComponents(disabled);
     try {
       await interaction.message.edit({ components: [disabledRow] });
     } catch (err) {
-      console.warn('⚠️ Could not disable buttons:', err.message);
+      console.warn('⚠️ Could not disable components:', err.message);
     }
   }
 }
 
 module.exports = {
-  sendCalisaWelcome,
   showCalisaMenu,
   handleCalisaOption,
 };
