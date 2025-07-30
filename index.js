@@ -99,7 +99,11 @@ client.on('interactionCreate', async interaction => {
     }
 
     // DESTINATION SELECT MENU
-    if (interaction.isStringSelectMenu() && interaction.customId === 'calisa_select_destination') {
+    if (
+        interaction.isStringSelectMenu() &&
+        (interaction.customId === 'calisa_select_destination' ||
+         interaction.customId === 'calisa_select_mountain')
+    ) {
         await handleCalisaOption(interaction);
         return;
     }

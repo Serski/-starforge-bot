@@ -43,15 +43,18 @@ async function showCalisaMenu(interaction) {
   await interaction.reply({ embeds: [embed], components: [row], ephemeral: true });
 
   if (interaction.message?.components?.length) {
-    const disabledRow = new ActionRowBuilder().addComponents(
-      interaction.message.components[0].components.map(btn =>
-        ButtonBuilder.from(btn).setDisabled(true)
-      )
-    );
+    const row = interaction.message.components[0];
+    const disabled = row.components.map(comp => {
+      const json = comp.toJSON();
+      return json.type === 3
+        ? StringSelectMenuBuilder.from(comp).setDisabled(true)
+        : ButtonBuilder.from(comp).setDisabled(true);
+    });
+    const disabledRow = new ActionRowBuilder().addComponents(disabled);
     try {
       await interaction.message.edit({ components: [disabledRow] });
     } catch (err) {
-      console.warn('⚠️ Could not disable buttons:', err.message);
+      console.warn('⚠️ Could not disable components:', err.message);
     }
   }
 }
@@ -78,24 +81,26 @@ async function handleCalisaOption(interaction) {
       text = `You hike into the **Calisan mountains**, draped in shifting mist and alien birdsong. A gravity-adaptive cloak lets you float over gaps. Locals say the trails change when unobserved.`;
       img = 'https://i.imgur.com/s4s5LmX.jpeg'; // updated working image
 
-      const mountainOptions = new ActionRowBuilder().addComponents(
-        new ButtonBuilder()
-          .setCustomId('calisa_mtn_hut')
-          .setLabel('🛖 Chill in Mountain Hut')
-          .setStyle(ButtonStyle.Secondary),
-        new ButtonBuilder()
-          .setCustomId('calisa_mtn_climb')
-          .setLabel('🧗 Climb to the Mountain Top')
-          .setStyle(ButtonStyle.Secondary),
-        new ButtonBuilder()
-          .setCustomId('calisa_mtn_forest')
-          .setLabel('🌲 Explore the Forest')
-          .setStyle(ButtonStyle.Secondary),
-        new ButtonBuilder()
-          .setCustomId('calisa_option_end')
-          .setLabel('🔙 End Vacation')
-          .setStyle(ButtonStyle.Danger)
-      );
+      const mountainSelect = new StringSelectMenuBuilder()
+        .setCustomId('calisa_select_mountain')
+        .setPlaceholder('Choose an activity')
+        .addOptions([
+          {
+            label: 'Chill in Mountain Hut',
+            value: 'calisa_mtn_hut',
+            emoji: '🛖',
+          },
+          {
+            label: 'Climb to the Mountain Top',
+            value: 'calisa_mtn_climb',
+            emoji: '🧗',
+          },
+          {
+            label: 'Explore the Forest',
+            value: 'calisa_mtn_forest',
+            emoji: '🌲',
+          },
+        ]);
 
       const mountainEmbed = new EmbedBuilder()
         .setDescription(text)
@@ -104,7 +109,7 @@ async function handleCalisaOption(interaction) {
 
       await interaction.reply({
         embeds: [mountainEmbed],
-        components: [mountainOptions],
+        components: [new ActionRowBuilder().addComponents(mountainSelect)],
         ephemeral: true,
       });
       return;
