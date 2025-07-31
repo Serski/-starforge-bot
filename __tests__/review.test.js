@@ -49,9 +49,9 @@ describe('review module', () => {
     await handleReviewModal(interaction);
 
     expect(send).not.toHaveBeenCalled();
-    expect(interaction.reply).toHaveBeenCalledWith(expect.objectContaining({
-      content: expect.stringContaining('Invalid ratings JSON'),
+    expect(interaction.reply).toHaveBeenCalledWith({
+      content: '❌ Invalid ratings JSON.',
       ephemeral: true,
-    }));
+    });
   });
 });
