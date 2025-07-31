@@ -28,7 +28,7 @@ async function handleReviewModal(interaction) {
   }
 
   if (detail) {
-    embed.addFields({ name: 'Full Review', value: `||${detail}||` });
+    embed.addFields({ name: 'Full Review', value: detail });
   }
 
   const channel = interaction.guild.channels.cache.find(
