@@ -7,6 +7,7 @@ const { startNewsCycle } = require('./modules/news');
 const rotateStatus = require('./modules/status');
 const { startAdLoop } = require('./modules/ads');
 const { showCalisaMenu, handleCalisaOption } = require('./modules/calisa');
+const { handleReviewModal } = require('./modules/review');
 
 const client = new Client({
     intents: [
@@ -105,6 +106,12 @@ client.on('interactionCreate', async interaction => {
          interaction.customId === 'calisa_select_mountain')
     ) {
         await handleCalisaOption(interaction);
+        return;
+    }
+
+    // REVIEW MODAL SUBMISSION
+    if (interaction.isModalSubmit() && interaction.customId === 'review_modal') {
+        await handleReviewModal(interaction);
         return;
     }
 
