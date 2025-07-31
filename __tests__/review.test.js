@@ -11,7 +11,7 @@ describe('review module', () => {
           const data = {
             review_target: 'Calisa VII',
             review_summary: 'Nice place',
-            review_ratings: '{"hospitality":1,"price":2,"crowd":3,"cleanliness":4,"transport":5}',
+            review_full: '',
             review_hashtags: '',
             review_image: ''
           };
@@ -42,7 +42,7 @@ describe('review module', () => {
           const data = {
             review_target: 'Calisa VII',
             review_summary: 'Nice place',
-            review_ratings: '{"hospitality":1}',
+            review_full: 'Full text',
             review_hashtags: 'cool',
             review_image: '123'
           };
@@ -56,6 +56,7 @@ describe('review module', () => {
 
     expect(send).toHaveBeenCalled();
     const embed = send.mock.calls[0][0].embeds[0];
+    expect(embed.data.description).toMatch(/Full text/);
     expect(embed.data.description).toMatch(/#cool/);
     expect(embed.data.image.url).toBe('https://example.com/img.png');
   });
@@ -70,7 +71,7 @@ describe('review module', () => {
           const data = {
             review_target: 'Calisa VII',
             review_summary: 'Nice place',
-            review_ratings: '{"hospitality":1,"price":2,"crowd":3,"cleanliness":4,"transport":5}',
+            review_full: '',
             review_hashtags: '',
             review_image: ''
           };
