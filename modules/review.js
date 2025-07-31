@@ -1,6 +1,12 @@
 const { EmbedBuilder } = require('discord.js');
 
 async function handleReviewModal(interaction) {
+  const [, encodedTags = '', encodedImage = ''] =
+    (interaction.customId || '').split('|');
+
+  const hashtagsInput = decodeURIComponent(encodedTags);
+  const imageMessageId = decodeURIComponent(encodedImage);
+
   const target = interaction.fields.getTextInputValue('review_target');
   const summary = interaction.fields.getTextInputValue('review_summary');
   const detail = interaction.fields.getTextInputValue('review_detail');
@@ -14,10 +20,22 @@ async function handleReviewModal(interaction) {
     return;
   }
 
+  const hashtags = hashtagsInput
+    ? hashtagsInput
+        .trim()
+        .split(/\s+/)
+        .filter(Boolean)
+        .slice(0, 4)
+        .map(tag => (tag.startsWith('#') ? tag : `#${tag}`))
+    : [];
+
+  let description = summary;
+  if (hashtags.length) description += `\n\n${hashtags.join(' ')}`;
+
   const embed = new EmbedBuilder()
     .setTitle(`${target} — Review`)
     .setAuthor({ name: interaction.user.username, iconURL: interaction.user.displayAvatarURL() })
-    .setDescription(summary)
+    .setDescription(description)
     .setColor(0x2c3e50);
 
   const keys = ['hospitality', 'price', 'crowd', 'cleanliness', 'transport'];
@@ -29,6 +47,23 @@ async function handleReviewModal(interaction) {
 
   if (detail) {
     embed.addFields({ name: 'Full Review', value: detail });
+  }
+
+  if (imageMessageId) {
+    try {
+      const msg = await interaction.channel.messages.fetch(imageMessageId);
+      const attachment = msg.attachments.first();
+      if (attachment && /(png|jpe?g|gif)$/i.test(attachment.url)) {
+        embed.setImage(attachment.url);
+      } else {
+        await interaction.reply({ content: '❌ No image found on that message.', ephemeral: true });
+        return;
+      }
+    } catch (err) {
+      console.error('❌ Failed to fetch image message:', err);
+      await interaction.reply({ content: '❌ Could not fetch the specified image.', ephemeral: true });
+      return;
+    }
   }
 
   const channel = interaction.guild.channels.cache.find(

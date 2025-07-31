@@ -3,7 +3,15 @@ const { SlashCommandBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, Act
 module.exports = {
   data: new SlashCommandBuilder()
     .setName('review')
-    .setDescription('Submit a structured player review'),
+    .setDescription('Submit a structured player review')
+    .addStringOption(option =>
+      option.setName('hashtags')
+        .setDescription('Space separated hashtags (max 4)')
+        .setRequired(false))
+    .addStringOption(option =>
+      option.setName('image')
+        .setDescription('Message ID of an uploaded image')
+        .setRequired(false)),
 
   async execute(interaction) {
     if (interaction.channel?.name !== process.env.NEWS_CHANNEL_NAME) {
@@ -14,8 +22,14 @@ module.exports = {
       return;
     }
 
+    const hashtagsInput = interaction.options.getString('hashtags');
+    const imageId = interaction.options.getString('image');
+
+    const encodedTags = encodeURIComponent(hashtagsInput || '');
+    const encodedImageId = encodeURIComponent(imageId || '');
+
     const modal = new ModalBuilder()
-      .setCustomId('review_modal')
+      .setCustomId(`review_modal|${encodedTags}|${encodedImageId}`)
       .setTitle('Submit Review');
 
     const targetInput = new TextInputBuilder()
