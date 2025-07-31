@@ -2,7 +2,27 @@ const { EmbedBuilder } = require('discord.js');
 
 async function handleReviewModal(interaction) {
   const hashtagsInput = interaction.fields.getTextInputValue('review_hashtags');
-  const imageMessageId = interaction.fields.getTextInputValue('review_image');
+  let imageMessageId = interaction.fields.getTextInputValue('review_image');
+  let imageChannel = interaction.channel;
+  if (imageMessageId) {
+    imageMessageId = imageMessageId.trim();
+    const linkMatch = imageMessageId.match(/discord(?:app)?\.com\/channels\/(\d+)\/(\d+)\/(\d+)/);
+    if (linkMatch) {
+      const [, guildId, channelId, messageId] = linkMatch;
+      if (guildId !== interaction.guildId) {
+        await interaction.reply({ content: '❌ Image must be from this server.', ephemeral: true });
+        return;
+      }
+      try {
+        imageChannel = await interaction.guild.channels.fetch(channelId);
+        imageMessageId = messageId;
+      } catch (err) {
+        console.error('❌ Failed to fetch image channel:', err);
+        await interaction.reply({ content: '❌ Could not fetch the specified image.', ephemeral: true });
+        return;
+      }
+    }
+  }
 
   const target = interaction.fields.getTextInputValue('review_target');
   const summary = interaction.fields.getTextInputValue('review_summary');
@@ -31,7 +51,7 @@ async function handleReviewModal(interaction) {
 
   if (imageMessageId) {
     try {
-      const msg = await interaction.channel.messages.fetch(imageMessageId);
+      const msg = await imageChannel.messages.fetch(imageMessageId);
       const attachment = msg.attachments.first();
       if (attachment && /(png|jpe?g|gif)$/i.test(attachment.url)) {
         embed.setImage(attachment.url);
