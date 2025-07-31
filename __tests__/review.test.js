@@ -88,4 +88,36 @@ describe('review module', () => {
     expect(interaction.reply).toHaveBeenCalledWith(expect.objectContaining({ ephemeral: true }));
     expect(console.error).toHaveBeenCalled();
   });
+
+  test('handles message link input', async () => {
+    process.env.NEWS_CHANNEL_NAME = 'news-feed';
+    const send = jest.fn().mockResolvedValue();
+    const fetchMessage = jest.fn().mockResolvedValue({
+      attachments: { first: () => ({ url: 'https://example.com/link.png' }) },
+    });
+    const fetchChannel = jest.fn().mockResolvedValue({ messages: { fetch: fetchMessage } });
+    const interaction = {
+      guildId: '1',
+      guild: { channels: { cache: { find: jest.fn(() => ({ send })) }, fetch: fetchChannel } },
+      channel: { messages: { fetch: jest.fn() } },
+      fields: { getTextInputValue: jest.fn(id => {
+          const data = {
+            review_target: 'Calisa VII',
+            review_summary: 'Nice place',
+            review_full: '',
+            review_hashtags: '',
+            review_image: 'https://discord.com/channels/1/2/3',
+          };
+          return data[id];
+      }) },
+      user: { username: 'tester', displayAvatarURL: () => 'https://example.com/avatar.png' },
+      reply: jest.fn().mockResolvedValue(),
+    };
+
+    await handleReviewModal(interaction);
+
+    expect(fetchChannel).toHaveBeenCalledWith('2');
+    expect(fetchMessage).toHaveBeenCalledWith('3');
+    expect(send).toHaveBeenCalled();
+  });
 });
