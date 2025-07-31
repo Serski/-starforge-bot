@@ -15,7 +15,7 @@ async function handleReviewModal(interaction) {
   }
 
   const embed = new EmbedBuilder()
-    .setTitle(`${target} — Player Review`)
+    .setTitle(`${target} — Review`)
     .setAuthor({ name: interaction.user.username, iconURL: interaction.user.displayAvatarURL() })
     .setDescription(summary)
     .setColor(0x2c3e50);
