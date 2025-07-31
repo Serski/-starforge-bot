@@ -3,15 +3,7 @@ const { SlashCommandBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, Act
 module.exports = {
   data: new SlashCommandBuilder()
     .setName('review')
-    .setDescription('Submit a structured player review')
-    .addStringOption(option =>
-      option.setName('hashtags')
-        .setDescription('Space separated hashtags (max 4)')
-        .setRequired(false))
-    .addStringOption(option =>
-      option.setName('image')
-        .setDescription('Message ID of an uploaded image')
-        .setRequired(false)),
+    .setDescription('Submit a structured player review'),
 
   async execute(interaction) {
     if (interaction.channel?.name !== process.env.NEWS_CHANNEL_NAME) {
@@ -22,14 +14,8 @@ module.exports = {
       return;
     }
 
-    const hashtagsInput = interaction.options.getString('hashtags');
-    const imageId = interaction.options.getString('image');
-
-    const encodedTags = encodeURIComponent(hashtagsInput || '');
-    const encodedImageId = encodeURIComponent(imageId || '');
-
     const modal = new ModalBuilder()
-      .setCustomId(`review_modal|${encodedTags}|${encodedImageId}`)
+      .setCustomId('review_modal')
       .setTitle('Submit Review');
 
     const targetInput = new TextInputBuilder()
@@ -44,12 +30,6 @@ module.exports = {
       .setStyle(TextInputStyle.Short)
       .setRequired(true);
 
-    const detailInput = new TextInputBuilder()
-      .setCustomId('review_detail')
-      .setLabel('Detail Review (optional)')
-      .setStyle(TextInputStyle.Paragraph)
-      .setRequired(false);
-
     const ratingsInput = new TextInputBuilder()
       .setCustomId('review_ratings')
       .setLabel('Ratings JSON')
@@ -57,11 +37,24 @@ module.exports = {
       .setRequired(true)
       .setPlaceholder('{ "hospitality":1, "price":2 }');
 
+    const hashtagsInput = new TextInputBuilder()
+      .setCustomId('review_hashtags')
+      .setLabel('Hashtags (optional)')
+      .setStyle(TextInputStyle.Short)
+      .setRequired(false);
+
+    const imageInput = new TextInputBuilder()
+      .setCustomId('review_image')
+      .setLabel('Image Message ID (optional)')
+      .setStyle(TextInputStyle.Short)
+      .setRequired(false);
+
     modal.addComponents(
       new ActionRowBuilder().addComponents(targetInput),
       new ActionRowBuilder().addComponents(summaryInput),
-      new ActionRowBuilder().addComponents(detailInput),
-      new ActionRowBuilder().addComponents(ratingsInput)
+      new ActionRowBuilder().addComponents(ratingsInput),
+      new ActionRowBuilder().addComponents(hashtagsInput),
+      new ActionRowBuilder().addComponents(imageInput)
     );
 
     await interaction.showModal(modal);

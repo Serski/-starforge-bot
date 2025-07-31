@@ -11,8 +11,9 @@ describe('review module', () => {
           const data = {
             review_target: 'Calisa VII',
             review_summary: 'Nice place',
-            review_detail: 'Long review',
-            review_ratings: '{"hospitality":1,"price":2,"crowd":3,"cleanliness":4,"transport":5}'
+            review_ratings: '{"hospitality":1,"price":2,"crowd":3,"cleanliness":4,"transport":5}',
+            review_hashtags: '',
+            review_image: ''
           };
           return data[id];
       }) },
@@ -35,15 +36,15 @@ describe('review module', () => {
       attachments: { first: () => ({ url: 'https://example.com/img.png' }) }
     });
     const interaction = {
-      customId: 'review_modal|cool|123',
       guild: { channels: { cache: { find: jest.fn(() => ({ send })) } } },
       channel: { messages: { fetch } },
       fields: { getTextInputValue: jest.fn(id => {
           const data = {
             review_target: 'Calisa VII',
             review_summary: 'Nice place',
-            review_detail: '',
-            review_ratings: '{"hospitality":1}'
+            review_ratings: '{"hospitality":1}',
+            review_hashtags: 'cool',
+            review_image: '123'
           };
           return data[id];
       }) },
@@ -69,8 +70,9 @@ describe('review module', () => {
           const data = {
             review_target: 'Calisa VII',
             review_summary: 'Nice place',
-            review_detail: 'Long review',
-            review_ratings: '{"hospitality":1,"price":2,"crowd":3,"cleanliness":4,"transport":5}'
+            review_ratings: '{"hospitality":1,"price":2,"crowd":3,"cleanliness":4,"transport":5}',
+            review_hashtags: '',
+            review_image: ''
           };
           return data[id];
         })

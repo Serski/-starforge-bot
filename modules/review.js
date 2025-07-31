@@ -1,15 +1,11 @@
 const { EmbedBuilder } = require('discord.js');
 
 async function handleReviewModal(interaction) {
-  const [, encodedTags = '', encodedImage = ''] =
-    (interaction.customId || '').split('|');
-
-  const hashtagsInput = decodeURIComponent(encodedTags);
-  const imageMessageId = decodeURIComponent(encodedImage);
+  const hashtagsInput = interaction.fields.getTextInputValue('review_hashtags');
+  const imageMessageId = interaction.fields.getTextInputValue('review_image');
 
   const target = interaction.fields.getTextInputValue('review_target');
   const summary = interaction.fields.getTextInputValue('review_summary');
-  const detail = interaction.fields.getTextInputValue('review_detail');
   const ratingsRaw = interaction.fields.getTextInputValue('review_ratings');
 
   let ratings;
@@ -45,9 +41,6 @@ async function handleReviewModal(interaction) {
     }
   }
 
-  if (detail) {
-    embed.addFields({ name: 'Full Review', value: detail });
-  }
 
   if (imageMessageId) {
     try {
