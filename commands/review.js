@@ -42,11 +42,11 @@ module.exports = {
       .setStyle(TextInputStyle.Short)
       .setRequired(false);
 
-    const imageInput = new TextInputBuilder()
-      .setCustomId('review_image')
-      .setLabel('Image Message ID (optional)')
-      .setStyle(TextInputStyle.Short)
-      .setRequired(false);
+      const imageInput = new TextInputBuilder()
+        .setCustomId('review_image')
+        .setLabel('Message Link or ID (this server, optional)')
+        .setStyle(TextInputStyle.Short)
+        .setRequired(false);
 
     modal.addComponents(
       new ActionRowBuilder().addComponents(targetInput),

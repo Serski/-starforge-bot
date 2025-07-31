@@ -38,7 +38,7 @@ client.once('ready', async () => {
     }
 
     // 🔁 FAST REGISTRATION FOR YOUR TEST SERVER
-    const guildId = '806555974168215553';
+    const guildId = process.env.GUILD_ID;
     const guild = await client.guilds.fetch(guildId);
     await guild.commands.set(commandData);
     console.log(`✅ Commands registered to guild ${guild.name}`);
