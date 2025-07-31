@@ -14,7 +14,7 @@ async function handleReviewModal(interaction) {
         return;
       }
       try {
-        imageChannel = await interaction.guild.channels.fetch(channelId);
+        imageChannel = await interaction.client.channels.fetch(channelId);
         imageMessageId = messageId;
       } catch (err) {
         console.error('❌ Failed to fetch image channel:', err);
