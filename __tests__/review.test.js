@@ -27,4 +27,31 @@ describe('review module', () => {
     expect(embed).toBeInstanceOf(EmbedBuilder);
     expect(interaction.reply).toHaveBeenCalledWith(expect.objectContaining({ ephemeral: true }));
   });
+
+  test('handles error when sending embed', async () => {
+    process.env.NEWS_CHANNEL_NAME = 'news-feed';
+    const send = jest.fn().mockRejectedValue(new Error('fail'));
+    const interaction = {
+      guild: { channels: { cache: { find: jest.fn(() => ({ send })) } } },
+      fields: {
+        getTextInputValue: jest.fn(id => {
+          const data = {
+            review_target: 'Calisa VII',
+            review_summary: 'Nice place',
+            review_detail: 'Long review',
+            review_ratings: '{"hospitality":1,"price":2,"crowd":3,"cleanliness":4,"transport":5}'
+          };
+          return data[id];
+        })
+      },
+      user: { username: 'tester', displayAvatarURL: () => 'https://example.com/avatar.png' },
+      reply: jest.fn().mockResolvedValue(),
+    };
+    console.error = jest.fn();
+
+    await handleReviewModal(interaction);
+
+    expect(interaction.reply).toHaveBeenCalledWith(expect.objectContaining({ ephemeral: true }));
+    expect(console.error).toHaveBeenCalled();
+  });
 });
