@@ -98,7 +98,8 @@ describe('review module', () => {
     const fetchChannel = jest.fn().mockResolvedValue({ messages: { fetch: fetchMessage } });
     const interaction = {
       guildId: '1',
-      guild: { channels: { cache: { find: jest.fn(() => ({ send })) }, fetch: fetchChannel } },
+      client: { channels: { fetch: fetchChannel } },
+      guild: { channels: { cache: { find: jest.fn(() => ({ send })) } } },
       channel: { messages: { fetch: jest.fn() } },
       fields: { getTextInputValue: jest.fn(id => {
           const data = {
@@ -118,6 +119,39 @@ describe('review module', () => {
 
     expect(fetchChannel).toHaveBeenCalledWith('2');
     expect(fetchMessage).toHaveBeenCalledWith('3');
+    expect(send).toHaveBeenCalled();
+  });
+
+  test('handles thread message link input', async () => {
+    process.env.NEWS_CHANNEL_NAME = 'news-feed';
+    const send = jest.fn().mockResolvedValue();
+    const fetchMessage = jest.fn().mockResolvedValue({
+      attachments: { first: () => ({ url: 'https://example.com/thread.png' }) },
+    });
+    const fetchChannel = jest.fn().mockResolvedValue({ messages: { fetch: fetchMessage } });
+    const interaction = {
+      guildId: '1',
+      client: { channels: { fetch: fetchChannel } },
+      guild: { channels: { cache: { find: jest.fn(() => ({ send })) } } },
+      channel: { messages: { fetch: jest.fn() } },
+      fields: { getTextInputValue: jest.fn(id => {
+          const data = {
+            review_target: 'Calisa VII',
+            review_summary: 'Nice place',
+            review_full: '',
+            review_hashtags: '',
+            review_image: 'https://discord.com/channels/1/4/5',
+          };
+          return data[id];
+      }) },
+      user: { username: 'tester', displayAvatarURL: () => 'https://example.com/avatar.png' },
+      reply: jest.fn().mockResolvedValue(),
+    };
+
+    await handleReviewModal(interaction);
+
+    expect(fetchChannel).toHaveBeenCalledWith('4');
+    expect(fetchMessage).toHaveBeenCalledWith('5');
     expect(send).toHaveBeenCalled();
   });
 });
