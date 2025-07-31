@@ -6,15 +6,7 @@ async function handleReviewModal(interaction) {
 
   const target = interaction.fields.getTextInputValue('review_target');
   const summary = interaction.fields.getTextInputValue('review_summary');
-  const ratingsRaw = interaction.fields.getTextInputValue('review_ratings');
-
-  let ratings;
-  try {
-    ratings = JSON.parse(ratingsRaw);
-  } catch {
-    await interaction.reply({ content: '❌ Invalid ratings JSON.', ephemeral: true });
-    return;
-  }
+  const fullText = interaction.fields.getTextInputValue('review_full');
 
   const hashtags = hashtagsInput
     ? hashtagsInput
@@ -26,6 +18,7 @@ async function handleReviewModal(interaction) {
     : [];
 
   let description = summary;
+  if (fullText) description += `\n\n${fullText}`;
   if (hashtags.length) description += `\n\n${hashtags.join(' ')}`;
 
   const embed = new EmbedBuilder()
@@ -34,12 +27,6 @@ async function handleReviewModal(interaction) {
     .setDescription(description)
     .setColor(0x2c3e50);
 
-  const keys = ['hospitality', 'price', 'crowd', 'cleanliness', 'transport'];
-  for (const key of keys) {
-    if (ratings[key] !== undefined) {
-      embed.addFields({ name: key.charAt(0).toUpperCase() + key.slice(1), value: String(ratings[key]), inline: true });
-    }
-  }
 
 
   if (imageMessageId) {

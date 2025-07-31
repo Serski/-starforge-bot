@@ -30,12 +30,11 @@ module.exports = {
       .setStyle(TextInputStyle.Short)
       .setRequired(true);
 
-    const ratingsInput = new TextInputBuilder()
-      .setCustomId('review_ratings')
-      .setLabel('Ratings JSON')
-      .setStyle(TextInputStyle.Short)
-      .setRequired(true)
-      .setPlaceholder('{ "hospitality":1, "price":2 }');
+    const fullTextInput = new TextInputBuilder()
+      .setCustomId('review_full')
+      .setLabel('Full Review (optional)')
+      .setStyle(TextInputStyle.Paragraph)
+      .setRequired(false);
 
     const hashtagsInput = new TextInputBuilder()
       .setCustomId('review_hashtags')
@@ -52,7 +51,7 @@ module.exports = {
     modal.addComponents(
       new ActionRowBuilder().addComponents(targetInput),
       new ActionRowBuilder().addComponents(summaryInput),
-      new ActionRowBuilder().addComponents(ratingsInput),
+      new ActionRowBuilder().addComponents(fullTextInput),
       new ActionRowBuilder().addComponents(hashtagsInput),
       new ActionRowBuilder().addComponents(imageInput)
     );
