@@ -39,7 +39,14 @@ async function handleReviewModal(interaction) {
     return;
   }
 
-  await channel.send({ embeds: [embed] });
+  try {
+    await channel.send({ embeds: [embed] });
+  } catch (err) {
+    console.error('❌ Failed to post review:', err);
+    await interaction.reply({ content: '❌ Failed to post review.', ephemeral: true });
+    return;
+  }
+
   await interaction.reply({ content: '✅ Review posted!', ephemeral: true });
 }
 
