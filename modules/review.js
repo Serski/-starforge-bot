@@ -28,7 +28,8 @@ async function handleReviewModal(interaction) {
   }
 
   if (detail) {
-    embed.addFields({ name: 'Full Review', value: `||${detail}||` });
+    // Show the full review without hiding it behind spoiler markup
+    embed.addFields({ name: 'Full Review', value: detail });
   }
 
   const channel = interaction.guild.channels.cache.find(

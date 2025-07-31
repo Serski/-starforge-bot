@@ -25,6 +25,8 @@ describe('review module', () => {
     expect(send).toHaveBeenCalled();
     const embed = send.mock.calls[0][0].embeds[0];
     expect(embed).toBeInstanceOf(EmbedBuilder);
+    const fullReview = embed.toJSON().fields.find(f => f.name === 'Full Review');
+    expect(fullReview.value).toBe('Long review');
     expect(interaction.reply).toHaveBeenCalledWith(expect.objectContaining({ ephemeral: true }));
   });
 });
