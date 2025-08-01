@@ -13,9 +13,9 @@ npm install
 2. Create a `.env` file with the following variables:
 
 ```
-DISCORD_TOKEN=your-bot-token
-CLIENT_ID=your-application-id
-GUILD_ID=your-discord-server-id
+DISCORD_TOKEN=MTM5Mzg5MTU4OTI4NTM0NzQ4MA.GdOv71.k44-PlsWbB0LycG1Ee37MQ-2yqmvZEyDcd8qR4
+CLIENT_ID=393891589285347480
+GUILD_ID=806555974168215553
 NEWS_CHANNEL_NAME=news-feed
 ```
 
