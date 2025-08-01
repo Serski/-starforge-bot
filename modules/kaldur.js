@@ -325,9 +325,9 @@ async function handleKaldurOption(interaction) {
     case 'kaldur_beacon_axe': {
       embed = new EmbedBuilder()
         .setColor(0x2c3e50)
-        .setImage('https://i.imgur.com/EYlc12x.png')
+        .setImage('https://i.imgur.com/m6P2xVy.png')
         .setDescription(
-          'Your swing severs the living antenna; roots shriek in static as the broadcast dies. You limp away, alone with the silence.'
+          'Your swing severs the living antenna; roots shriek in static as the broadcast dies. You limp away, alone with the silence. The Rescue finds you praying with an empty gun.Kaldur burns on, and you never sleep quite right again.'
         );
       break;
     }
