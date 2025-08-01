@@ -250,7 +250,7 @@ async function handleKaldurOption(interaction) {
 function deathEmbed(causeText) {
   return new EmbedBuilder()
     .setColor(0x000000)
-    .setImage('https://i.imgur.com/0JWUtMO.png')
+    .setImage('https://i.imgur.com/S9FwJIV.png')
     .setDescription(
       `${causeText}\n\n` +
         'A breath later you wake in **Orbital Station Thanix‑7**, clone tank fluid dripping.\n' +
