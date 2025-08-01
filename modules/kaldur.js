@@ -9,7 +9,7 @@ const {
 async function showKaldurMenu(interaction) {
   const embed = new EmbedBuilder()
     .setDescription(
-      '*Hypertrip awaits on Kaldur Prime.*\n\nChoose your destiny.'
+      '*Hypertrip returns to the ice world of Kaldur Prime.*\n\nChoose your path.'
     )
     .setImage('https://i.imgur.com/WdZImBi.png')
     .setColor(0x2c3e50);
@@ -20,6 +20,7 @@ async function showKaldurMenu(interaction) {
     .addOptions([
       { label: 'Base Camp', value: 'kaldur_option_camp' },
       { label: 'Hunting Grounds', value: 'kaldur_option_hunt' },
+      { label: 'Pillage Outpost', value: 'kaldur_option_pillage' },
       { label: 'Abort Hunt', value: 'kaldur_option_end' }
     ]);
 
@@ -56,12 +57,29 @@ async function handleKaldurOption(interaction) {
         .setPlaceholder('Next step')
         .addOptions([
           { label: 'Track the Beast', value: 'kaldur_hunt_track' },
+          { label: 'Pillage the Ruins', value: 'kaldur_hunt_pillage' },
           { label: 'Return to Camp', value: 'kaldur_option_end' }
         ]);
       components.push(new ActionRowBuilder().addComponents(huntSelect));
       break;
+    case 'kaldur_option_pillage':
+      text = 'You storm the derelict outpost, ready to pillage.';
+      break;
     case 'kaldur_hunt_track':
       text = 'You stalk the legendary beast through frozen canyons.';
+      break;
+    case 'kaldur_hunt_pillage':
+      text = 'You loot the ruins, claiming trophies for the Dominion.';
+      try {
+        const role = interaction.guild.roles.cache.find(
+          r => r.name === 'KALDUR PILLAGE'
+        );
+        if (role && !interaction.member.roles.cache.has(role.id)) {
+          await interaction.member.roles.add(role);
+        }
+      } catch (err) {
+        console.warn('⚠️ Could not assign pillage role:', err.message);
+      }
       break;
     case 'kaldur_option_end':
       // Keep message brief so tests can validate exact copy
