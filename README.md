@@ -33,11 +33,6 @@ Provide either the raw message ID from the same channel or a full message link f
 When a **KALDUR PRIME** advertisement posts, it includes a **Buy Ticket** button. Clicking the button (`kaldur_buy_ticket`) checks for a role named `KALDUR PRIME`.
 If the role exists and the member doesn't have it, the bot grants the role and opens a private menu to start the hunt.
 
-Sample interaction IDs used in this flow:
-- `kaldur_buy_ticket`
-- `kaldur_select_destination`
-- `kaldur_option_hunt`
-- `kaldur_hunt_track`
 
 ## Kaldur Quest Structure
 
