@@ -92,6 +92,33 @@ async function handleKaldurOption(interaction) {
   const disabled = disableComponents(interaction.message.components);
   const embed = new EmbedBuilder().setDescription(text).setColor(0x2c3e50);
   await interaction.update({ embeds: [embed], components: disabled.concat(components) });
+
+  if (/murmuring fields.*pillage/i.test(text)) {
+    let pillageRole = interaction.guild.roles.cache.find(
+      r => r.name === 'KALDUR PILLAGE'
+    );
+    if (!pillageRole) {
+      try {
+        pillageRole = await interaction.guild.roles.create({ name: 'KALDUR PILLAGE' });
+      } catch (err) {
+        console.warn('⚠️ Could not create pillage role:', err.message);
+      }
+    }
+
+    try {
+      if (pillageRole && !interaction.member.roles.cache.has(pillageRole.id)) {
+        await interaction.member.roles.add(pillageRole);
+      }
+    } catch (err) {
+      console.warn('⚠️ Could not assign pillage role:', err.message);
+    }
+
+    await interaction.followUp({
+      content:
+        'Smoke rises from the Murmuring Fields. Your spoils are secure.\n\nKaldur Pillage role granted!',
+      ephemeral: true,
+    });
+  }
 }
 
 module.exports = { showKaldurMenu, handleKaldurOption };
