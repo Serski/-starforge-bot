@@ -211,15 +211,341 @@ async function handleKaldurOption(interaction) {
       break;
     }
 
-    // -------- MURMURING FIELDS (stub – build later) ------------------------
+    // -------- MURMURING FIELDS --------------------------------------------
     case 'kaldur_option_fields': {
       embed = new EmbedBuilder()
         .setColor(0x2c3e50)
         .setImage('https://i.imgur.com/EYlc12x.png')
         .setTitle('The Murmuring Fields')
         .setDescription(
-          'Grass taller than your visor sways, whispering coordinates that don’t exist. Herds move in perfect silence, and the grain silos pulse like hearts.\n\n' +
-            '_Dynamic events for this zone coming soon…_'
+          'Whisper‑grass brushes your visor. Every stalk murmurs a different secret. Somewhere out there, herds of silent infected move in perfect formation, guided by something older than bone.\n\n' +
+            '**What draws your attention?**'
+        );
+
+      const fieldsSelect = new StringSelectMenuBuilder()
+        .setCustomId('kaldur_select_fields')
+        .setPlaceholder('Choose an encounter')
+        .addOptions([
+          {
+            label: 'Stampede in the Whisper-Grass',
+            value: 'kaldur_fields_stampede',
+            emoji: { id: '1399477691278692352' },
+          },
+          {
+            label: 'The Silo of the Old One',
+            value: 'kaldur_fields_silo',
+            emoji: { id: '1399477691278692352' },
+          },
+          {
+            label: "Herd-Mother's Shadow",
+            value: 'kaldur_fields_mother',
+            emoji: { id: '1399477691278692352' },
+          },
+        ]);
+
+      components = [new ActionRowBuilder().addComponents(fieldsSelect)];
+      break;
+    }
+
+    case 'kaldur_fields_stampede': {
+      embed = new EmbedBuilder()
+        .setColor(0x2c3e50)
+        .setImage('https://i.imgur.com/EYlc12x.png')
+        .setTitle('Stampede in the Whisper-Grass')
+        .setDescription(
+          'You feel them before you see them: a wall of desiccated bodies sprinting through the tall grass, heads low, jaws slack, fast enough to shear wheat into dust. Their charge is aimed straight at you.\n\n' +
+            '**How do you respond?**'
+        );
+
+      const stampedeSelect = new StringSelectMenuBuilder()
+        .setCustomId('kaldur_select_stampede')
+        .setPlaceholder('Choose your move')
+        .addOptions([
+          {
+            label: 'Open fire with Theric rifle',
+            value: 'kaldur_stampede_rifle',
+            emoji: { id: '1399477691278692352' },
+          },
+          {
+            label: 'Meet them with plasma battle axe',
+            value: 'kaldur_stampede_axe',
+            emoji: { id: '1399477691278692352' },
+          },
+        ]);
+
+      components = [new ActionRowBuilder().addComponents(stampedeSelect)];
+      break;
+    }
+
+    case 'kaldur_stampede_rifle': {
+      embed = deathEmbed(
+        'You strike fast, too fast. Their bodies fall, but one clings to your leg, whispering in your mother\'s voice. The others swarm. Metal screams. Flesh tears. You die in molten silence.'
+      );
+      break;
+    }
+
+    case 'kaldur_stampede_axe': {
+      embed = new EmbedBuilder()
+        .setColor(0x2c3e50)
+        .setImage('https://i.imgur.com/EYlc12x.png')
+        .setTitle('The Rooted Beacon')
+        .setDescription(
+          'The first arc severs three torsos; ionised sap sprays like fireflies. The herd breaks around you in panic‑harmony, then scatters into the wheat. You stand alone, axe humming, heart louder than the grass.\n\n' +
+            'Deep roots form a living antenna, broadcasting low‑frequency commands to every infected in the plain.\n\n' +
+            '**How do you silence it?**'
+        );
+
+      const beaconSelect = new StringSelectMenuBuilder()
+        .setCustomId('kaldur_select_beacon')
+        .setPlaceholder('Choose your approach')
+        .addOptions([
+          {
+            label: 'Theric rifle',
+            value: 'kaldur_beacon_rifle',
+            emoji: { id: '1399477691278692352' },
+          },
+          {
+            label: 'Plasma battle axe',
+            value: 'kaldur_beacon_axe',
+            emoji: { id: '1399477691278692352' },
+          },
+        ]);
+
+      components = [new ActionRowBuilder().addComponents(beaconSelect)];
+      break;
+    }
+
+    case 'kaldur_beacon_rifle': {
+      embed = deathEmbed(
+        'You strike fast, too fast. Their bodies fall, but one clings to your leg, whispering in your mother\'s voice. The others swarm. Metal screams. Flesh tears. You die in molten silence.'
+      );
+      break;
+    }
+
+    case 'kaldur_beacon_axe': {
+      embed = new EmbedBuilder()
+        .setColor(0x2c3e50)
+        .setImage('https://i.imgur.com/EYlc12x.png')
+        .setDescription(
+          'Your swing severs the living antenna; roots shriek in static as the broadcast dies. You limp away, alone with the silence.'
+        );
+      break;
+    }
+
+    case 'kaldur_fields_silo': {
+      embed = new EmbedBuilder()
+        .setColor(0x2c3e50)
+        .setImage('https://i.imgur.com/EYlc12x.png')
+        .setTitle('The Silo of the Old One')
+        .setDescription(
+          'A rusted grain silo looms above the fields, its seams pulsing faintly as if something inside is breathing. The hatch hangs open, dripping yellow spores.\n\n' +
+            '**Your move?**'
+        );
+
+      const siloSelect = new StringSelectMenuBuilder()
+        .setCustomId('kaldur_select_silo')
+        .setPlaceholder('Choose your approach')
+        .addOptions([
+          {
+            label: 'Rush the hatch with plasma battle axe',
+            value: 'kaldur_silo_axe',
+            emoji: { id: '1399477691278692352' },
+          },
+          {
+            label: 'Circle wide and fire Theric rifle',
+            value: 'kaldur_silo_rifle',
+            emoji: { id: '1399477691278692352' },
+          },
+        ]);
+
+      components = [new ActionRowBuilder().addComponents(siloSelect)];
+      break;
+    }
+
+    case 'kaldur_silo_axe': {
+      embed = deathEmbed(
+        'You strike fast, too fast. Their bodies fall, but one clings to your leg, whispering in your mother\'s voice. The others swarm. Metal screams. Flesh tears. You die in molten silence.'
+      );
+      break;
+    }
+
+    case 'kaldur_silo_rifle': {
+      embed = new EmbedBuilder()
+        .setColor(0x2c3e50)
+        .setImage('https://i.imgur.com/EYlc12x.png')
+        .setTitle('The Broken Windmill')
+        .setDescription(
+          'Spores erupt, then settle. The ancient thing inside collapses with a sigh that isn\'t air. You advance, find ladders downward — into tunnels scorched long ago.\n\n' +
+            'The windmill\'s blades turn without wind, powered by tethered infected. Inside, lanterns glow and human voices debate in hushed tones.\n\n' +
+            '**How will you enter?**'
+        );
+
+      const windmillSelect = new StringSelectMenuBuilder()
+        .setCustomId('kaldur_select_windmill')
+        .setPlaceholder('Choose your approach')
+        .addOptions([
+          {
+            label: 'Theric rifle',
+            value: 'kaldur_windmill_rifle',
+            emoji: { id: '1399477691278692352' },
+          },
+          {
+            label: 'Plasma battle axe',
+            value: 'kaldur_windmill_axe',
+            emoji: { id: '1399477691278692352' },
+          },
+        ]);
+
+      components = [new ActionRowBuilder().addComponents(windmillSelect)];
+      break;
+    }
+
+    case 'kaldur_windmill_rifle': {
+      embed = deathEmbed(
+        'You strike fast, too fast. Their bodies fall, but one clings to your leg, whispering in your mother\'s voice. The others swarm. Metal screams. Flesh tears. You die in molten silence.'
+      );
+      break;
+    }
+
+    case 'kaldur_windmill_axe': {
+      embed = new EmbedBuilder()
+        .setColor(0x2c3e50)
+        .setImage('https://i.imgur.com/EYlc12x.png')
+        .setTitle('Among the Quiet Ones')
+        .setDescription(
+          'You disarm tripwires, spare the uninfected figures, earn audience. You are escorted to a hidden camp: scar‑stitched survivors who\'ve built a semi‑civilized life amid the wheat. A gold idol — crude, radiant — stands at their centre. The chief\'s spouse watches you with wary curiosity.\n\n' +
+            '**What do you do?**'
+        );
+
+      const quietSelect = new StringSelectMenuBuilder()
+        .setCustomId('kaldur_select_quiet')
+        .setPlaceholder('Choose')
+        .addOptions([
+          {
+            label: 'Lay down your weapons and stay',
+            value: 'kaldur_quiet_stay',
+            emoji: { id: '1399477691278692352' },
+          },
+          {
+            label: 'Pillage the camp for the idol',
+            value: 'kaldur_quiet_pillage',
+            emoji: { id: '1399477691278692352' },
+          },
+        ]);
+
+      components = [new ActionRowBuilder().addComponents(quietSelect)];
+      break;
+    }
+
+    case 'kaldur_quiet_stay': {
+      embed = new EmbedBuilder()
+        .setColor(0x2c3e50)
+        .setDescription(
+          'You remain for months. Fields are quiet, nights warmer. The chief\'s spouse finds you often; whispers become touches. When longing turns dangerous, you request a discreet evac. You leave at dawn, heart racing, lips tasting of wheat & sin.'
+        );
+      break;
+    }
+
+    case 'kaldur_quiet_pillage': {
+      embed = new EmbedBuilder()
+        .setColor(0x2c3e50)
+        .setDescription(
+          'You kill them while they sleep, axe red in torch‑glow. The idol\'s heavier than expected, but greed lightens your step. Evac ship rises on smoky thrusters; the wheat below burns. Gold gleams in the hold — and something whispers your name from inside it.'
+        );
+
+      const pillageRole = interaction.guild.roles.cache.find(
+        r => r.name === 'KALDUR PILLAGE'
+      );
+      try {
+        if (pillageRole && !interaction.member.roles.cache.has(pillageRole.id)) {
+          await interaction.member.roles.add(pillageRole);
+        }
+      } catch (err) {
+        console.warn('⚠️ Could not assign pillage role:', err.message);
+      }
+      break;
+    }
+
+    case 'kaldur_fields_mother': {
+      embed = new EmbedBuilder()
+        .setColor(0x2c3e50)
+        .setImage('https://i.imgur.com/EYlc12x.png')
+        .setTitle("Herd-Mother's Shadow")
+        .setDescription(
+          'You crest a low ridge and see her: a towering matriarchal husk bound in strands of grass, directing lesser infected with silent gestures of bone.\n\n' +
+            '**Choose your strike.**'
+        );
+
+      const motherSelect = new StringSelectMenuBuilder()
+        .setCustomId('kaldur_select_mother')
+        .setPlaceholder('Choose your approach')
+        .addOptions([
+          {
+            label: 'Drive the battle axe up under her jaw',
+            value: 'kaldur_mother_axe',
+            emoji: { id: '1399477691278692352' },
+          },
+          {
+            label: 'Snipe her core with the Theric rifle',
+            value: 'kaldur_mother_rifle',
+            emoji: { id: '1399477691278692352' },
+          },
+        ]);
+
+      components = [new ActionRowBuilder().addComponents(motherSelect)];
+      break;
+    }
+
+    case 'kaldur_mother_axe': {
+      embed = new EmbedBuilder()
+        .setColor(0x2c3e50)
+        .setImage('https://i.imgur.com/EYlc12x.png')
+        .setTitle('The Echoing Watch-Fire')
+        .setDescription(
+          'The blow severs control. Sub‑herds scatter, lost without the signal. You wipe ichor from your visor, heart pounding.\n\n' +
+            'An abandoned ranger tower burns with green flame; each ember carries a human scream.\n\n' +
+            '**How do you proceed?**'
+        );
+
+      const watchSelect = new StringSelectMenuBuilder()
+        .setCustomId('kaldur_select_watch')
+        .setPlaceholder('Choose your approach')
+        .addOptions([
+          {
+            label: 'Cleave the flame with your battle axe',
+            value: 'kaldur_watchfire_axe',
+            emoji: { id: '1399477691278692352' },
+          },
+          {
+            label: 'Extinguish it with rifle fire',
+            value: 'kaldur_watchfire_rifle',
+            emoji: { id: '1399477691278692352' },
+          },
+        ]);
+
+      components = [new ActionRowBuilder().addComponents(watchSelect)];
+      break;
+    }
+
+    case 'kaldur_mother_rifle': {
+      embed = deathEmbed(
+        'You strike fast, too fast. Their bodies fall, but one clings to your leg, whispering in your mother\'s voice. The others swarm. Metal screams. Flesh tears. You die in molten silence.'
+      );
+      break;
+    }
+
+    case 'kaldur_watchfire_axe': {
+      embed = deathEmbed(
+        'You strike fast, too fast. Their bodies fall, but one clings to your leg, whispering in your mother\'s voice. The others swarm. Metal screams. Flesh tears. You die in molten silence.'
+      );
+      break;
+    }
+
+    case 'kaldur_watchfire_rifle': {
+      embed = new EmbedBuilder()
+        .setColor(0x2c3e50)
+        .setDescription(
+          'The shot extinguishes the flame; each scream dies into a whisper. You stagger down, throat raw, vision clear.'
         );
       break;
     }
