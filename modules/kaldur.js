@@ -115,7 +115,7 @@ async function handleKaldurOption(interaction) {
     case 'kaldur_ruins_rifle': {
       embed = new EmbedBuilder()
         .setColor(0x2c3e50)
-        .setImage('https://i.imgur.com/7hGGC1m.png')
+        .setImage('https://i.imgur.com/Of7G7ST.png')
         .setDescription(
           'Ash coats your visor. Heat sears your lungs. Yet the hosts are silent now, every last one. The vent’s glow flares, almost… amused.\n\n' +
             '*Weeks later, your rifle is in a locker, your name scrubbed from the charter. Kaldur burns on, and you never sleep quite right again.*'
