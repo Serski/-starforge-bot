@@ -4,6 +4,8 @@ const {
   StringSelectMenuBuilder
 } = require('discord.js');
 
+// Kaldur Prime adventure flow utilities
+
 async function showKaldurMenu(interaction) {
   const embed = new EmbedBuilder()
     .setDescription(
@@ -62,7 +64,7 @@ async function handleKaldurOption(interaction) {
       text = 'You stalk the legendary beast through frozen canyons.';
       break;
     case 'kaldur_option_end':
-      text = 'You abandon the hunt and return home.';
+      text = 'You abandon the hunt and return home with tales of near glory.';
       break;
     default:
       await interaction.update({ content: '⚠️ Unknown option.', components: [] });
