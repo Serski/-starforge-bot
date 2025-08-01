@@ -124,7 +124,16 @@ client.on('interactionCreate', async interaction => {
         }
 
         // 🗡️ KALDUR OPTION HANDLER
-        if (scope === 'kaldur' && (category.startsWith('option') || category.startsWith('hunt'))) {
+        if (
+            scope === 'kaldur' &&
+            (
+                category.startsWith('option') ||
+                category.startsWith('hunt') ||
+                category.startsWith('basilica') ||
+                category.startsWith('fields') ||
+                category.startsWith('heart')
+            )
+        ) {
             await handleKaldurOption(interaction);
             return;
         }
