@@ -64,8 +64,7 @@ async function handleKaldurOption(interaction) {
       text = 'You stalk the legendary beast through frozen canyons.';
       break;
     case 'kaldur_option_end':
-      // Keep message brief so tests can validate exact copy
-      text = 'You abandon the hunt and return home.';
+      text = 'You abandon the hunt and return home with tales of near glory.';
       break;
     default:
       await interaction.update({ content: '⚠️ Unknown option.', components: [] });
