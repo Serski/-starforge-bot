@@ -10,22 +10,13 @@ A Discord bot that posts news updates, rotating advertisements, and allows playe
 npm install
 ```
 
-2. Create a `.env` file with the following variables:
-
-```
-DISCORD_TOKEN=MTM5Mzg5MTU4OTI4NTM0NzQ4MA.GdOv71.k44-PlsWbB0LycG1Ee37MQ-2yqmvZEyDcd8qR4
-CLIENT_ID=393891589285347480
-GUILD_ID=806555974168215553
-NEWS_CHANNEL_NAME=news-feed
-```
-
-3. Register slash commands in your server:
+2. Register slash commands in your server:
 
 ```bash
 node deploy-commands.js
 ```
 
-4. Start the bot:
+3. Start the bot:
 
 ```bash
 node index.js
