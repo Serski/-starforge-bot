@@ -9,12 +9,12 @@ describe('kaldur module', () => {
   test('selecting a destination disables menu components', async () => {
     const select = new StringSelectMenuBuilder()
       .setCustomId('menu')
-      .addOptions({ label: 'camp', value: 'kaldur_option_camp' });
+      .addOptions({ label: 'dest', value: 'kaldur_cinderholm' });
     const row = new ActionRowBuilder().addComponents(select);
 
     const interaction = {
       isStringSelectMenu: () => true,
-      values: ['kaldur_option_camp'],
+      values: ['kaldur_cinderholm'],
       update: jest.fn().mockResolvedValue(),
       message: { components: [row] },
     };
@@ -27,18 +27,18 @@ describe('kaldur module', () => {
 
   test.each([
     [
-      'kaldur_option_camp',
-      'You set up a base camp amid the cold spires of Kaldur Prime.',
-      1,
-    ],
-    [
-      'kaldur_option_hunt',
-      'The hunt begins in the obsidian wilds.',
+      'kaldur_cinderholm',
+      'You reach the **Cinderholm Ruins**. The Smelter God wakes in molten chains. Choose:',
       2,
     ],
     [
-      'kaldur_option_end',
-      'You abandon the hunt and return home with tales of near glory.',
+      'kaldur_abort',
+      'You abandon the hunt and return home.',
+      1,
+    ],
+    [
+      'cinderholm_a',
+      'You slay the Smelter God. Victory is yours.',
       1,
     ],
   ])('responds correctly for %s', async (value, text, rows) => {
@@ -61,7 +61,7 @@ describe('kaldur module', () => {
     expect(embeds[0].data.description).toBe(text);
     expect(components).toHaveLength(rows);
     expect(components[0].components[0].toJSON().disabled).toBe(true);
-    if (value === 'kaldur_option_hunt') {
+    if (value === 'kaldur_cinderholm') {
       const menu = components[1].components[0];
       expect(menu).toBeInstanceOf(StringSelectMenuBuilder);
     }
