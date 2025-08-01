@@ -82,5 +82,12 @@
   "text": "BOOK YOUR TICKET NOW!",
   "image": "https://i.imgur.com/cMnHiUs.png",
   "sponsor": "HYPERTRIP"
-}
+  },
+  {
+    "type": "ad",
+    "title": "KALDUR PRIME",
+    "text": "The final hunt.",
+    "image": "https://i.imgur.com/WdZImBi.png",
+    "sponsor": "Hypertrip"
+  }
 ]
