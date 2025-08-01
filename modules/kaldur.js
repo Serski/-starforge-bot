@@ -18,8 +18,8 @@ const {
 // --------------------------- 1.  ENTRY MENU ---------------------------------
 async function showKaldurMenu(interaction) {
   const embed = new EmbedBuilder()
-    .setColor(0x7a1e0e)
-    .setImage('https://i.imgur.com/9OYl6Ci.png') // 🔄 swap for your own art
+    .setColor(0x2c3e50)
+    .setImage('https://i.imgur.com/RL66SJO.png') // 🔄 swap for your own art
     .setDescription(
       '*You feel the drop long before you see the planet.*\n' +
         'No luxury welcome. No soft gravity. Just turbulence, metal creak, and the smell of burnt ozone.\n\n' +
