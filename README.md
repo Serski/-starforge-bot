@@ -39,6 +39,18 @@ Sample interaction IDs used in this flow:
 - `kaldur_option_hunt`
 - `kaldur_hunt_track`
 
+## Kaldur Quest Structure
+
+Players who accept the ticket are tagged with the `KALDUR PILLAGE` role. The quest begins with a private select menu displayed by `showKaldurMenu`:
+
+```text
+Base Camp
+Hunting Grounds
+Abort Hunt
+```
+
+The menu uses an image hosted at `https://i.imgur.com/WdZImBi.png` and sets the stage for the hunt. Choosing **Hunting Grounds** reveals a second menu with options to **Track the Beast** or **Return to Camp**.
+
 ## Tests
 
 Run `npm test` to execute the Jest test suite.
