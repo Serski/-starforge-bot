@@ -124,7 +124,7 @@ client.on('interactionCreate', async interaction => {
         }
 
         // 🗡️ KALDUR OPTION HANDLER
-        if (scope === 'kaldur' && (category.startsWith('option') || category.startsWith('hunt'))) {
+        if (scope === 'kaldur') {
             await handleKaldurOption(interaction);
             return;
         }
@@ -142,8 +142,7 @@ client.on('interactionCreate', async interaction => {
 
     if (
         interaction.isStringSelectMenu() &&
-        (interaction.customId === 'kaldur_select_destination' ||
-         interaction.customId === 'kaldur_select_hunt')
+        interaction.customId.startsWith('kaldur_select')
     ) {
         await handleKaldurOption(interaction);
         return;

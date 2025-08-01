@@ -36,8 +36,25 @@ If the role exists and the member doesn't have it, the bot grants the role and o
 Sample interaction IDs used in this flow:
 - `kaldur_buy_ticket`
 - `kaldur_select_destination`
-- `kaldur_option_hunt`
-- `kaldur_hunt_track`
+- `kaldur_cinderholm`
+- `kaldur_basilica`
+- `kaldur_fields`
+- `kaldur_abort`
+
+## Kaldur Quest Structure
+
+When the menu opens, players choose between three destinations:
+
+```text
+Cinderholm Ruins
+Crystal Basilica Rot
+Murmuring Fields
+Abort Hunt
+```
+
+Each destination branches into A/B/C options (e.g. the Smelter God, Choir That
+Bleeds, Stampede in the Whisper-Grass). Every embed uses the same image at
+`https://i.imgur.com/S9FwJIV.png` and ends with success or failure text.
 
 ## Tests
 
