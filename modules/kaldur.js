@@ -165,7 +165,7 @@ async function handleKaldurOption(interaction) {
       // Success → branch to “Her Blessing Was Hunger”
       embed = new EmbedBuilder()
         .setColor(0x2c3e50)
-        .setImage('https://i.imgur.com/22q99tl.png')
+        .setImage('https://i.imgur.com/VrhbVuq.png')
         .setTitle('Her Blessing Was Hunger')
         .setDescription(
           'Spores shimmer in the dark. A bishop‑class host drags a crystal ring through congealed blood while child‑shaped husks spiral in mock prayer.\n' +
