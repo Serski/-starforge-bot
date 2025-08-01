@@ -250,7 +250,7 @@ async function handleKaldurOption(interaction) {
     case 'kaldur_fields_stampede': {
       embed = new EmbedBuilder()
         .setColor(0x2c3e50)
-        .setImage('https://i.imgur.com/EYlc12x.png')
+        .setImage('https://i.imgur.com/PjbLJ4b.png')
         .setTitle('Stampede in the Whisper-Grass')
         .setDescription(
           'You feel them before you see them: a wall of desiccated bodies sprinting through the tall grass, heads low, jaws slack, fast enough to shear wheat into dust. Their charge is aimed straight at you.\n\n' +
