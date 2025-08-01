@@ -7,6 +7,7 @@ const { startNewsCycle } = require('./modules/news');
 const rotateStatus = require('./modules/status');
 const { startAdLoop } = require('./modules/ads');
 const { showCalisaMenu, handleCalisaOption } = require('./modules/calisa');
+const { showKaldurMenu, handleKaldurOption } = require('./modules/kaldur');
 const { handleReviewModal } = require('./modules/review');
 
 const client = new Client({
@@ -91,10 +92,40 @@ client.on('interactionCreate', async interaction => {
             return;
         }
 
+        // 🎫 KALDUR PRIME TICKET HANDLER
+        if (interaction.customId === 'kaldur_buy_ticket') {
+            const member = interaction.member;
+            const guild = interaction.guild;
+            const kaldurRole = guild.roles.cache.find(r => r.name === 'KALDUR PRIME');
+
+            if (!kaldurRole) {
+                await interaction.reply({ content: '❌ Kaldur role not found.', ephemeral: true });
+                return;
+            }
+
+            if (member.roles.cache.has(kaldurRole.id)) {
+                await interaction.reply({ content: '🗡️ You already have a ticket to Kaldur Prime.', ephemeral: true });
+                return;
+            }
+
+            await member.roles.add(kaldurRole);
+
+            await interaction.channel.send({ content: `🗡️ <@${member.id}> has departed for **Kaldur Prime**...` });
+
+            await showKaldurMenu(interaction);
+            return;
+        }
+
 
         // 🧭 CALISA OPTION + SUBPATH HANDLER
         if (scope === 'calisa' && (category.startsWith('option') || category.startsWith('mtn'))) {
             await handleCalisaOption(interaction);
+            return;
+        }
+
+        // 🗡️ KALDUR OPTION HANDLER
+        if (scope === 'kaldur' && (category.startsWith('option') || category.startsWith('hunt'))) {
+            await handleKaldurOption(interaction);
             return;
         }
     }
@@ -106,6 +137,15 @@ client.on('interactionCreate', async interaction => {
          interaction.customId === 'calisa_select_mountain')
     ) {
         await handleCalisaOption(interaction);
+        return;
+    }
+
+    if (
+        interaction.isStringSelectMenu() &&
+        (interaction.customId === 'kaldur_select_destination' ||
+         interaction.customId === 'kaldur_select_hunt')
+    ) {
+        await handleKaldurOption(interaction);
         return;
     }
 

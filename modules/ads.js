@@ -33,7 +33,7 @@ async function postAd(client) {
   // 🎫 Show the BUY TICKET button for CALISA or KALDUR ads
   const title = ad.title.toLowerCase();
   const isCalisa = title.includes("calisa");
-  const isKaldur = title.includes("kaldur");
+  const isKaldur = title.includes("kaldur"); // match "kaldur prime" as well
   const components = isCalisa || isKaldur
     ? [
         new ActionRowBuilder().addComponents(
