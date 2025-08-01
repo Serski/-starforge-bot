@@ -178,12 +178,12 @@ async function handleKaldurOption(interaction) {
         .setPlaceholder('Choose your approach')
         .addOptions([
           {
-            label: 'Leap with Battle‑Axe (rage)',
+            label: 'Leap with Battle‑Axe',
             value: 'kaldur_basilica2_axe',
             emoji: { id: '1399477691278692352' },
           },
           {
-            label: 'Steady Rifle Shot (mercy?)',
+            label: 'Steady Shot',
             value: 'kaldur_basilica2_rifle',
             emoji: { id: '1399477691278692352' },
           },
@@ -215,7 +215,7 @@ async function handleKaldurOption(interaction) {
     case 'kaldur_option_fields': {
       embed = new EmbedBuilder()
         .setColor(0x2c3e50)
-        .setImage('https://i.imgur.com/EYlc12x.png')
+        .setImage('https://i.imgur.com/76NcqCI.png')
         .setTitle('The Murmuring Fields')
         .setDescription(
           'Whisper‑grass brushes your visor. Every stalk murmurs a different secret. Somewhere out there, herds of silent infected move in perfect formation, guided by something older than bone.\n\n' +
@@ -287,7 +287,7 @@ async function handleKaldurOption(interaction) {
     case 'kaldur_stampede_axe': {
       embed = new EmbedBuilder()
         .setColor(0x2c3e50)
-        .setImage('https://i.imgur.com/EYlc12x.png')
+        .setImage('https://i.imgur.com/PjbLJ4b.png')
         .setTitle('The Rooted Beacon')
         .setDescription(
           'The first arc severs three torsos; ionised sap sprays like fireflies. The herd breaks around you in panic‑harmony, then scatters into the wheat. You stand alone, axe humming, heart louder than the grass.\n\n' +
