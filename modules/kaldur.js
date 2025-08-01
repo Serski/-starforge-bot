@@ -335,7 +335,7 @@ async function handleKaldurOption(interaction) {
     case 'kaldur_fields_silo': {
       embed = new EmbedBuilder()
         .setColor(0x2c3e50)
-        .setImage('https://i.imgur.com/EYlc12x.png')
+        .setImage('https://i.imgur.com/1fPlX0m.png')
         .setTitle('The Silo of the Old One')
         .setDescription(
           'A rusted grain silo looms above the fields, its seams pulsing faintly as if something inside is breathing. The hatch hangs open, dripping yellow spores.\n\n' +
