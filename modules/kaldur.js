@@ -287,7 +287,7 @@ async function handleKaldurOption(interaction) {
     case 'kaldur_stampede_axe': {
       embed = new EmbedBuilder()
         .setColor(0x2c3e50)
-        .setImage('https://i.imgur.com/PjbLJ4b.png')
+        .setImage('https://i.imgur.com/g847pbq.png')
         .setTitle('The Rooted Beacon')
         .setDescription(
           'The first arc severs three torsos; ionised sap sprays like fireflies. The herd breaks around you in panic‑harmony, then scatters into the wheat. You stand alone, axe humming, heart louder than the grass.\n\n' +
