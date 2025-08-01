@@ -149,11 +149,8 @@ client.on('interactionCreate', async interaction => {
         return;
     }
 
-    if (
-        interaction.isStringSelectMenu() &&
-        (interaction.customId === 'kaldur_select_destination' ||
-         interaction.customId === 'kaldur_select_hunt')
-    ) {
+    if (interaction.isStringSelectMenu() &&
+        interaction.customId.startsWith('kaldur_select_')) {
         await handleKaldurOption(interaction);
         return;
     }
