@@ -127,7 +127,7 @@ async function handleKaldurOption(interaction) {
     case 'kaldur_option_basilica': {
       embed = new EmbedBuilder()
         .setColor(0x2c3e50)
-        .setImage('https://i.imgur.com/5ayiWNG.png')
+        .setImage('https://i.imgur.com/BfUTthz.png')
         .setTitle('The Choir That Bleeds')
         .setDescription(
           'Beneath the shattered dome, stained‑glass corpses hang on silver chains and hum your name. Priest‑class infected turn from the altar, scripture carved into rusted faces.\n\n' +
