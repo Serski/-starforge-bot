@@ -30,13 +30,15 @@ async function postAd(client) {
       text: `Sponsored by ${ad.sponsor}`,
     });
 
-  // 🎫 Only for CALISA VII — show the BUY TICKET button
-  const isCalisa = ad.title.toLowerCase().includes("calisa");
-  const components = isCalisa
+  // 🎫 Show the BUY TICKET button for CALISA or KALDUR ads
+  const title = ad.title.toLowerCase();
+  const isCalisa = title.includes("calisa");
+  const isKaldur = title.includes("kaldur");
+  const components = isCalisa || isKaldur
     ? [
         new ActionRowBuilder().addComponents(
           new ButtonBuilder()
-            .setCustomId("calisa_buy_ticket")
+            .setCustomId(isCalisa ? "calisa_buy_ticket" : "kaldur_buy_ticket")
             .setLabel("🎫 Buy Ticket")
             .setStyle(ButtonStyle.Primary)
         ),
