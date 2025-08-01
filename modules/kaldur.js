@@ -73,13 +73,13 @@ async function handleKaldurOption(interaction) {
     // -------- CINDERHOLM ----------------------------------------------------
     case 'kaldur_option_ruins': {
       embed = new EmbedBuilder()
-        .setColor(0x7a1e0e)
-        .setImage('https://i.imgur.com/MFr2sLU.png')
+        .setColor(0x2c3e50)
+        .setImage('https://i.imgur.com/g9xi0BE.png')
         .setTitle('The Smelter God Still Breathes')
         .setDescription(
           'You descend into the sub‑reactor vaults beneath slag towers. Ash falls like snow; pipes rattle with fever. In the dark a rogue geothermal vent **exhales** something aware.\n' +
             'Infected workers crawl along the walls in worship, eyes burned black, mouths chanting.\n\n' +
-            '*Your oxygen gauge flickers. Your blade is already hot.*\n\n' +
+            '*Your oxygen gauge flickers. Your plasma battle-axe is already hot.*\n\n' +
             '**How do you engage?**'
         );
 
@@ -89,13 +89,13 @@ async function handleKaldurOption(interaction) {
         .addOptions([
           {
             label: 'Charge with Plasma Battle‑Axe',
-            description: '“This will be fun!”  (high risk)',
+            description: '“This will be fun!”',
             value: 'kaldur_ruins_axe',
             emoji: { id: '1399477691278692352' },
           },
           {
             label: 'Purge with Theric Rifle',
-            description: 'Long‑range extermination (safer)',
+            description: 'Long‑range extermination',
             value: 'kaldur_ruins_rifle',
             emoji: { id: '1399477691278692352' },
           },
@@ -107,17 +107,17 @@ async function handleKaldurOption(interaction) {
 
     case 'kaldur_ruins_axe': {
       embed = deathEmbed(
-        'You swing too fast. One body latches on, whispering in your mother’s voice while the rest swarm. Metal screams, flesh tears — and you fall into molten silence.'
+        'You swing too fast. One body latches on, whispering in your mother’s voice while the rest swarm. Metal screams, flesh tears, and you fall into molten silence.'
       );
       break;
     }
 
     case 'kaldur_ruins_rifle': {
       embed = new EmbedBuilder()
-        .setColor(0x343434)
+        .setColor(0x2c3e50)
         .setImage('https://i.imgur.com/7hGGC1m.png')
         .setDescription(
-          'Ash coats your visor. Heat sears your lungs. Yet the hosts are silent now — every last one. The vent’s glow flares, almost… amused.\n\n' +
+          'Ash coats your visor. Heat sears your lungs. Yet the hosts are silent now, every last one. The vent’s glow flares, almost… amused.\n\n' +
             '*Weeks later, your rifle is in a locker, your name scrubbed from the charter. Kaldur burns on, and you never sleep quite right again.*'
         );
       break;
@@ -126,7 +126,7 @@ async function handleKaldurOption(interaction) {
     // -------- CRYSTAL BASILICA ---------------------------------------------
     case 'kaldur_option_basilica': {
       embed = new EmbedBuilder()
-        .setColor(0x5b0e7a)
+        .setColor(0x2c3e50)
         .setImage('https://i.imgur.com/5ayiWNG.png')
         .setTitle('The Choir That Bleeds')
         .setDescription(
@@ -164,7 +164,7 @@ async function handleKaldurOption(interaction) {
     case 'kaldur_basilica1_rifle': {
       // Success → branch to “Her Blessing Was Hunger”
       embed = new EmbedBuilder()
-        .setColor(0x5b0e7a)
+        .setColor(0x2c3e50)
         .setImage('https://i.imgur.com/22q99tl.png')
         .setTitle('Her Blessing Was Hunger')
         .setDescription(
@@ -202,7 +202,7 @@ async function handleKaldurOption(interaction) {
 
     case 'kaldur_basilica2_rifle': {
       embed = new EmbedBuilder()
-        .setColor(0x343434)
+        .setColor(0x2c3e50)
         .setImage('https://i.imgur.com/aRrE8l1.png')
         .setDescription(
           'One quiet shot. The bishop drops; the ring rolls into shadow. The children freeze, tilt their heads… and simply *walk away*.\n\n' +
@@ -214,7 +214,7 @@ async function handleKaldurOption(interaction) {
     // -------- MURMURING FIELDS (stub – build later) ------------------------
     case 'kaldur_option_fields': {
       embed = new EmbedBuilder()
-        .setColor(0x264653)
+        .setColor(0x2c3e50)
         .setImage('https://i.imgur.com/EYlc12x.png')
         .setTitle('The Murmuring Fields')
         .setDescription(
