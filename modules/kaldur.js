@@ -469,7 +469,7 @@ async function handleKaldurOption(interaction) {
     case 'kaldur_fields_mother': {
       embed = new EmbedBuilder()
         .setColor(0x2c3e50)
-        .setImage('https://i.imgur.com/EYlc12x.png')
+        .setImage('https://i.imgur.com/rB4LuxQ.png')
         .setTitle("Herd-Mother's Shadow")
         .setDescription(
           'You crest a low ridge and see her: a towering matriarchal husk bound in strands of grass, directing lesser infected with silent gestures of bone.\n\n' +
