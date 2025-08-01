@@ -203,10 +203,10 @@ async function handleKaldurOption(interaction) {
     case 'kaldur_basilica2_rifle': {
       embed = new EmbedBuilder()
         .setColor(0x2c3e50)
-        .setImage('https://i.imgur.com/aRrE8l1.png')
+        .setImage('https://i.imgur.com/dC0lN8i.png')
         .setDescription(
           'One quiet shot. The bishop drops; the ring rolls into shadow. The children freeze, tilt their heads… and simply *walk away*.\n\n' +
-            '*Outside, night falls. Extraction finds you praying with an empty gun.*'
+            '*Outside, night falls. Extraction finds you praying with an empty gun.Kaldur burns on, and you never sleep quite right again.*'
         );
       break;
     }
@@ -269,7 +269,7 @@ async function broadcastDeath(interaction, headline) {
   if (newsChannel) {
     await newsChannel.send(
       `**KALDUR PRIME: ${headline.toUpperCase()}**\n` +
-        'Clone tank reports another fatality. Officials remind hunters: *“You have one credit left. Or none.”*'
+        'Another tourist has died on Kaldur Prime after trying to katana-charge a singing zombie priest.”*'
     );
   }
 
