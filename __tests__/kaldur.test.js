@@ -36,7 +36,11 @@ describe('kaldur module', () => {
       'The hunt begins in the obsidian wilds.',
       2,
     ],
-    ['kaldur_option_end', 'You abandon the hunt and return home.', 1],
+    [
+      'kaldur_option_end',
+      'You abandon the hunt and return home with tales of near glory.',
+      1,
+    ],
   ])('responds correctly for %s', async (value, text, rows) => {
     const select = new StringSelectMenuBuilder()
       .setCustomId('menu')
