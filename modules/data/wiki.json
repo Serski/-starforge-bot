@@ -71,5 +71,12 @@
       "content": "The Crucible Dominion is a post-organic theocracy that believes all sentient life must be reforged through suffering, obedience, and sacred fire. Its hierarchs claim to hear the voice of the Source — an entity said to exist outside time. Their ships are cathedral-hulled and silent. Their soldiers chant before they kill. To the Dominion, the Federation is not just corrupt — it is spiritually malformed. Redemption can only come through dissolution and ash.",
       "image": "https://i.imgur.com/7jj3HO0.png"
     }
+  ],
+  "planets": [
+    {
+      "title": "Calisa VII",
+      "content": "Calisa VII is one of the most visited tourist worlds in the Phoros Belt, celebrated for its curated tranquility and multisensory luxury. Marketed as a place to heal, forget, or simply indulge, it offers everything from bioluminescent beaches and zero-g spa suites to gravity-shift mountain trails and emotionally tuned weather systems. Every experience is engineered to be both soothing and unforgettable.\n\nThe planet operates under exclusive contract by HyperTrip Corp, a leisure megacorp with full monopoly rights on all offworld access, guest services, and neural experience layering. From the moment visitors arrive at Coralport, the coastal entry hub, they are enveloped in a carefully managed reality optimized for relaxation and subtle transformation.\n\nOfficially, Calisa VII is a neural wellness retreat, a high-end vacation site, and a model for post-war hospitality architecture. Unofficially, some say the planet has a way of lingering in the mind — long after you leave.\n\nHyperTrip's slogan for the destination remains unchanged since its founding:\n“Sun-warmed. Dream-fed. Quietly reborn.”",
+      "image": "https://i.imgur.com/0Qshx0V.jpeg"
+    }
   ]
 }
