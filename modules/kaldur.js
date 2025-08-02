@@ -544,6 +544,7 @@ async function handleKaldurOption(interaction) {
     case 'kaldur_watchfire_rifle': {
       embed = new EmbedBuilder()
         .setColor(0x2c3e50)
+        .setImage('https://i.imgur.com/aHsb1rm.png')
         .setDescription(
           'The foam kills the flames; screams fade. You stagger on, throat raw. You left Kaldur soon after. That was enough.'
         );
