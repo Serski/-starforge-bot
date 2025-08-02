@@ -67,7 +67,9 @@ async function handleKaldurOption(interaction) {
     ? interaction.values[0]
     : interaction.customId;
 
-  let embed, components = [];
+  let embed,
+    components = [],
+    followUp;
 
   switch (choice) {
     // -------- CINDERHOLM ----------------------------------------------------
@@ -466,13 +468,13 @@ async function handleKaldurOption(interaction) {
         console.warn('⚠️ Could not assign pillage role:', err.message);
       }
 
-      await interaction.followUp({
+      followUp = {
         content:
           'Weeks later, you liquidate the idol discreetly through a frontier broker. ' +
           'The proceeds seed a quiet investment portfolio: modular habitats, mining futures, low-orbit grain patents. ' +
           'The income is steady. Respectable. KALDUR PILLAGE role granted!',
         ephemeral: true,
-      });
+      };
       break;
     }
 
@@ -573,6 +575,10 @@ async function handleKaldurOption(interaction) {
 
   // Send / update message ----------------------------------------------------
   await interaction.update({ embeds: [embed], components });
+
+  if (followUp) {
+    await interaction.followUp(followUp);
+  }
 
   // Optional: broadcast deaths to a news channel & tag a role
   if (choice.endsWith('_axe')) {
