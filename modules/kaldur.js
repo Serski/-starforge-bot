@@ -499,11 +499,11 @@ async function handleKaldurOption(interaction) {
     case 'kaldur_mother_axe': {
       embed = new EmbedBuilder()
         .setColor(0x2c3e50)
-        .setImage('https://i.imgur.com/EYlc12x.png')
+        .setImage('https://i.imgur.com/t8mJbWx.png')
         .setTitle('The Echoing Watch-Fire')
         .setDescription(
           'The blow severs control. Sub‑herds scatter, lost without the signal. You wipe ichor from your visor, heart pounding.\n\n' +
-            'An abandoned ranger tower burns with green flame; each ember carries a human scream.\n\n' +
+            'An abandoned ranger tower burns with green flame; each ember carries a scream.\n\n' +
             '**How do you proceed?**'
         );
 
@@ -517,7 +517,7 @@ async function handleKaldurOption(interaction) {
             emoji: { id: '1399477691278692352' },
           },
           {
-            label: 'Extinguish it with rifle fire',
+            label: 'Use the zero-g fire foam',
             value: 'kaldur_watchfire_rifle',
             emoji: { id: '1399477691278692352' },
           },
@@ -545,7 +545,7 @@ async function handleKaldurOption(interaction) {
       embed = new EmbedBuilder()
         .setColor(0x2c3e50)
         .setDescription(
-          'The shot extinguishes the flame; each scream dies into a whisper. You stagger down, throat raw, vision clear.'
+          'The foam kills the flames; screams fade. You stagger on, throat raw. You left Kaldur soon after. That was enough.'
         );
       break;
     }
