@@ -440,8 +440,9 @@ async function handleKaldurOption(interaction) {
     case 'kaldur_quiet_stay': {
       embed = new EmbedBuilder()
         .setColor(0x2c3e50)
+        .setImage('https://i.imgur.com/OWcTKwT.png')
         .setDescription(
-          'You remain for months. Fields are quiet, nights warmer. The chief\'s spouse finds you often; whispers become touches. When longing turns dangerous, you request a discreet evac. You leave at dawn, heart racing, lips tasting of wheat & sin.'
+          'You remain for months. Fields are quiet, nights warmer. The chief\'s other spouse finds you often; whispers become touches. When longing turns dangerous, you request a discreet evac. You leave at dawn, heart racing, lips tasting of wheat & sin.'
         );
       break;
     }
@@ -449,6 +450,7 @@ async function handleKaldurOption(interaction) {
     case 'kaldur_quiet_pillage': {
       embed = new EmbedBuilder()
         .setColor(0x2c3e50)
+        .setImage('https://i.imgur.com/OWcTKwT.png')
         .setDescription(
           'You kill them while they sleep, axe red in torch‑glow. The idol\'s heavier than expected, but greed lightens your step. Evac ship rises on smoky thrusters; the wheat below burns. Gold gleams in the hold — and something whispers your name from inside it.'
         );
