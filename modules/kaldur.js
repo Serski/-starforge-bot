@@ -465,6 +465,14 @@ async function handleKaldurOption(interaction) {
       } catch (err) {
         console.warn('⚠️ Could not assign pillage role:', err.message);
       }
+
+      await interaction.followUp({
+        content:
+          'Weeks later, you liquidate the idol discreetly through a frontier broker. ' +
+          'The proceeds seed a quiet investment portfolio: modular habitats, mining futures, low-orbit grain patents. ' +
+          'The income is steady. Respectable. KALDUR PILLAGE role granted!',
+        ephemeral: true,
+      });
       break;
     }
 
