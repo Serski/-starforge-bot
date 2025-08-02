@@ -372,11 +372,11 @@ async function handleKaldurOption(interaction) {
     case 'kaldur_silo_rifle': {
       embed = new EmbedBuilder()
         .setColor(0x2c3e50)
-        .setImage('https://i.imgur.com/EYlc12x.png')
-        .setTitle('The Broken Windmill')
+        .setImage('https://i.imgur.com/nx90Hh4.png')
+        .setTitle('The Broken Silo')
         .setDescription(
-          'Spores erupt, then settle. The ancient thing inside collapses with a sigh that isn\'t air. You advance, find ladders downward — into tunnels scorched long ago.\n\n' +
-            'The windmill\'s blades turn without wind, powered by tethered infected. Inside, lanterns glow and human voices debate in hushed tones.\n\n' +
+          'Spores erupt, then settle. The ancient thing inside collapses with a sigh that isn\'t air. You advance, find ladders downward, into tunnels scorched long ago.\n\n' +
+            'Inside, lanterns glow and voices debate in hushed tones.\n\n' +
             '**How will you enter?**'
         );
 
