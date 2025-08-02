@@ -603,11 +603,14 @@ async function broadcastDeath(interaction, headline) {
   const newsChannel = interaction.guild.channels.cache.find(
     c => c.name === process.env.NEWS_CHANNEL_NAME && c.isTextBased()
   );
+  const deathMessages = [
+    `**KALDUR PRIME: ${headline.toUpperCase()}**\nAnother tourist has died on Kaldur Prime after trying to katana-charge a singing zombie priest.`,
+    `**KALDUR PRIME: INCIDENT 1192-CLASS**\nWe regret to report the loss of an off-world guest during an unauthorized engagement with a Class-V Ascended Host. Our thoughts are with their backup family archive. All safari waivers remain legally binding. #CondemnedButProfitable #TourDeathDisclaimer`,
+    `**KALDUR PRIME: ECHOES IN THE ROT**\nThe wheat sang. The priest answered. A blade was raised, and a body fell. Another name lost in the cinder hush of Kaldur's ruins. The campfire tonight burns a little brighter. #AmongTheQuietOnes #LastCharge`,
+  ];
+  const message = deathMessages[Math.floor(Math.random() * deathMessages.length)];
   if (newsChannel) {
-    await newsChannel.send(
-      `**KALDUR PRIME: ${headline.toUpperCase()}**\n` +
-        'Another tourist has died on Kaldur Prime after trying to katana-charge a singing zombie priest.”*'
-    );
+    await newsChannel.send(message);
   }
 
   const deathRole = interaction.guild.roles.cache.find(
