@@ -410,10 +410,10 @@ async function handleKaldurOption(interaction) {
     case 'kaldur_windmill_axe': {
       embed = new EmbedBuilder()
         .setColor(0x2c3e50)
-        .setImage('https://i.imgur.com/EYlc12x.png')
+        .setImage('https://i.imgur.com/GLVKjC4.png')
         .setTitle('Among the Quiet Ones')
         .setDescription(
-          'You disarm tripwires, spare the uninfected figures, earn audience. You are escorted to a hidden camp: scar‑stitched survivors who\'ve built a semi‑civilized life amid the wheat. A gold idol — crude, radiant — stands at their centre. The chief\'s spouse watches you with wary curiosity.\n\n' +
+          'You disarm tripwires, And then you see them, survivors. You are escorted to a hidden camp: scar‑stitched terran survivors who\'ve built a semi‑civilized life amid the wheat. A gold idol — crude, radiant — stands at their centre. The chief\'s spouse watches you with wary curiosity.\n\n' +
             '**What do you do?**'
         );
 
