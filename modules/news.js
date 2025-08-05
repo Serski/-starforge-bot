@@ -1,8 +1,8 @@
 const { getNews } = require('./cache');
 
 function getRandomDelay() {
-  const min = 2 * 60 * 60 * 1000; // 2 hours
-  const max = 3 * 60 * 60 * 1000; // 3 hours
+  const min = 5 * 60 * 60 * 1000; // 5 hours
+  const max = 6 * 60 * 60 * 1000; // 6 hours
   return Math.floor(Math.random() * (max - min) + min);
 }
 
