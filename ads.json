@@ -83,7 +83,14 @@
   "image": "https://i.imgur.com/cMnHiUs.png",
   "sponsor": "HYPERTRIP"
   },
-  {
+{
+  "type": "ad",
+  "title": "CALLING ALL LIGHT-FREIGHT CAPTAINS",
+  "text": "Kawazei Systems seeks one gargo-rated hauler to uplift 6t sealed cargo from Razathaar to Aegir Orbit.",
+  "image": "https://i.imgur.com/d6Q4rlf.png",
+  "sponsor": "Kawazei Systems"
+  },
+ {
     "type": "ad",
     "title": "KALDUR PRIME",
     "text": "The final hunt.",
