@@ -491,7 +491,7 @@ async function handleRazathaarOption(interaction) {
       if (hasWin) {
         embed = new EmbedBuilder()
           .setColor(0x2c3e50)
-          .setImage('https://i.imgur.com/sereAuction.png')
+          .setImage('https://i.imgur.com/bq1XeSq.png')
           .setTitle('The Sere Auction')
           .setDescription(
             'Blue Hour gathers. In a dry cistern lit by stormlight, a half‑circle of handlers trades **mirage‑glass** lots with poetry for passwords. ' +
