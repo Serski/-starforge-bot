@@ -414,7 +414,7 @@ async function handleRazathaarOption(interaction) {
       const newFlags = flags.includes('GLC') ? flags : [...flags, 'GLC']; // Cover: Ghost Lading Codes
       embed = new EmbedBuilder()
         .setColor(0xd35400)
-        .setImage('https://i.imgur.com/whQ13.png')
+        .setImage('https://i.imgur.com/nhapW2w.png')
         .setTitle('Warehouse Q‑13 — Seals & Spools')
         .setDescription(
           'Foreman Atta rolls a fresh spool. "If this bites me, it never happened." ' +
