@@ -389,7 +389,7 @@ async function handleRazathaarOption(interaction) {
       const newFlags = flags.includes('CR') ? flags : [...flags, 'CR']; // Cover: Registry Hole
       embed = new EmbedBuilder()
         .setColor(0x2c3e50)
-        .setImage('https://i.imgur.com/ninewells.png')
+        .setImage('https://i.imgur.com/kAu7V1G.png')
         .setTitle('Nine Wells — Second Visit')
         .setDescription(
           'You refine the wording for the manifest poem. The clerk grins. "Two pallets fall between commas." ' +
