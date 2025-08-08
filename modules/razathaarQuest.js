@@ -335,7 +335,7 @@ async function handleRazathaarOption(interaction) {
       const newFlags = flags.includes('RC') ? flags : [...flags, 'RC']; // Corridor: Canyon
       embed = new EmbedBuilder()
         .setColor(0x2c3e50)
-        .setImage('https://i.imgur.com/umbergate.png')
+        .setImage('https://i.imgur.com/oK98XFe.png')
         .setTitle('Umber Gate Canyon')
         .setDescription(
           'A switchback chokes sound and heat. With the **lattice token**, caravans bow you through; without it, you wait and count bones in the rock.\n\n' +
