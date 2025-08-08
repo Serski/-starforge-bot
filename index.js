@@ -128,9 +128,12 @@ client.on('interactionCreate', async interaction => {
                 return;
             }
 
-            if (!member.roles.cache.has(razathaarRole.id)) {
-                await member.roles.add(razathaarRole);
+            if (member.roles.cache.has(razathaarRole.id)) {
+                await interaction.reply({ content: '🚫 You cannot restart the Razathaar quest.', ephemeral: true });
+                return;
             }
+
+            await member.roles.add(razathaarRole);
 
             await interaction.channel.send({ content: `🚚 <@${member.id}> has accepted a Razathaar freight contract...` });
             await showRazathaarMenu(interaction);
