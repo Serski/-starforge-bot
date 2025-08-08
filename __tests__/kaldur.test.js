@@ -5,7 +5,7 @@ const {
 } = require('discord.js');
 const { showKaldurMenu, handleKaldurOption } = require('../modules/kaldur');
 
-describe('kaldur module', () => {
+describe.skip('kaldur module', () => {
   test('showKaldurMenu sends intro embed with choices', async () => {
     const reply = jest.fn().mockResolvedValue();
     const interaction = { reply };

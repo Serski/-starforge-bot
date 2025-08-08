@@ -120,6 +120,18 @@ client.on('interactionCreate', async interaction => {
         // 🚚 RAZATHAAR FREIGHT CONTRACT HANDLER
         if (interaction.customId === 'razathaar_start_quest') {
             const member = interaction.member;
+            const guild = interaction.guild;
+            const razathaarRole = guild.roles.cache.find(r => r.name === 'RAZATHAAR');
+
+            if (!razathaarRole) {
+                await interaction.reply({ content: '❌ Razathaar role not found.', ephemeral: true });
+                return;
+            }
+
+            if (!member.roles.cache.has(razathaarRole.id)) {
+                await member.roles.add(razathaarRole);
+            }
+
             await interaction.channel.send({ content: `🚚 <@${member.id}> has accepted a Razathaar freight contract...` });
             await showRazathaarMenu(interaction);
             return;
