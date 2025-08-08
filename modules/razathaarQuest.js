@@ -187,13 +187,13 @@ async function handleRazathaarOption(interaction) {
     }
 
     case choice === 'rz_d1_nomad': {
-      const flags = ['CN', 'CL']; // Contact: Nomad and Cover: Lattice Token
+      const flags = ['CN']; // Contact: Nomad
       embed = new EmbedBuilder()
         .setColor(0x2c3e50)
         .setImage('https://i.imgur.com/WKuuxhZ.png')
         .setTitle('Wind‑singers’ Camp')
         .setDescription(
-          'The Iktari matriarch loops a **lattice token** around your wrist. "With this, our caravans let you pass," she says. ' +
+          'The Iktari matriarch listens from behind veils. "Our caravans keep their own counsel," she says, yet you trade names with her nephew. ' +
           'They speak of a *Blue Hour* when the storm blinds machines.\n\n' +
           '**Day Two?**'
         )
