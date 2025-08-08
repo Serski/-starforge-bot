@@ -8,6 +8,7 @@ const rotateStatus = require('./modules/status');
 const { startAdLoop } = require('./modules/ads');
 const { showCalisaMenu, handleCalisaOption } = require('./modules/calisa');
 const { showKaldurMenu, handleKaldurOption } = require('./modules/kaldur');
+const { showRazathaarMenu, handleRazathaarOption } = require('./modules/razathaarQuest');
 const { handleReviewModal } = require('./modules/review');
 
 const client = new Client({
@@ -116,6 +117,14 @@ client.on('interactionCreate', async interaction => {
             return;
         }
 
+        // 🚚 RAZATHAAR FREIGHT CONTRACT HANDLER
+        if (interaction.customId === 'razathaar_start_quest') {
+            const member = interaction.member;
+            await interaction.channel.send({ content: `🚚 <@${member.id}> has accepted a Razathaar freight contract...` });
+            await showRazathaarMenu(interaction);
+            return;
+        }
+
 
         // 🧭 CALISA OPTION + SUBPATH HANDLER
         if (scope === 'calisa' && (category.startsWith('option') || category.startsWith('mtn'))) {
@@ -137,6 +146,12 @@ client.on('interactionCreate', async interaction => {
             await handleKaldurOption(interaction);
             return;
         }
+
+        // 📦 RAZATHAAR OPTION HANDLER
+        if (scope === 'razathaar') {
+            await handleRazathaarOption(interaction);
+            return;
+        }
     }
 
     // DESTINATION SELECT MENU
@@ -152,6 +167,12 @@ client.on('interactionCreate', async interaction => {
     if (interaction.isStringSelectMenu() &&
         interaction.customId.startsWith('kaldur_select_')) {
         await handleKaldurOption(interaction);
+        return;
+    }
+
+    if (interaction.isStringSelectMenu() &&
+        interaction.customId.startsWith('razathaar_')) {
+        await handleRazathaarOption(interaction);
         return;
     }
 

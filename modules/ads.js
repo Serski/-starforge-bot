@@ -30,20 +30,25 @@ async function postAd(client) {
       text: `Sponsored by ${ad.sponsor}`,
     });
 
-  // 🎫 Show the BUY TICKET button for CALISA or KALDUR ads
+  // 🎫 Show interactive button for special ads
   const title = ad.title.toLowerCase();
   const isCalisa = title.includes("calisa");
   const isKaldur = title.includes("kaldur"); // match "kaldur prime" as well
-  const components = isCalisa || isKaldur
-    ? [
-        new ActionRowBuilder().addComponents(
-          new ButtonBuilder()
-            .setCustomId(isCalisa ? "calisa_buy_ticket" : "kaldur_buy_ticket")
-            .setLabel("🎫 Buy Ticket")
-            .setStyle(ButtonStyle.Primary)
-        ),
-      ]
-    : [];
+  const isRazathaar = title.includes("light-freight");
+  let components = [];
+  if (isCalisa || isKaldur || isRazathaar) {
+    const button = new ButtonBuilder()
+      .setCustomId(
+        isCalisa
+          ? "calisa_buy_ticket"
+          : isKaldur
+          ? "kaldur_buy_ticket"
+          : "razathaar_start_quest"
+      )
+      .setLabel(isRazathaar ? "📦 Accept Contract" : "🎫 Buy Ticket")
+      .setStyle(ButtonStyle.Primary);
+    components = [new ActionRowBuilder().addComponents(button)];
+  }
 
   await channel.send({ embeds: [embed], components });
   console.log(`[✅] Ad posted in ${guild.name}: "${ad.title}"`);
