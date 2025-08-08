@@ -514,7 +514,7 @@ async function handleRazathaarOption(interaction) {
 
         embed = new EmbedBuilder()
           .setColor(0xc0392b)
-          .setImage('https://i.imgur.com/auditHall.png')
+          .setImage('https://i.imgur.com/ImaJa9N.png')
           .setTitle('Audit Hall, Dawn')
           .setDescription(
             `You arrive at the rendezvous missing ${need}. The room cools. A handler snuffs the lantern. ` +
