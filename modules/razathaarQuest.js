@@ -364,7 +364,7 @@ async function handleRazathaarOption(interaction) {
       const newFlags = flags.includes('CD') ? flags : [...flags, 'CD']; // ensure Contact: Dock
       embed = new EmbedBuilder()
         .setColor(0x2c3e50)
-        .setImage('https://i.imgur.com/dockRell.png')
+        .setImage('https://i.imgur.com/Ht1mzsX.png')
         .setTitle('Shroud Harbor — Rell')
         .setDescription(
           'Rell answers on the second ping. "If you’ve got a window and a cover, I’ve got a berth. Meet me at night." ' +
