@@ -249,7 +249,7 @@ async function handleRazathaarOption(interaction) {
       const newFlags = flags.includes('RS') ? flags : [...flags, 'RS']; // Corridor: Sweep Schedule
       embed = new EmbedBuilder()
         .setColor(0x2c3e50)
-        .setImage('https://i.imgur.com/windfarm.png')
+        .setImage('https://i.imgur.com/FzE0i4q.png')
         .setTitle('Crown Windfarm — Audit Drones')
         .setDescription(
           'Technicians bicker over scan cones. You glimpse the **customs sweep schedule**; minute‑accurate, habit‑ridden. ' +
