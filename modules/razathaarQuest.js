@@ -162,7 +162,7 @@ async function handleRazathaarOption(interaction) {
       const flags = ['CD']; // Contact: Dock
       embed = new EmbedBuilder()
         .setColor(0xd35400)
-        .setImage('https://i.imgur.com/dockRell.png')
+        .setImage('https://i.imgur.com/2jjYdI4.png')
         .setTitle('Shroud Harbor')
         .setDescription(
           'Dockmaster **Rell** thumbs a chipped comm: "I make ships *leave* when they shouldn’t. But not for strangers." ' +
@@ -220,7 +220,7 @@ async function handleRazathaarOption(interaction) {
       const newFlags = flags.includes('RB') ? flags : [...flags, 'RB']; // Corridor: Blue Hour
       embed = new EmbedBuilder()
         .setColor(0xd35400)
-        .setImage('https://i.imgur.com/stormglass.png')
+        .setImage('https://i.imgur.com/5CN4eAZ.png')
         .setTitle('Stormglass Flats')
         .setDescription(
           'Silica organs hum as wind charges the desert. Sensors spike, then wash blank. ' +
