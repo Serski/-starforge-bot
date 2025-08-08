@@ -148,7 +148,7 @@ client.on('interactionCreate', async interaction => {
         }
 
         // 📦 RAZATHAAR OPTION HANDLER
-        if (scope === 'razathaar') {
+        if (scope === 'razathaar' || scope === 'rz') {
             await handleRazathaarOption(interaction);
             return;
         }
@@ -171,7 +171,7 @@ client.on('interactionCreate', async interaction => {
     }
 
     if (interaction.isStringSelectMenu() &&
-        interaction.customId.startsWith('razathaar_')) {
+        (interaction.customId.startsWith('razathaar_') || interaction.customId.startsWith('rz_'))) {
         await handleRazathaarOption(interaction);
         return;
     }
