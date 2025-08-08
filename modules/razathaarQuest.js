@@ -278,7 +278,7 @@ async function handleRazathaarOption(interaction) {
       const newFlags = flags.includes('CR') ? flags : [...flags, 'CR']; // Cover: Registry Hole
       embed = new EmbedBuilder()
         .setColor(0xd35400)
-        .setImage('https://i.imgur.com/ninewells.png')
+        .setImage('https://i.imgur.com/kAu7V1G.png')
         .setTitle('Nine Wells Data‑Cistern')
         .setDescription(
           'In a humidity‑sealed vault, a clerk sells you an old exploit: a **registry hole** that eats two pallets if the manifest wording is poetic enough.\n\n' +
