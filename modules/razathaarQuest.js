@@ -497,12 +497,12 @@ async function handleRazathaarOption(interaction) {
             'Blue Hour gathers. In a dry cistern lit by stormlight, a half‑circle of handlers trades **mirage‑glass** lots with poetry for passwords. ' +
             'Your **contact** nods; your **cover** holds; your **corridor** opens. A contract slides under your palm: ' +
             '**two pallets per ascent, every week**, no questions.\n\n' +
-            '*You now hold a quiet income stream.*'
+            '* Access to mirage‑glass*'
           )
           .setFooter({ text: footer('Aftermath', flags) });
 
         // grant smuggler role
-        followUp = { content: 'Role granted: **RAZATHAAR SHADOW‑LANE CONTRACTOR**. Your side income has been activated.', ephemeral: true };
+        followUp = { content: 'Role granted: **RAZATHAAR SHADOW**. Access to mirage‑glass.', ephemeral: true };
         await grantRole(interaction, 'RAZATHAAR SHADOW‑LANE CONTRACTOR');
       } else {
         // choose a tailored fail-forward ending by missing category
