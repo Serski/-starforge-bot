@@ -71,7 +71,7 @@ async function showRazathaarMenu(interaction) {
   const poster = 'https://i.imgur.com/M4dWXkD.png'; // ⬅️ swap to your Razathaar poster
 
   const embed = new EmbedBuilder()
-    .setColor(0xd35400)
+    .setColor(0x2c3e50)
     .setImage(poster)
     .setTitle('Razathaar — 72‑Hour Window')
     .setDescription(
@@ -133,7 +133,7 @@ async function handleRazathaarOption(interaction) {
     case choice === 'rz_d1_wh': {
       const flags = []; // starting branch
       embed = new EmbedBuilder()
-        .setColor(0xd35400)
+        .setColor(0x2c3e50)
         .setImage('https://i.imgur.com/mpGUyws.png') // ⬅️ art placeholder
         .setTitle('Warehouse Q‑13')
         .setDescription(
@@ -189,7 +189,7 @@ async function handleRazathaarOption(interaction) {
     case choice === 'rz_d1_nomad': {
       const flags = ['CN', 'CL']; // Contact: Nomad and Cover: Lattice Token
       embed = new EmbedBuilder()
-        .setColor(0xd35400)
+        .setColor(0x2c3e50)
         .setImage('https://i.imgur.com/nomadCamp.png')
         .setTitle('Wind‑singers’ Camp')
         .setDescription(
@@ -219,7 +219,7 @@ async function handleRazathaarOption(interaction) {
       const flags = parseFlags(choice);
       const newFlags = flags.includes('RB') ? flags : [...flags, 'RB']; // Corridor: Blue Hour
       embed = new EmbedBuilder()
-        .setColor(0xd35400)
+        .setColor(0x2c3e50)
         .setImage('https://i.imgur.com/5CN4eAZ.png')
         .setTitle('Stormglass Flats')
         .setDescription(
@@ -248,7 +248,7 @@ async function handleRazathaarOption(interaction) {
       const flags = parseFlags(choice);
       const newFlags = flags.includes('RS') ? flags : [...flags, 'RS']; // Corridor: Sweep Schedule
       embed = new EmbedBuilder()
-        .setColor(0xd35400)
+        .setColor(0x2c3e50)
         .setImage('https://i.imgur.com/windfarm.png')
         .setTitle('Crown Windfarm — Audit Drones')
         .setDescription(
@@ -277,7 +277,7 @@ async function handleRazathaarOption(interaction) {
       const flags = parseFlags(choice);
       const newFlags = flags.includes('CR') ? flags : [...flags, 'CR']; // Cover: Registry Hole
       embed = new EmbedBuilder()
-        .setColor(0xd35400)
+        .setColor(0x2c3e50)
         .setImage('https://i.imgur.com/kAu7V1G.png')
         .setTitle('Nine Wells Data‑Cistern')
         .setDescription(
@@ -305,7 +305,7 @@ async function handleRazathaarOption(interaction) {
       const flags = parseFlags(choice);
       const newFlags = flags.includes('CN') ? flags : [...flags, 'CN']; // ensure Contact: Nomad
       embed = new EmbedBuilder()
-        .setColor(0xd35400)
+        .setColor(0x2c3e50)
         .setImage('https://i.imgur.com/nomadCamp.png')
         .setTitle('Wind‑singers’ Camp')
         .setDescription(
@@ -334,7 +334,7 @@ async function handleRazathaarOption(interaction) {
       const flags = parseFlags(choice);
       const newFlags = flags.includes('RC') ? flags : [...flags, 'RC']; // Corridor: Canyon
       embed = new EmbedBuilder()
-        .setColor(0xd35400)
+        .setColor(0x2c3e50)
         .setImage('https://i.imgur.com/umbergate.png')
         .setTitle('Umber Gate Canyon')
         .setDescription(
@@ -363,7 +363,7 @@ async function handleRazathaarOption(interaction) {
       const flags = parseFlags(choice);
       const newFlags = flags.includes('CD') ? flags : [...flags, 'CD']; // ensure Contact: Dock
       embed = new EmbedBuilder()
-        .setColor(0xd35400)
+        .setColor(0x2c3e50)
         .setImage('https://i.imgur.com/dockRell.png')
         .setTitle('Shroud Harbor — Rell')
         .setDescription(
@@ -388,7 +388,7 @@ async function handleRazathaarOption(interaction) {
       const flags = parseFlags(choice);
       const newFlags = flags.includes('CR') ? flags : [...flags, 'CR']; // Cover: Registry Hole
       embed = new EmbedBuilder()
-        .setColor(0xd35400)
+        .setColor(0x2c3e50)
         .setImage('https://i.imgur.com/ninewells.png')
         .setTitle('Nine Wells — Second Visit')
         .setDescription(
@@ -413,7 +413,7 @@ async function handleRazathaarOption(interaction) {
       const flags = parseFlags(choice);
       const newFlags = flags.includes('GLC') ? flags : [...flags, 'GLC']; // Cover: Ghost Lading Codes
       embed = new EmbedBuilder()
-        .setColor(0xd35400)
+        .setColor(0x2c3e50)
         .setImage('https://i.imgur.com/nhapW2w.png')
         .setTitle('Warehouse Q‑13 — Seals & Spools')
         .setDescription(
@@ -438,7 +438,7 @@ async function handleRazathaarOption(interaction) {
       const flags = parseFlags(choice);
       const newFlags = flags.includes('CN') ? flags : [...flags, 'CN']; // Contact: Nomad
       embed = new EmbedBuilder()
-        .setColor(0xd35400)
+        .setColor(0x2c3e50)
         .setImage('https://i.imgur.com/nomadCamp.png')
         .setTitle('Wind‑singers — Second Counsel')
         .setDescription(
@@ -463,7 +463,7 @@ async function handleRazathaarOption(interaction) {
       const flags = parseFlags(choice);
       const newFlags = flags.includes('RC') ? flags : [...flags, 'RC']; // Corridor: Canyon
       embed = new EmbedBuilder()
-        .setColor(0xd35400)
+        .setColor(0x2c3e50)
         .setImage('https://i.imgur.com/umbergate.png')
         .setTitle('Umber Gate — Second Pass')
         .setDescription(
@@ -490,7 +490,7 @@ async function handleRazathaarOption(interaction) {
 
       if (hasWin) {
         embed = new EmbedBuilder()
-          .setColor(0x27ae60)
+          .setColor(0x2c3e50)
           .setImage('https://i.imgur.com/sereAuction.png')
           .setTitle('The Sere Auction')
           .setDescription(
@@ -513,7 +513,7 @@ async function handleRazathaarOption(interaction) {
         ].filter(Boolean).join(', ');
 
         embed = new EmbedBuilder()
-          .setColor(0xc0392b)
+          .setColor(0x2c3e50)
           .setImage('https://i.imgur.com/ImaJa9N.png')
           .setTitle('Audit Hall, Dawn')
           .setDescription(
