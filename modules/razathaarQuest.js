@@ -68,7 +68,7 @@ function knowledgeBadge(flags) {
  * @param {import('discord.js').ChatInputCommandInteraction} interaction
  */
 async function showRazathaarMenu(interaction) {
-  const poster = 'https://i.imgur.com/yourPoster.png'; // ⬅️ swap to your Razathaar poster
+  const poster = 'https://i.imgur.com/M4dWXkD.png'; // ⬅️ swap to your Razathaar poster
 
   const embed = new EmbedBuilder()
     .setColor(0xd35400)
@@ -134,7 +134,7 @@ async function handleRazathaarOption(interaction) {
       const flags = []; // starting branch
       embed = new EmbedBuilder()
         .setColor(0xd35400)
-        .setImage('https://i.imgur.com/whQ13.png') // ⬅️ art placeholder
+        .setImage('https://i.imgur.com/mpGUyws.png') // ⬅️ art placeholder
         .setTitle('Warehouse Q‑13')
         .setDescription(
           'Forklifts weave between pallet stacks. The foreman, **Atta Reiko**, complains about audits: "Weigh‑seals spool fine until someone decides to *notice*." ' +
