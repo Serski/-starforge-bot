@@ -306,7 +306,7 @@ async function handleRazathaarOption(interaction) {
       const newFlags = flags.includes('CN') ? flags : [...flags, 'CN']; // ensure Contact: Nomad
       embed = new EmbedBuilder()
         .setColor(0x2c3e50)
-        .setImage('https://i.imgur.com/nomadCamp.png')
+        .setImage('https://i.imgur.com/JIPWmc2.png')
         .setTitle('Wind‑singers’ Camp')
         .setDescription(
           'Songs ripple the dunes. "Storm blinds the eye that thinks itself a sun," the matriarch says. ' +
