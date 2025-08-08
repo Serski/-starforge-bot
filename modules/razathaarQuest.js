@@ -501,9 +501,9 @@ async function handleRazathaarOption(interaction) {
           )
           .setFooter({ text: footer('Aftermath', flags) });
 
-        // grant smuggler role
+        // grant RAZATHAAR SHADOW role
         followUp = { content: 'Role granted: **RAZATHAAR SHADOW**. Access to mirage‑glass.', ephemeral: true };
-        await grantRole(interaction, 'RAZATHAAR SHADOW‑LANE CONTRACTOR');
+        await grantRole(interaction, 'RAZATHAAR SHADOW');
       } else {
         // choose a tailored fail-forward ending by missing category
         const need = [
