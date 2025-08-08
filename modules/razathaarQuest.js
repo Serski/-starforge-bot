@@ -190,7 +190,7 @@ async function handleRazathaarOption(interaction) {
       const flags = ['CN', 'CL']; // Contact: Nomad and Cover: Lattice Token
       embed = new EmbedBuilder()
         .setColor(0x2c3e50)
-        .setImage('https://i.imgur.com/nomadCamp.png')
+        .setImage('https://i.imgur.com/WKuuxhZ.png')
         .setTitle('Wind‑singers’ Camp')
         .setDescription(
           'The Iktari matriarch loops a **lattice token** around your wrist. "With this, our caravans let you pass," she says. ' +
