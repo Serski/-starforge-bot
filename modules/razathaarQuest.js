@@ -464,7 +464,7 @@ async function handleRazathaarOption(interaction) {
       const newFlags = flags.includes('RC') ? flags : [...flags, 'RC']; // Corridor: Canyon
       embed = new EmbedBuilder()
         .setColor(0x2c3e50)
-        .setImage('https://i.imgur.com/umbergate.png')
+        .setImage('https://i.imgur.com/Z7sUhtX.png')
         .setTitle('Umber Gate — Second Pass')
         .setDescription(
           'You chalk waymarks that only glow under ionized dust. The **canyon route** now lives in your bones.\n\n' +
