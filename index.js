@@ -133,10 +133,28 @@ client.on('interactionCreate', async interaction => {
                 return;
             }
 
-            await member.roles.add(razathaarRole);
+            try {
+                await interaction.deferReply({ ephemeral: true });
+                await member.roles.add(razathaarRole);
 
-            await interaction.channel.send({ content: `🚚 <@${member.id}> has accepted a Razathaar freight contract...` });
-            await showRazathaarMenu(interaction);
+                await interaction.channel.send({
+                    content: `🚚 <@${member.id}> has accepted a Razathaar freight contract...`
+                });
+                await showRazathaarMenu(interaction);
+            } catch (error) {
+                console.error('❌ Failed to start Razathaar quest', error);
+                if (interaction.deferred || interaction.replied) {
+                    await interaction.editReply({
+                        content: '⚠️ Could not start the Razathaar quest.',
+                        ephemeral: true
+                    }).catch(console.error);
+                } else {
+                    await interaction.reply({
+                        content: '⚠️ Could not start the Razathaar quest.',
+                        ephemeral: true
+                    }).catch(console.error);
+                }
+            }
             return;
         }
 
