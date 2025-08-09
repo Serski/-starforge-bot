@@ -62,10 +62,12 @@ describe('razathaar quest interaction routing', () => {
       member,
       guild,
       channel,
+      deferReply: jest.fn().mockResolvedValue(),
     };
 
     await interactionHandler(interaction);
 
+    expect(interaction.deferReply).toHaveBeenCalledWith({ ephemeral: true });
     expect(member.roles.add).toHaveBeenCalledWith(role);
     expect(channel.send).toHaveBeenCalledWith({ content: `🚚 <@${member.id}> has accepted a Razathaar freight contract...` });
     expect(mockShowRazathaarMenu).toHaveBeenCalledWith(interaction);

@@ -103,11 +103,26 @@ async function showRazathaarMenu(interaction) {
       }
     );
 
-  await interaction.reply({
+  const payload = {
     embeds: [embed],
     components: [new ActionRowBuilder().addComponents(d1)],
-    ephemeral: true,
-  });
+  };
+
+  try {
+    if (interaction.deferred) {
+      await interaction.editReply(payload);
+    } else {
+      await interaction.reply({ ...payload, ephemeral: true });
+    }
+  } catch (error) {
+    console.error('❌ Failed to show Razathaar menu', error);
+    const failPayload = { content: '⚠️ Failed to show Razathaar menu.' };
+    if (interaction.deferred || interaction.replied) {
+      await interaction.editReply(failPayload).catch(console.error);
+    } else {
+      await interaction.reply({ ...failPayload, ephemeral: true }).catch(console.error);
+    }
+  }
 }
 
 // ---------- 2) Router -------------------------------------------------------
