@@ -59,9 +59,6 @@ module.exports = {
     });
 
     collector.on('collect', async i => {
-      const userId = i.user.id;
-      if (userId !== interaction.user.id) return;
-
       const [action, cat] = i.customId.split('_');
 
       // Category selected
