@@ -40,7 +40,7 @@ module.exports = {
       });
     };
 
-    await interaction.reply({
+    const msg = await interaction.reply({
       embeds: [
         new EmbedBuilder()
           .setTitle('📘 NEXI DATA ACCESS TERMINAL')
@@ -49,11 +49,12 @@ module.exports = {
           .setFooter({ text: 'Access Node: NEXI-COMM/43F | Trace clean' })
       ],
       components: [buildCategoryRow()],
-      ephemeral: true
+      ephemeral: true,
+      fetchReply: true
     });
 
-    const collector = interaction.channel.createMessageComponentCollector({
-      filter: i => i.user.id === interaction.user.id && i.message.interaction.id === interaction.id,
+    const collector = msg.createMessageComponentCollector({
+      filter: i => i.user.id === interaction.user.id,
       time: 3 * 60 * 1000
     });
 
@@ -122,7 +123,6 @@ module.exports = {
 
     collector.on('end', async () => {
       try {
-        const msg = await interaction.fetchReply();
         if (msg.editable) await msg.edit({ components: [] });
       } catch (err) {
         if (err.code !== 10008) {
