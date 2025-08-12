@@ -72,18 +72,6 @@
       "image": "https://i.imgur.com/7jj3HO0.png"
     }
   ],
-  "ships": [
-    {
-      "title": "Mordecai-class Patrol Cutter",
-      "content": "Federation frontier outposts rely on Mordecai-class cutters for rapid response and interdiction. Durable and over-engined, these ships chase smugglers through debris fields and escort convoys across unsecured lanes.",
-      "image": "https://i.imgur.com/ship1.png"
-    },
-    {
-      "title": "Razorwind Interceptor",
-      "content": "A blade-winged interceptor favored by Dominion raiding wings. Its plasma-lanced engines burn hot enough to score its own hull, trading longevity for terrifying burst speed.",
-      "image": "https://i.imgur.com/ship2.png"
-    }
-  ],
   "planets": [
     {
       "title": "Calisa VII",
