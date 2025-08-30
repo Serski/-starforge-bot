@@ -3,7 +3,8 @@ const {
   ActionRowBuilder,
   ButtonBuilder,
   ButtonStyle,
-  EmbedBuilder
+  EmbedBuilder,
+  StringSelectMenuBuilder
 } = require('discord.js');
 
 module.exports = {
@@ -30,38 +31,30 @@ module.exports = {
           .setStyle(ButtonStyle.Primary)
       );
 
-    const buildDyneRow = () =>
+    const buildDyneSelect = () =>
       new ActionRowBuilder().addComponents(
-        new ButtonBuilder()
-          .setCustomId('sub_solara')
-          .setLabel('Solara-Ys')
-          .setStyle(ButtonStyle.Secondary),
-        new ButtonBuilder()
-          .setCustomId('sub_veyra')
-          .setLabel('Veyra-Null')
-          .setStyle(ButtonStyle.Secondary),
-        new ButtonBuilder()
-          .setCustomId('sub_orphean')
-          .setLabel('Orphean Verge')
-          .setStyle(ButtonStyle.Secondary),
-        new ButtonBuilder()
-          .setCustomId('sub_aelyth')
-          .setLabel('Aelyth Prime')
-          .setStyle(ButtonStyle.Secondary)
+        new StringSelectMenuBuilder()
+          .setCustomId('dyne_select')
+          .addOptions(
+            { label: 'Solara-Ys', value: 'solara' },
+            { label: 'Veyra-Null', value: 'veyra' },
+            { label: 'Orphean Verge', value: 'orphean' },
+            { label: 'Aelyth Prime', value: 'aelyth' }
+          )
       );
 
     const backMainRow = new ActionRowBuilder().addComponents(
       new ButtonBuilder()
         .setCustomId('back_main')
         .setLabel('← Back')
-        .setStyle(ButtonStyle.Danger)
+        .setStyle(ButtonStyle.Secondary)
     );
 
     const backDyneRow = new ActionRowBuilder().addComponents(
       new ButtonBuilder()
         .setCustomId('back_dyne')
         .setLabel('← Back')
-        .setStyle(ButtonStyle.Danger)
+        .setStyle(ButtonStyle.Secondary)
     );
 
     const mainEmbed = () =>
@@ -80,7 +73,7 @@ module.exports = {
     const showDyne = async i => {
       await i.update({
         embeds: [dyneEmbed()],
-        components: [buildDyneRow(), backMainRow]
+        components: [buildDyneSelect(), backMainRow]
       });
     };
 
@@ -105,31 +98,44 @@ module.exports = {
       }
 
       if (id === 'cat_solara' || id === 'cat_cosmos') {
-        const locationName = id === 'cat_solara' ? 'Solara-Ys' : 'Cosmos';
-        await i.update({
-          embeds: [new EmbedBuilder().setTitle(locationName).setImage(mapUrl)],
-          components: [backMainRow]
-        });
+        if (id === 'cat_solara') {
+          const embed = new EmbedBuilder()
+            .setTitle('Solara-Ys')
+            .setDescription(
+              'They call it the Lantern, Solara-Ys, burning steady in the Rift. Around it spin broken worlds: Keryn, scorched and silent; Dravona, red with rusted secrets; Ysoli Prime, where Aegir Station clings to orbit like a rusted crown; and beyond, the ice-laced Neyara.\nBetween them drifts the Graven Belt—miner-choked, pirate-haunted, rich with Oblivion Ore.'
+            )
+            .setImage('https://i.imgur.com/r5n96l0.jpeg');
+          await i.update({ embeds: [embed], components: [backMainRow] });
+        } else {
+          await i.update({
+            embeds: [new EmbedBuilder().setTitle('Cosmos').setImage(mapUrl)],
+            components: [backMainRow]
+          });
+        }
         return;
       }
 
-      if (id.startsWith('sub_')) {
+      if (id === 'dyne_select') {
+        const value = i.values[0];
         const names = {
-          sub_solara: 'Solara-Ys',
-          sub_veyra: 'Veyra-Null',
-          sub_orphean: 'Orphean Verge',
-          sub_aelyth: 'Aelyth Prime'
+          solara: 'Solara-Ys',
+          veyra: 'Veyra-Null',
+          orphean: 'Orphean Verge',
+          aelyth: 'Aelyth Prime'
         };
         const descriptions = {
-          sub_solara: 'A fortified bastion guarding the rift\'s blazing edge.',
-          sub_veyra: 'A null-zone of collapsed stars, eerily silent.',
-          sub_orphean: 'Fringe routes rife with rogue salvagers.',
-          sub_aelyth: 'Sanctum world of the Aelyth, rich in psionic storms.'
+          solara:
+            'They call it the Lantern, Solara-Ys, burning steady in the Rift. Around it spin broken worlds: Keryn, scorched and silent; Dravona, red with rusted secrets; Ysoli Prime, where Aegir Station clings to orbit like a rusted crown; and beyond, the ice-laced Neyara.\nBetween them drifts the Graven Belt—miner-choked, pirate-haunted, rich with Oblivion Ore.',
+          veyra: 'A null-zone of collapsed stars, eerily silent.',
+          orphean: 'Fringe routes rife with rogue salvagers.',
+          aelyth: 'Sanctum world of the Aelyth, rich in psionic storms.'
         };
+        const image =
+          value === 'solara' ? 'https://i.imgur.com/r5n96l0.jpeg' : mapUrl;
         const embed = new EmbedBuilder()
-          .setTitle(names[id])
-          .setDescription(descriptions[id])
-          .setImage(mapUrl);
+          .setTitle(names[value])
+          .setDescription(descriptions[value])
+          .setImage(image);
         await i.update({ embeds: [embed], components: [backDyneRow] });
         return;
       }
