@@ -119,23 +119,27 @@ module.exports = {
         const value = i.values[0];
         const names = {
           solara: 'Solara-Ys',
-          veyra: 'Veyra-Null',
+          veyra: 'Veyra-Null System',
           orphean: 'Orphean Verge',
           aelyth: 'Aelyth Prime'
         };
         const descriptions = {
           solara:
             'They call it the Lantern, Solara-Ys, burning steady in the Rift. Around it spin broken worlds: Keryn, scorched and silent; Dravona, red with rusted secrets; Ysoli Prime, where Aegir Station clings to orbit like a rusted crown; and beyond, the ice-laced Neyara.\nBetween them drifts the Graven Belt—miner-choked, pirate-haunted, rich with Oblivion Ore.',
-          veyra: 'A null-zone of collapsed stars, eerily silent.',
-          orphean: 'Fringe routes rife with rogue salvagers.',
-          aelyth: 'Sanctum world of the Aelyth, rich in psionic storms.'
+          veyra: `A null zone where collapsed stars whisper against the void.\nStation husks drift among gravity scars, their beacons flickering like fading memories.`,
+          orphean: `The Verge is a labyrinth of shattered hyperlanes and scavenger havens.\nEvery route is rumor; every signal might be salvage or snare.`,
+          aelyth: `Crystal horizons and psionic squalls define Aelyth Prime.\nPilgrims brave the storms to touch the echoing relics buried beneath its sands.`
         };
-        const image =
-          value === 'solara' ? 'https://i.imgur.com/r5n96l0.jpeg' : mapUrl;
+        const images = {
+          solara: 'https://i.imgur.com/r5n96l0.jpeg',
+          veyra: 'https://i.imgur.com/Nzo4eZr.jpeg',
+          orphean: 'https://i.imgur.com/Y4gPYZK.jpeg',
+          aelyth: 'https://i.imgur.com/CXwznp1.jpeg'
+        };
         const embed = new EmbedBuilder()
           .setTitle(names[value])
           .setDescription(descriptions[value])
-          .setImage(image);
+          .setImage(images[value]);
         await i.update({ embeds: [embed], components: [backDyneRow] });
         return;
       }
