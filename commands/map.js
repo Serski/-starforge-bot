@@ -14,6 +14,7 @@ module.exports = {
 
   async execute(interaction) {
     const mapUrl = 'https://i.imgur.com/wbC8ZI8.jpeg';
+    const DYNE_RIFT_IMAGE_URL = 'https://i.imgur.com/O7I3Gnz.jpeg';
 
     const buildMainRow = () =>
       new ActionRowBuilder().addComponents(
@@ -64,7 +65,7 @@ module.exports = {
       new EmbedBuilder()
         .setTitle('DYNE RIFT SECTOR')
         .setDescription('Select a sub-system.')
-        .setImage(mapUrl);
+        .setImage(DYNE_RIFT_IMAGE_URL);
 
     const showMain = async i => {
       await i.update({ embeds: [mainEmbed()], components: [buildMainRow()] });
