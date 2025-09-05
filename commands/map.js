@@ -206,7 +206,7 @@ module.exports = {
               pyralis: 'Pyralis burns with volcanic fury beneath ember clouds.'
             },
             images: {
-              thalyron: 'https://i.imgur.com/5xluzgp.jpeg',
+              thalyron: 'https://i.imgur.com/4K9x0TE.jpeg',
               icarra: 'https://i.imgur.com/k8G2M2e.jpeg',
               drosven: 'https://i.imgur.com/ivJ1XNJ.jpeg',
               pyralis: 'https://i.imgur.com/T6vmGyF.jpeg'
