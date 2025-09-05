@@ -16,7 +16,7 @@ module.exports = {
     const mapUrl = 'https://i.imgur.com/wbC8ZI8.jpeg';
     const DYNE_RIFT_IMAGE_URL = 'https://i.imgur.com/O7I3Gnz.jpeg';
     const NULLWEK_IMAGE_URL = 'https://i.imgur.com/OvKSoNl.jpeg';
-    const ASHEN_VERGE_IMAGE_URL = 'https://i.imgur.com/ijSkWYs.jpeg';
+    const ASHEN_VERGE_IMAGE_URL = 'https://i.imgur.com/hyMsa2M.jpeg';
 
     // Builders
     const buildMainRow = () =>
