@@ -40,6 +40,7 @@ describe('map command', () => {
     await collect({ customId: 'sector_select', values: ['nullwek'], update });
     args = update.mock.calls[0][0];
     expect(args.embeds[0].data.title).toBe('THE NULLWEK SECTOR');
+    expect(args.embeds[0].data.image.url).toBe('https://i.imgur.com/OvKSoNl.jpeg');
     expect(args.components[0].components[0].data.custom_id).toBe('nullwek_select');
 
     update.mockReset();
