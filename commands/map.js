@@ -226,7 +226,7 @@ module.exports = {
               kaivorn: "Kaivorn's shattered rings whisper of lost empires."
             },
             images: {
-              serothis: 'https://i.imgur.com/v3cEKuG.jpeg',
+              serothis: 'https://i.imgur.com/AmjPsFb.jpeg',
               eryndor: 'https://i.imgur.com/hi7ZZo9.jpeg',
               caluth: 'https://i.imgur.com/UrkKtaT.jpeg',
               kaivorn: 'https://i.imgur.com/nueJkx0.jpeg'
