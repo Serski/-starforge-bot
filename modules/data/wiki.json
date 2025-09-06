@@ -70,8 +70,23 @@
       "title": "The Crucible Dominion",
       "content": "The Crucible Dominion is a post-organic theocracy that believes all sentient life must be reforged through suffering, obedience, and sacred fire. Its hierarchs claim to hear the voice of the Source — an entity said to exist outside time. Their ships are cathedral-hulled and silent. Their soldiers chant before they kill. To the Dominion, the Federation is not just corrupt — it is spiritually malformed. Redemption can only come through dissolution and ash.",
       "image": "https://i.imgur.com/7jj3HO0.png"
-    }
-  ],
+    },
+     {
+  "title": "The Trade Federation",
+  "content": "The Trade Federation is an authoritarian consortium that monopolizes interstellar commerce, enforcing tariffs and blockades with a private warfleet.\\n\\nWorlds that resist find their markets strangled and their leaders replaced by compliant overseers.",
+  "image": "https://i.imgur.com/wNCm2SH.png"
+  },
+   {
+  "title": "Yamato Syndicate",
+  "content": "Born from the ashes of an organized crime family, the Yamato Syndicate now rules systems through a disciplined web of honor-bound enforcers and shadow councils.\\n\\nSmuggling routes became trade arteries, and silence is maintained with ritual precision.",
+  "image": "https://i.imgur.com/wNCm2SH.png"
+},
+{
+  "title": "Nova Confederation",
+  "content": "The Nova Confederation is a zealous Holy Empire waging an endless crusade against heresy, sending luminous fleets to purify the stars.\\n\\nTemples double as command spires, and conversion is offered at the edge of a sanctified blade.",
+  "image": "https://i.imgur.com/wNCm2SH.png"
+}
+],
   "planets": [
     {
       "title": "Calisa VII",
