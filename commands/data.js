@@ -8,6 +8,12 @@ const {
 } = require('discord.js');
 const wiki = require('../modules/data/wiki.json');
 
+const joinableEmpires = {
+  'The Trade Federation': 'trade',
+  'Yamato Syndicate': 'yamato',
+  'Nova Confederation': 'nova'
+};
+
 module.exports = {
   data: new SlashCommandBuilder()
     .setName('data')
@@ -105,16 +111,123 @@ module.exports = {
           .setLabel('← Back')
           .setStyle(ButtonStyle.Secondary);
 
+        const actionRow = new ActionRowBuilder();
+
+        if (cat === 'empires') {
+          const joinKey = joinableEmpires[entry.title];
+
+          if (joinKey) {
+            actionRow.addComponents(
+              new ButtonBuilder()
+                .setCustomId(`join_${joinKey}`)
+                .setLabel('Join')
+                .setStyle(ButtonStyle.Primary)
+            );
+          }
+        }
+
+        actionRow.addComponents(backButton);
+
         await i.update({
           content: null,
           embeds: [embed],
-          components: [new ActionRowBuilder().addComponents(backButton)]
+          components: [actionRow]
         });
       }
 
       // Back to category selection
       else if (i.customId === 'go_back') {
         await showCategoryMenu(i);
+      }
+      
+      // Join faction
+      else if (action === 'join') {
+        const factionRoles = {
+          trade: 'Trade Federation',
+          yamato: 'Yamato Syndicate',
+          nova: 'Nova Confederation'
+        };
+
+        const factionKey = cat;
+        const roleName = factionRoles[factionKey];
+
+        if (!roleName) {
+          await i.reply({
+            content: 'This faction is not currently joinable.',
+            ephemeral: true
+          });
+          return;
+        }
+
+        const guild = i.guild;
+
+        if (!guild) {
+          await i.reply({
+            content: 'Unable to access the guild context.',
+            ephemeral: true
+          });
+          return;
+        }
+
+        let member;
+
+        try {
+          member = await guild.members.fetch(i.user.id);
+        } catch (err) {
+          console.error('Failed to fetch guild member for join request:', err);
+          await i.reply({
+            content: 'Unable to verify your membership status at this time.',
+            ephemeral: true
+          });
+          return;
+        }
+
+        const role = guild.roles.cache.find(r => r.name === roleName);
+
+        if (!role) {
+          await i.reply({
+            content: `The ${roleName} role could not be found. Please contact a server administrator.`,
+            ephemeral: true
+          });
+          return;
+        }
+
+        const factionRoleNames = Object.values(factionRoles);
+        const currentFactionRole = member.roles.cache.find(
+          r => factionRoleNames.includes(r.name) && r.id !== role.id
+        );
+
+        if (currentFactionRole) {
+          await i.reply({
+            content: `You must leave the ${currentFactionRole.name} before joining another faction.`,
+            ephemeral: true
+          });
+          return;
+        }
+
+        if (member.roles.cache.has(role.id)) {
+          await i.reply({
+            content: `You are already enlisted with the ${roleName}.`,
+            ephemeral: true
+          });
+          return;
+        }
+
+        try {
+          await member.roles.add(role);
+        } catch (err) {
+          console.error('Failed to assign faction role:', err);
+          await i.reply({
+            content: 'Something went wrong while assigning your faction role. Please try again later.',
+            ephemeral: true
+          });
+          return;
+        }
+
+        await i.reply({
+          content: `Welcome to the ${roleName}!`,
+          ephemeral: true
+        });
       }
     });
 
