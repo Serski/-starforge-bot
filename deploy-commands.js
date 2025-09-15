@@ -5,7 +5,7 @@ const { REST, Routes } = require('discord.js');
 
 const commands = [];
 const commandsPath = path.join(__dirname, 'commands');
-const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
+const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js') && file !== 'inventory.js');
 
 for (const file of commandFiles) {
   const command = require(path.join(commandsPath, file));

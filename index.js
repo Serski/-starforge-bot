@@ -22,7 +22,7 @@ const client = new Client({
 
 // Load all slash commands from commands folder
 client.commands = new Collection();
-const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js') && file !== 'inventory.js');
 
 for (const file of commandFiles) {
     const command = require(`./commands/${file}`);
