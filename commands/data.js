@@ -11,7 +11,8 @@ const wiki = require('../modules/data/wiki.json');
 const joinableEmpires = {
   'The Trade Federation': 'trade',
   'Yamato Syndicate': 'yamato',
-  'Nova Confederation': 'nova'
+  'Nova Confederation': 'nova',
+  'Crimson Collective': 'crimson'
 };
 
 module.exports = {
@@ -145,7 +146,8 @@ module.exports = {
         const factionRoles = {
           trade: 'Trade Federation',
           yamato: 'Yamato Syndicate',
-          nova: 'Nova Confederation'
+          nova: 'Nova Confederation',
+          crimson: 'Crimson Collective'
         };
 
         const factionKey = cat;

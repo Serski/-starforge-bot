@@ -81,11 +81,16 @@
   "content": "Born from the ashes of an organized crime family, the Yamato Syndicate now rules systems through a disciplined web of honor-bound enforcers and shadow councils.\\n\\nSmuggling routes became trade arteries, and silence is maintained with ritual precision.",
   "image": "https://i.imgur.com/wNCm2SH.png"
 },
-{
-  "title": "Nova Confederation",
-  "content": "The Nova Confederation is a zealous Holy Empire waging an endless crusade against heresy, sending luminous fleets to purify the stars.\\n\\nTemples double as command spires, and conversion is offered at the edge of a sanctified blade.",
-  "image": "https://i.imgur.com/wNCm2SH.png"
-}
+  {
+    "title": "Nova Confederation",
+    "content": "The Nova Confederation is a zealous Holy Empire waging an endless crusade against heresy, sending luminous fleets to purify the stars.\\n\\nTemples double as command spires, and conversion is offered at the edge of a sanctified blade.",
+    "image": "https://i.imgur.com/wNCm2SH.png"
+  },
+  {
+    "title": "Crimson Collective",
+    "content": "After a major global conflict, the Crimson Collective found itself at odds with its ideological enemies who consolidated the other portion of the planet, resulting in a continuation war which brought deep patriotism and close ties between the Socialist factions. Their capitalist counterparts instead faced division and conflict of interests, being conquered over the span of the next few hundred years.",
+    "image": "https://i.imgur.com/wNCm2SH.png"
+  }
 ],
   "planets": [
     {
