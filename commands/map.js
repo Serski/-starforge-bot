@@ -13,7 +13,7 @@ module.exports = {
     .setDescription('Access the NEXI galactic map.'),
 
   async execute(interaction) {
-    const mapUrl = 'https://i.imgur.com/wbC8ZI8.jpeg';
+    const mapUrl = 'https://i.imgur.com/1JL7Ef8.jpeg';
     const DYNE_RIFT_IMAGE_URL = 'https://i.imgur.com/O7I3Gnz.jpeg';
     const NULLWEK_IMAGE_URL = 'https://i.imgur.com/OvKSoNl.jpeg';
     const ASHEN_VERGE_IMAGE_URL = 'https://i.imgur.com/hyMsa2M.jpeg';
