@@ -241,7 +241,7 @@ module.exports = {
             },
             descriptions: {
               solara:
-                'They call it the Lantern, Solara-Ys, burning steady in the Rift. Around it spin broken worlds: Keryn, scorched and silent; Dravona, red with rusted secrets; Ysoli Prime, where Aegir Station clings to orbit like a rusted crown; and beyond, the ice-laced Neyara.\nBetween them drifts the Graven Belt—miner-choked, pirate-haunted, rich with Oblivion Ore.',
+                'They call it the Lantern, Solara-Ys, burning steady in the Rift. Around it spin broken worlds: Keryn, scorched and silent; Dravona, red with rusted secrets; Ysoli Prime, where Aegir Station clings to orbit like a rusted crown; and beyond, the ice-laced Neyara.\nBetween them drifts the Graven Belt (easy)—miner-choked, pirate-haunted, rich with Oblivion Ore.',
               veyra:
                 'A null zone where collapsed stars whisper against the void.\nStation husks drift among gravity scars, their beacons flickering like fading memories.',
               orphean:
