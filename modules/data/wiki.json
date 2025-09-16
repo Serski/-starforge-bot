@@ -62,12 +62,12 @@
   ],
   "empires": [
     {
-      "title": "The Galactic Federation",
+      "title": "Galactic Federation(NPC)",
       "content": "The Galactic Federation is a sprawling interstellar bureaucracy masquerading as unity. Built on trade, treaties, and tightly managed technological privileges, it offers member species peace through slow assimilation. Its power lies not in warships — though it has plenty, but in charter law, economic dependency, and control over infrastructure. To live under the Federation is to live under constant observation, endless forms, and the illusion of choice. It doesn’t conquer. It incorporates.",
       "image": "https://i.imgur.com/FpC2meD.png"
     },
       {
-      "title": "The Crucible Dominion",
+      "title": "Crucible Dominion(NPC)",
       "content": "The Crucible Dominion is a post-organic theocracy that believes all sentient life must be reforged through suffering, obedience, and sacred fire. Its hierarchs claim to hear the voice of the Source — an entity said to exist outside time. Their ships are cathedral-hulled and silent. Their soldiers chant before they kill. To the Dominion, the Federation is not just corrupt — it is spiritually malformed. Redemption can only come through dissolution and ash.",
       "image": "https://i.imgur.com/7jj3HO0.png"
     },
