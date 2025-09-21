@@ -20,6 +20,28 @@ const client = new Client({
     ]
 });
 
+client.on('guildMemberAdd', async (member) => {
+    const accountAge = Date.now() - member.user.createdTimestamp;
+    if (accountAge < 10 * 24 * 60 * 60 * 1000) {
+        const explanationMessage = `Hey there! Thanks for joining **${member.guild.name}**. ` +
+            'For security reasons we only allow accounts that are at least 10 days old to participate. ' +
+            'Please feel free to rejoin once your account is a little older.';
+
+        try {
+            await member.send(explanationMessage);
+        } catch (error) {
+            console.warn(`⚠️ Could not DM ${member.user.tag} about account age restriction.`, error);
+        }
+
+        try {
+            await member.kick('Account age below 10 days');
+            console.log(`👢 Kicked ${member.user.tag} for joining with an account younger than 10 days.`);
+        } catch (error) {
+            console.error(`❌ Failed to kick ${member.user.tag} for account age restriction.`, error);
+        }
+    }
+});
+
 // Load all slash commands from commands folder
 client.commands = new Collection();
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js') && file !== 'inventory.js');
