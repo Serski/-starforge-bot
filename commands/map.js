@@ -17,6 +17,9 @@ module.exports = {
     const DYNE_RIFT_IMAGE_URL = 'https://i.imgur.com/O7I3Gnz.jpeg';
     const NULLWEK_IMAGE_URL = 'https://i.imgur.com/OvKSoNl.jpeg';
     const ASHEN_VERGE_IMAGE_URL = 'https://i.imgur.com/hyMsa2M.jpeg';
+    const VERYTHRA_IMAGE_URL = 'https://i.imgur.com/fkjNogD.png';
+    const KORRATH_IMAGE_URL = 'https://i.imgur.com/9WWwyrk.png';
+    const THALOROS_IMAGE_URL = 'https://i.imgur.com/RSRPJUl.png';
 
     // Builders
     const buildMainRow = () =>
@@ -36,9 +39,12 @@ module.exports = {
         new StringSelectMenuBuilder()
           .setCustomId('sector_select')
           .addOptions(
-            { label: 'The Nullwek Sector', value: 'nullwek' },
-            { label: 'Ashen Verge Sector', value: 'ashen' },
-            { label: 'Dyne Rift Sector', value: 'dyne' }
+            { label: 'The Nullwek Sector (Yamato)', value: 'nullwek' },
+            { label: 'Ashen Verge Sector (Nova)', value: 'ashen' },
+            { label: 'Dyne Rift Sector (Aegir)', value: 'dyne' },
+            { label: 'Verythra Sector (Trade Fed)', value: 'verythra' },
+            { label: 'Korrath Sector (Crimson)', value: 'korrath' },
+            { label: 'Thaloros Reach Sector (Eagle)', value: 'thaloros' }
           )
       );
 
@@ -75,6 +81,39 @@ module.exports = {
             { label: 'Veyra-Null', value: 'veyra' },
             { label: 'Orphean Verge', value: 'orphean' },
             { label: 'Aelyth Prime', value: 'aelyth' }
+          )
+      );
+
+    const buildVerythraSelect = () =>
+      new ActionRowBuilder().addComponents(
+        new StringSelectMenuBuilder()
+          .setCustomId('verythra_select')
+          .addOptions(
+            { label: 'Veil', value: 'veil' },
+            { label: 'Korneth', value: 'korneth' },
+            { label: 'Shathros', value: 'shathros' }
+          )
+      );
+
+    const buildKorrathSelect = () =>
+      new ActionRowBuilder().addComponents(
+        new StringSelectMenuBuilder()
+          .setCustomId('korrath_select')
+          .addOptions(
+            { label: 'Drelith', value: 'drelith' },
+            { label: 'Ormun', value: 'ormun' },
+            { label: 'Vayth', value: 'vayth' }
+          )
+      );
+
+    const buildThalorosSelect = () =>
+      new ActionRowBuilder().addComponents(
+        new StringSelectMenuBuilder()
+          .setCustomId('thaloros_select')
+          .addOptions(
+            { label: 'Akrion', value: 'akrion' },
+            { label: 'Ceythros', value: 'ceythros' },
+            { label: 'Kentauros', value: 'kentauros' }
           )
       );
 
@@ -127,6 +166,24 @@ module.exports = {
         .setDescription('Select a system.')
         .setImage(ASHEN_VERGE_IMAGE_URL);
 
+    const verythraEmbed = () =>
+      new EmbedBuilder()
+        .setTitle('VERYTHRA SECTOR')
+        .setDescription('Select a system.')
+        .setImage(VERYTHRA_IMAGE_URL);
+
+    const korrathEmbed = () =>
+      new EmbedBuilder()
+        .setTitle('KORRATH SECTOR')
+        .setDescription('Select a system.')
+        .setImage(KORRATH_IMAGE_URL);
+
+    const thalorosEmbed = () =>
+      new EmbedBuilder()
+        .setTitle('THALOROS REACH SECTOR')
+        .setDescription('Select a system.')
+        .setImage(THALOROS_IMAGE_URL);
+
     // Helpers
     const showMain = async i => {
       await i.update({ embeds: [mainEmbed()], components: [buildMainRow()] });
@@ -143,7 +200,10 @@ module.exports = {
       const builders = {
         nullwek: [nullwekEmbed, buildNullwekSelect],
         ashen: [ashenEmbed, buildAshenSelect],
-        dyne: [dyneEmbed, buildDyneSelect]
+        dyne: [dyneEmbed, buildDyneSelect],
+        verythra: [verythraEmbed, buildVerythraSelect],
+        korrath: [korrathEmbed, buildKorrathSelect],
+        thaloros: [thalorosEmbed, buildThalorosSelect]
       };
       const [embedFn, selectFn] = builders[sector];
       await i.update({
@@ -188,7 +248,14 @@ module.exports = {
         return;
       }
 
-      if (id === 'nullwek_select' || id === 'ashen_select' || id === 'dyne_select') {
+      if (
+        id === 'nullwek_select' ||
+        id === 'ashen_select' ||
+        id === 'dyne_select' ||
+        id === 'verythra_select' ||
+        id === 'korrath_select' ||
+        id === 'thaloros_select'
+      ) {
         const value = i.values[0];
 
         const data = {
@@ -254,6 +321,57 @@ module.exports = {
               veyra: 'https://i.imgur.com/Nzo4eZr.jpeg',
               orphean: 'https://i.imgur.com/Y4gPYZK.jpeg',
               aelyth: 'https://i.imgur.com/CXwznp1.jpeg'
+            }
+          },
+          verythra_select: {
+            names: {
+              veil: 'Veil',
+              korneth: 'Korneth',
+              shathros: 'Shathros'
+            },
+            descriptions: {
+              veil: 'Veil is a commerce nexus veiled in shimmering plasma lanes.',
+              korneth: 'Korneth houses Trade Federation vaults and bustling exchanges.',
+              shathros: 'Shathros anchors Verythra convoys amid golden nebulae.'
+            },
+            images: {
+              veil: VERYTHRA_IMAGE_URL,
+              korneth: VERYTHRA_IMAGE_URL,
+              shathros: VERYTHRA_IMAGE_URL
+            }
+          },
+          korrath_select: {
+            names: {
+              drelith: 'Drelith',
+              ormun: 'Ormun',
+              vayth: 'Vayth'
+            },
+            descriptions: {
+              drelith: 'Drelith bristles with Crimson battlements and shipyards.',
+              ormun: 'Ormun is a fortified frontier world patrolled by warfleets.',
+              vayth: 'Vayth glows with munitions foundries beneath scarlet skies.'
+            },
+            images: {
+              drelith: 'https://i.imgur.com/fkjNogD.png',
+              ormun: 'https://i.imgur.com/fkjNogD.png',
+              vayth: 'https://i.imgur.com/fkjNogD.png'
+            }
+          },
+          thaloros_select: {
+            names: {
+              akrion: 'Akrion',
+              ceythros: 'Ceythros',
+              kentauros: 'Kentauros'
+            },
+            descriptions: {
+              akrion: 'Akrion is a frontier hub charting Thaloros Reach expeditions.',
+              ceythros: 'Ceythros is famed for raptor patrols and wind-carved canyons.',
+              kentauros: 'Kentauros orbits as the Eagle Fleet’s command bastion.'
+            },
+            images: {
+              akrion: 'https://i.imgur.com/fkjNogD.png',
+              ceythros: 'https://i.imgur.com/fkjNogD.png',
+              kentauros: 'https://i.imgur.com/fkjNogD.png'
             }
           }
         };
