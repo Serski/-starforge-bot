@@ -12,7 +12,8 @@ const joinableEmpires = {
   'The Trade Federation': 'trade',
   'Yamato Syndicate': 'yamato',
   'Nova Confederation': 'nova',
-  'Crimson Collective': 'crimson'
+  'Crimson Collective': 'crimson',
+  'Eagle Republic': 'eagle'
 };
 
 module.exports = {
@@ -147,7 +148,8 @@ module.exports = {
           trade: 'Trade Federation',
           yamato: 'Yamato Syndicate',
           nova: 'Nova Confederation',
-          crimson: 'Crimson Collective'
+          crimson: 'Crimson Collective',
+          eagle: 'Eagle Republic'
         };
 
         const factionKey = cat;
