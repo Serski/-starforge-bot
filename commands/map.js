@@ -18,6 +18,7 @@ module.exports = {
     const NULLWEK_IMAGE_URL = 'https://i.imgur.com/OvKSoNl.jpeg';
     const ASHEN_VERGE_IMAGE_URL = 'https://i.imgur.com/hyMsa2M.jpeg';
     const VERYTHRA_IMAGE_URL = 'https://i.imgur.com/fkjNogD.png';
+    const VEIL_IMAGE_URL = 'https://i.imgur.com/jOSJ3Qr.jpeg';
     const KORRATH_IMAGE_URL = 'https://i.imgur.com/9WWwyrk.png';
     const THALOROS_IMAGE_URL = 'https://i.imgur.com/RSRPJUl.png';
 
@@ -330,12 +331,13 @@ module.exports = {
               shathros: 'Shathros'
             },
             descriptions: {
-              veil: 'Veil is a commerce nexus veiled in shimmering plasma lanes.',
+              veil:
+                'Veil System — the Trade Federation’s domain, with their homeworld Ida.',
               korneth: 'Korneth houses Trade Federation vaults and bustling exchanges.',
               shathros: 'Shathros anchors Verythra convoys amid golden nebulae.'
             },
             images: {
-              veil: VERYTHRA_IMAGE_URL,
+              veil: VEIL_IMAGE_URL,
               korneth: VERYTHRA_IMAGE_URL,
               shathros: VERYTHRA_IMAGE_URL
             }
