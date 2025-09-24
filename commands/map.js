@@ -14,6 +14,7 @@ module.exports = {
 
   async execute(interaction) {
     const mapUrl = 'https://i.imgur.com/MROdtQX.jpeg';
+    const COSMOS_IMAGE_URL = 'https://i.imgur.com/zgggWY8.jpeg';
     const DYNE_RIFT_IMAGE_URL = 'https://i.imgur.com/O7I3Gnz.jpeg';
     const NULLWEK_IMAGE_URL = 'https://i.imgur.com/OvKSoNl.jpeg';
     const ASHEN_VERGE_IMAGE_URL = 'https://i.imgur.com/hyMsa2M.jpeg';
@@ -31,7 +32,7 @@ module.exports = {
           .setStyle(ButtonStyle.Primary),
         new ButtonBuilder()
           .setCustomId('cat_cosmos')
-          .setLabel('Cosmos')
+          .setLabel('Zoom in')
           .setStyle(ButtonStyle.Primary)
       );
 
@@ -237,7 +238,7 @@ module.exports = {
 
       if (id === 'cat_cosmos') {
         await i.update({
-          embeds: [new EmbedBuilder().setTitle('Cosmos').setImage(mapUrl)],
+          embeds: [new EmbedBuilder().setTitle('Zoom In').setImage(COSMOS_IMAGE_URL)],
           components: [backMainRow]
         });
         return;
