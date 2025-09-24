@@ -17,7 +17,7 @@ module.exports = {
     const DYNE_RIFT_IMAGE_URL = 'https://i.imgur.com/O7I3Gnz.jpeg';
     const NULLWEK_IMAGE_URL = 'https://i.imgur.com/OvKSoNl.jpeg';
     const ASHEN_VERGE_IMAGE_URL = 'https://i.imgur.com/hyMsa2M.jpeg';
-    const VERYTHRA_IMAGE_URL = 'https://i.imgur.com/jOSJ3Qr.jpeg';
+    const VERYTHRA_IMAGE_URL = 'https://i.imgur.com/fkjNogD.png';
     const KORRATH_IMAGE_URL = 'https://i.imgur.com/9WWwyrk.png';
     const THALOROS_IMAGE_URL = 'https://i.imgur.com/RSRPJUl.png';
 
@@ -335,7 +335,7 @@ module.exports = {
               shathros: 'Shathros anchors Verythra convoys amid golden nebulae.'
             },
             images: {
-              veil: VERYTHRA_IMAGE_URL,
+              veil: https://i.imgur.com/jOSJ3Qr.jpeg,
               korneth: VERYTHRA_IMAGE_URL,
               shathros: VERYTHRA_IMAGE_URL
             }
