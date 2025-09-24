@@ -350,12 +350,13 @@ module.exports = {
             },
             descriptions: {
               drelith: 'Drelith bristles with Crimson battlements and shipyards.',
-              ormun: 'Ormun is a fortified frontier world patrolled by warfleets.',
+              ormun:
+                'Ormun System — the Crimson Collective domain, with their homeworld Crimson Prime.',
               vayth: 'Vayth glows with munitions foundries beneath scarlet skies.'
             },
             images: {
               drelith: 'https://i.imgur.com/fkjNogD.png',
-              ormun: 'https://i.imgur.com/fkjNogD.png',
+              ormun: 'https://i.imgur.com/IXATqGb.jpeg',
               vayth: 'https://i.imgur.com/fkjNogD.png'
             }
           },
