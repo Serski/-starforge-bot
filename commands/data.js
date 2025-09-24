@@ -8,13 +8,37 @@ const {
 } = require('discord.js');
 const wiki = require('../modules/data/wiki.json');
 
-const joinableEmpires = {
-  'The Trade Federation': 'trade',
-  'Yamato Syndicate': 'yamato',
-  'Nova Confederation': 'nova',
-  'Crimson Collective': 'crimson',
-  'Eagle Republic': 'eagle'
+const factionConfigs = {
+  trade: {
+    title: 'The Trade Federation',
+    roleName: 'Trade Federation',
+    emojiName: 'TradeFederation'
+  },
+  yamato: {
+    title: 'Yamato Syndicate',
+    roleName: 'Yamato Syndicate',
+    emojiName: 'Yamato'
+  },
+  nova: {
+    title: 'Nova Confederation',
+    roleName: 'Nova Confederation',
+    emojiName: 'Nova'
+  },
+  crimson: {
+    title: 'Crimson Collective',
+    roleName: 'Crimson Collective',
+    emojiName: 'Crimson'
+  },
+  eagle: {
+    title: 'Eagle Republic',
+    roleName: 'Eagle Republic',
+    emojiName: 'Eagle'
+  }
 };
+
+const joinableEmpires = Object.fromEntries(
+  Object.entries(factionConfigs).map(([key, { title }]) => [title, key])
+);
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -117,14 +141,25 @@ module.exports = {
 
         if (cat === 'empires') {
           const joinKey = joinableEmpires[entry.title];
+          const factionConfig = factionConfigs[joinKey];
 
-          if (joinKey) {
-            actionRow.addComponents(
-              new ButtonBuilder()
-                .setCustomId(`join_${joinKey}`)
-                .setLabel('Join')
-                .setStyle(ButtonStyle.Primary)
-            );
+          if (joinKey && factionConfig) {
+            const joinButton = new ButtonBuilder()
+              .setCustomId(`join_${joinKey}`)
+              .setLabel('Join')
+              .setStyle(ButtonStyle.Primary);
+
+            const { emojiName } = factionConfig;
+
+            if (emojiName && i.guild) {
+              const emoji = i.guild.emojis.cache.find(e => e.name === emojiName);
+
+              if (emoji) {
+                joinButton.setEmoji({ id: emoji.id, name: emoji.name });
+              }
+            }
+
+            actionRow.addComponents(joinButton);
           }
         }
 
@@ -144,16 +179,9 @@ module.exports = {
       
       // Join faction
       else if (action === 'join') {
-        const factionRoles = {
-          trade: 'Trade Federation',
-          yamato: 'Yamato Syndicate',
-          nova: 'Nova Confederation',
-          crimson: 'Crimson Collective',
-          eagle: 'Eagle Republic'
-        };
-
         const factionKey = cat;
-        const roleName = factionRoles[factionKey];
+        const factionConfig = factionConfigs[factionKey];
+        const roleName = factionConfig?.roleName;
 
         if (!roleName) {
           await i.reply({
@@ -196,7 +224,7 @@ module.exports = {
           return;
         }
 
-        const factionRoleNames = Object.values(factionRoles);
+        const factionRoleNames = Object.values(factionConfigs).map(cfg => cfg.roleName);
         const currentFactionRole = member.roles.cache.find(
           r => factionRoleNames.includes(r.name) && r.id !== role.id
         );
