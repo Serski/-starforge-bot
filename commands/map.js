@@ -367,12 +367,13 @@ module.exports = {
               kentauros: 'Kentauros'
             },
             descriptions: {
-              akrion: 'Akrion is a frontier hub charting Thaloros Reach expeditions.',
+              akrion:
+                "Akrion System — the Eagle Republic's domain, with their homeworld Levonia.",
               ceythros: 'Ceythros is famed for raptor patrols and wind-carved canyons.',
               kentauros: 'Kentauros orbits as the Eagle Fleet’s command bastion.'
             },
             images: {
-              akrion: 'https://i.imgur.com/fkjNogD.png',
+              akrion: 'https://i.imgur.com/mAtJMgC.jpeg',
               ceythros: 'https://i.imgur.com/fkjNogD.png',
               kentauros: 'https://i.imgur.com/fkjNogD.png'
             }
