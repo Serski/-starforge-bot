@@ -335,7 +335,7 @@ module.exports = {
               shathros: 'Shathros anchors Verythra convoys amid golden nebulae.'
             },
             images: {
-              veil: https://i.imgur.com/jOSJ3Qr.jpeg,
+              veil: VERYTHRA_IMAGE_URL,
               korneth: VERYTHRA_IMAGE_URL,
               shathros: VERYTHRA_IMAGE_URL
             }
