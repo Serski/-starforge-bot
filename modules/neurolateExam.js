@@ -5,6 +5,7 @@ const {
   ActionRowBuilder,
   ButtonBuilder,
   ButtonStyle,
+  MessageFlags,
 } = require('discord.js');
 
 const POSTER_IMAGE = 'https://i.imgur.com/KTYU4Jj.png';
@@ -147,13 +148,13 @@ async function startNeurolateExam(interaction) {
       if (interaction.deferred || interaction.replied) {
         await interaction.editReply(alreadyMessage).catch(console.error);
       } else {
-        await interaction.reply({ ...alreadyMessage, ephemeral: true }).catch(console.error);
+        await interaction.reply({ ...alreadyMessage, flags: MessageFlags.Ephemeral }).catch(console.error);
       }
       return;
     }
 
     if (!interaction.deferred) {
-      await interaction.deferReply({ ephemeral: true });
+      await interaction.deferReply({ flags: MessageFlags.Ephemeral });
     }
 
     const newsChannel = findNewsChannel(interaction.guild);
@@ -175,7 +176,7 @@ async function startNeurolateExam(interaction) {
     if (interaction.deferred || interaction.replied) {
       await interaction.editReply(failPayload).catch(console.error);
     } else {
-      await interaction.reply({ ...failPayload, ephemeral: true }).catch(console.error);
+      await interaction.reply({ ...failPayload, flags: MessageFlags.Ephemeral }).catch(console.error);
     }
   }
 }
@@ -198,7 +199,7 @@ async function handleNeurolateInteraction(interaction) {
       ? '💊 Results: flawless execution. Neurolate Ambassador status confirmed — stand by for role sync.'
       : '💊 Results: at least one response failed review. Neurolate certification (standard) recorded.';
 
-    await interaction.followUp({ content: followUp, ephemeral: true });
+    await interaction.followUp({ content: followUp, flags: MessageFlags.Ephemeral });
 
     const guild = interaction.guild;
     const member = interaction.member;
