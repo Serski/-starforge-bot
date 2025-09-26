@@ -26,73 +26,83 @@ const SUCCESS_BLURBS = [
 
 const QUESTIONS = [
   {
-    prompt: '**Question 1.** When should a standard Neurolate dose be administered ahead of a long-range drift jump?',
+    prompt:
+      '**Question 1.** Drift Captain Mara asks for Neurolate clearance before guiding the colony ship through a fractured lane. What is the first verification you provide?',
     choices: [
-      { label: '20 minutes prior [Accelerated preparation interval]', isCorrect: false },
-      { label: '90 minutes prior [Standardized stabilization buffer]', isCorrect: true },
+      { label: 'Confirm Mara logged eight hours of cognitive rest in the last cycle.', isCorrect: false },
+      { label: 'Confirm Mara completed the neural acuity calibration within the previous 6 hours.', isCorrect: true },
     ],
   },
   {
-    prompt: '**Question 2.** Which cognitive metric does Neurolate actively stabilize during slipstream turbulence?',
+    prompt:
+      '**Question 2.** During the calibration review, Mara reveals she supplemented with a micro-dose of Voxline. How do you proceed before allowing Neurolate?',
     choices: [
-      { label: 'Spatial orientation matrices [Primary control objective]', isCorrect: true },
-      { label: 'Oxygen saturation levels [Life-support monitoring domain]', isCorrect: false },
+      { label: 'Issue a neutralizing tonic and continue without delay.', isCorrect: false },
+      { label: 'Suspend Neurolate pending a med-officer sign-off documenting compatibility.', isCorrect: true },
     ],
   },
   {
-    prompt: '**Question 3.** Neurolate must never be co-administered with which emergency stimulant?',
+    prompt:
+      '**Question 3.** While navigating the tram to medbay, an apprentice requests a Neurolate ampoule to calm pre-jump tremors. What is the correct response?',
     choices: [
-      { label: 'Voxline [Standard emergency stimulant clearance]', isCorrect: false },
-      { label: 'Somnex [Documented contraindication]', isCorrect: true },
+      { label: 'Decline and direct them to mindfulness drills until the senior neurologist approves.', isCorrect: true },
+      { label: 'Grant a half-dose to demonstrate trust before the exam.', isCorrect: false },
     ],
   },
   {
-    prompt: '**Question 4.** How long does a properly stored Neurolate ampoule maintain peak efficacy after activation?',
+    prompt:
+      '**Question 4.** The medbay inventory console flags Mara\'s assigned ampoule as having warmed to 11°C during transport. What is your next action?',
     choices: [
-      { label: '12 hours [Accelerated decay schedule]', isCorrect: false },
-      { label: '8 hours [Certified potency window]', isCorrect: true },
+      { label: 'Quarantine the ampoule and requisition a new vial from cold storage.', isCorrect: true },
+      { label: 'Rechill the same ampoule and proceed once it returns to 4°C.', isCorrect: false },
     ],
   },
   {
-    prompt: '**Question 5.** Which biometric must be continuously monitored during a Neurolate infusion?',
+    prompt:
+      '**Question 5.** During infusion, Mara\'s neural latency reports a sudden spike beyond the ship\'s safe threshold. How do you respond?',
     choices: [
-      { label: 'Neural latency delta [Key infusion metric]', isCorrect: true },
-      { label: 'Caloric throughput [Nutritional baselining]', isCorrect: false },
+      { label: 'Pause the infusion, initiate drift-calm protocols, and notify Command.', isCorrect: true },
+      { label: 'Increase the Neurolate flow rate to overpower the spike.', isCorrect: false },
     ],
   },
   {
-    prompt: '**Question 6.** Which crew role requires a double-clearance before self-administering Neurolate?',
+    prompt:
+      '**Question 6.** A junior technician attempts to log the infusion under general medbay activity. Which correction secures compliance?',
     choices: [
-      { label: 'Chief Navigator [Dual authorization enforced]', isCorrect: true },
-      { label: 'Quartermaster [Standard single-clearance role]', isCorrect: false },
+      { label: 'Reassign the log to Protocol D-42: Cognitive Safeguards and record your override.', isCorrect: true },
+      { label: 'Allow the misfile since the technician documented vital signs separately.', isCorrect: false },
     ],
   },
   {
-    prompt: '**Question 7.** What storage range preserves Neurolate\'s efficacy aboard station medical bays?',
+    prompt:
+      '**Question 7.** Mara reports harmonic speech lag minutes after the infusion completes. What is your immediate instruction?',
     choices: [
-      { label: 'Between 2°C and 8°C [Validated cold-chain range]', isCorrect: true },
-      { label: '15°C to 20°C [Ambient storage range]', isCorrect: false },
+      { label: 'Initiate a taper order and continue observation for secondary symptoms.', isCorrect: true },
+      { label: 'Log the symptom for later review while maintaining the current dosage.', isCorrect: false },
     ],
   },
   {
-    prompt: '**Question 8.** Which symptom signals Neurolate saturation and requires an immediate taper order?',
+    prompt:
+      '**Question 8.** With Mara stabilized, you prepare the ambassador packet. Which element must be verified before issuing certification?',
     choices: [
-      { label: 'Harmonic speech lag [Primary saturation alarm]', isCorrect: true },
-      { label: 'Persistent metallic taste [Secondary symptom to monitor]', isCorrect: false },
+      { label: 'Ensure Command received the updated ambassador cipher and acknowledged receipt.', isCorrect: true },
+      { label: 'Ensure the drift crew signed their duty rosters for the next jump.', isCorrect: false },
     ],
   },
   {
-    prompt: '**Question 9.** Neurolate dosing schedules must be logged under which fleet protocol?',
+    prompt:
+      '**Question 9.** Command asks why the exam log notes a delay between calibration and infusion. What documentation do you provide?',
     choices: [
-      { label: 'Protocol D-42: Cognition Safeguards [Mandated for neural agents]', isCorrect: true },
-      { label: 'Protocol F-13: Food Storage [Logistics charter domain]', isCorrect: false },
+      { label: 'The med-officer clearance referencing the temporary Voxline interaction hold.', isCorrect: true },
+      { label: 'The mindfulness drill transcript from the apprentice training session.', isCorrect: false },
     ],
   },
   {
-    prompt: '**Question 10.** What final confirmation completes a Neurolate Ambassador handoff?',
+    prompt:
+      '**Question 10.** A week later, Mara requests a refill before undergoing another drift despite unverified rest data. How do you conclude the narrative?',
     choices: [
-      { label: 'Logging the ambassador cipher with Command [Locks in authority]', isCorrect: true },
-      { label: 'Securing medbay shift rosters [Scheduling checkpoint]', isCorrect: false },
+      { label: 'Decline the refill and schedule a compliance audit before approving further Neurolate.', isCorrect: true },
+      { label: 'Approve the refill, noting that veteran captains hold self-assessment authority.', isCorrect: false },
     ],
   },
 ];
