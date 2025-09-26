@@ -27,7 +27,7 @@ const QUESTIONS = [
   {
     prompt: '**Question 1.** When should a standard Neurolate dose be administered ahead of a long-range drift jump?',
     choices: [
-      { label: '❌ 20 minutes prior [Window too narrow for cortex priming]', isCorrect: false },
+      { label: '20 minutes prior [Accelerated preparation interval]', isCorrect: false },
       { label: '90 minutes prior [Standardized stabilization buffer]', isCorrect: true },
     ],
   },
@@ -35,63 +35,63 @@ const QUESTIONS = [
     prompt: '**Question 2.** Which cognitive metric does Neurolate actively stabilize during slipstream turbulence?',
     choices: [
       { label: 'Spatial orientation matrices [Primary control objective]', isCorrect: true },
-      { label: '❌ Oxygen saturation levels [Handled by life-support monitors]', isCorrect: false },
+      { label: 'Oxygen saturation levels [Life-support monitoring domain]', isCorrect: false },
     ],
   },
   {
     prompt: '**Question 3.** Neurolate must never be co-administered with which emergency stimulant?',
     choices: [
-      { label: '❌ Voxline [Compatible stimulant pairing]', isCorrect: false },
+      { label: 'Voxline [Standard emergency stimulant clearance]', isCorrect: false },
       { label: 'Somnex [Documented contraindication]', isCorrect: true },
     ],
   },
   {
     prompt: '**Question 4.** How long does a properly stored Neurolate ampoule maintain peak efficacy after activation?',
     choices: [
-      { label: '❌ 12 hours [Cognitive drift begins sooner]', isCorrect: false },
+      { label: '12 hours [Accelerated decay schedule]', isCorrect: false },
       { label: '8 hours [Certified potency window]', isCorrect: true },
     ],
   },
   {
     prompt: '**Question 5.** Which biometric must be continuously monitored during a Neurolate infusion?',
     choices: [
-      { label: 'Neural latency delta [Key overdose indicator]', isCorrect: true },
-      { label: '❌ Caloric throughput [Irrelevant to infusion control]', isCorrect: false },
+      { label: 'Neural latency delta [Key infusion metric]', isCorrect: true },
+      { label: 'Caloric throughput [Nutritional baselining]', isCorrect: false },
     ],
   },
   {
     prompt: '**Question 6.** Which crew role requires a double-clearance before self-administering Neurolate?',
     choices: [
       { label: 'Chief Navigator [Dual authorization enforced]', isCorrect: true },
-      { label: '❌ Quartermaster [Single clearance suffices]', isCorrect: false },
+      { label: 'Quartermaster [Standard single-clearance role]', isCorrect: false },
     ],
   },
   {
     prompt: '**Question 7.** What storage range preserves Neurolate\'s efficacy aboard station medical bays?',
     choices: [
       { label: 'Between 2°C and 8°C [Validated cold-chain range]', isCorrect: true },
-      { label: '❌ 15°C to 20°C [Breaks suspension protocol]', isCorrect: false },
+      { label: '15°C to 20°C [Ambient storage range]', isCorrect: false },
     ],
   },
   {
     prompt: '**Question 8.** Which symptom signals Neurolate saturation and requires an immediate taper order?',
     choices: [
       { label: 'Harmonic speech lag [Primary saturation alarm]', isCorrect: true },
-      { label: '❌ Persistent metallic taste [Monitor but not critical]', isCorrect: false },
+      { label: 'Persistent metallic taste [Secondary symptom to monitor]', isCorrect: false },
     ],
   },
   {
     prompt: '**Question 9.** Neurolate dosing schedules must be logged under which fleet protocol?',
     choices: [
       { label: 'Protocol D-42: Cognition Safeguards [Mandated for neural agents]', isCorrect: true },
-      { label: '❌ Protocol F-13: Food Storage [Logistics charter only]', isCorrect: false },
+      { label: 'Protocol F-13: Food Storage [Logistics charter domain]', isCorrect: false },
     ],
   },
   {
     prompt: '**Question 10.** What final confirmation completes a Neurolate Ambassador handoff?',
     choices: [
       { label: 'Logging the ambassador cipher with Command [Locks in authority]', isCorrect: true },
-      { label: '❌ Securing medbay shift rosters [Scheduling task]', isCorrect: false },
+      { label: 'Securing medbay shift rosters [Scheduling checkpoint]', isCorrect: false },
     ],
   },
 ];
