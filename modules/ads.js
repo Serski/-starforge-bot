@@ -35,7 +35,8 @@ async function postAd(client) {
   const isCalisa = title.includes("calisa");
   const isKaldur = title.includes("kaldur"); // match "kaldur prime" as well
   const isRazathaar = title.includes("light-freight");
-  const isNeurolate = title.includes("neurolate");
+  const isNeurolate =
+    title.includes("neurolate") || title.includes("ambassador examination");
   let components = [];
 
   let button = null;
