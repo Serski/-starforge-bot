@@ -9,6 +9,7 @@ const { startAdLoop } = require('./modules/ads');
 const { showCalisaMenu, handleCalisaOption } = require('./modules/calisa');
 const { showKaldurMenu, handleKaldurOption } = require('./modules/kaldur');
 const { showRazathaarMenu, handleRazathaarOption } = require('./modules/razathaarQuest');
+const { startNeurolateExam, handleNeurolateInteraction } = require('./modules/neurolateExam');
 const { handleReviewModal } = require('./modules/review');
 
 const client = new Client({
@@ -139,6 +140,27 @@ client.on('interactionCreate', async interaction => {
             return;
         }
 
+        if (interaction.customId === 'neurolate_start_exam') {
+            try {
+                await interaction.deferReply({ ephemeral: true });
+                await startNeurolateExam(interaction);
+            } catch (error) {
+                console.error('❌ Failed to start Neurolate exam', error);
+                if (interaction.deferred || interaction.replied) {
+                    await interaction.editReply({
+                        content: '⚠️ Could not launch the Neurolate exam.',
+                        ephemeral: true
+                    }).catch(console.error);
+                } else {
+                    await interaction.reply({
+                        content: '⚠️ Could not launch the Neurolate exam.',
+                        ephemeral: true
+                    }).catch(console.error);
+                }
+            }
+            return;
+        }
+
         // 🚚 RAZATHAAR FREIGHT CONTRACT HANDLER
         if (interaction.customId === 'razathaar_start_quest') {
             const member = interaction.member;
@@ -205,6 +227,11 @@ client.on('interactionCreate', async interaction => {
         // 📦 RAZATHAAR OPTION HANDLER
         if (scope === 'razathaar' || scope === 'rz') {
             await handleRazathaarOption(interaction);
+            return;
+        }
+
+        if (interaction.customId.startsWith('neurolate_')) {
+            await handleNeurolateInteraction(interaction);
             return;
         }
     }
