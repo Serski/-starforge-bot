@@ -13,15 +13,15 @@ const DRUG_EMOJI = process.env.DRUG_EMOJI_TAG ?? '🧠';
 const SUBMISSION_BLURBS = [
   `${DRUG_EMOJI} PRIORITY UPDATE: Neurolate docket pinged by MedOps. Candidate entering cognition cradle under observation.`,
   `${DRUG_EMOJI} SIGNAL: Neurolate intake corridor sealed. Exam recorders spinning up for fresh certification attempt.`,
-  `${DRUG_EMOJI} OPERATIONS NOTE: Neurolate proctor flagged new submission. Mentors requested to monitor drift metrics in real time.`,
-  `${DRUG_EMOJI} CHANNEL 6: Neurolate cadet strapped in. Archive relay streaming every response for post-run audit.`,
+  `${DRUG_EMOJI} Neurolate™ reports: local figure submits for brand sponsorship.`,
+  `${DRUG_EMOJI} CHANNEL 6: Local celebrity has submitted for a Neurolate™ sponsorship deal.`,
 ];
 
 const SUCCESS_BLURBS = [
-  `${DRUG_EMOJI} PRIORITY BROADCAST: Neurolate Ambassador cleared with zero faults. Station protocol uplinks refreshed immediately.`,
+  `${DRUG_EMOJI} Celebrity submitted to Neurolate™. Contract sealed. Bloodstream leased.`,
   `${DRUG_EMOJI} COMMAND WIRE: Neurolate exam returned flawless. Ambassador insignia granted and medbay cheers logged.`,
   `${DRUG_EMOJI} ARCHIVE ENTRY: Neurolate candidate recorded a perfect series. Ambassador network expanding before next drift cycle.`,
-  `${DRUG_EMOJI} STATUS GREEN: Neurolate run completed without deviation. Ambassador credentials synced across all rosters.`,
+  `${DRUG_EMOJI} Neurolate™ adds another ambassador. Sleep removed. Glory injected.`,
 ];
 
 const QUESTIONS = [
