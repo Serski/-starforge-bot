@@ -10,17 +10,17 @@ const {
 const POSTER_IMAGE = 'https://i.imgur.com/KTYU4Jj.png';
 
 const SUBMISSION_BLURBS = [
-  '💊 NEWSWIRE: Candidate queued for Neurolate certification. Medbay telemetry is archiving the attempt for review.',
-  '💊 ALERT: Neurolate exam terminal just flashed green. Another hopeful is stepping into the cognition cradle.',
-  '💊 STATION FEED: Ops logged a live Neurolate submission. Mentors watching to see if the run stays flawless.',
-  '💊 INTERNAL MEMO: Exam deck reports an incoming Neurolate candidate. Witness statements encouraged.',
+  '💊 PRIORITY UPDATE: Neurolate docket pinged by MedOps. Candidate entering cognition cradle under observation.',
+  '💊 SIGNAL: Neurolate intake corridor sealed. Exam recorders spinning up for fresh certification attempt.',
+  '💊 OPERATIONS NOTE: Neurolate proctor flagged new submission. Mentors requested to monitor drift metrics in real time.',
+  '💊 CHANNEL 6: Neurolate cadet strapped in. Archive relay streaming every response for post-run audit.',
 ];
 
 const SUCCESS_BLURBS = [
-  '💊 NEWSFLASH: A Neurolate Ambassador aced every module. Expect sharper drift discipline across the decks tonight.',
-  '💊 BROADCAST: Perfect Neurolate run logged. Ambassador clearance issued and medbay morale spiked nine points.',
-  '💊 DISPATCH: Neurolate Ambassador certified without a miss. Cognition ward scheduling emergency celebrations.',
-  '💊 BULLETIN: Zero-fault Neurolate streak confirmed. Ambassador roster updated and dosage matrix recalibrated.',
+  '💊 PRIORITY BROADCAST: Neurolate Ambassador cleared with zero faults. Station protocol uplinks refreshed immediately.',
+  '💊 COMMAND WIRE: Neurolate exam returned flawless. Ambassador insignia granted and medbay cheers logged.',
+  '💊 ARCHIVE ENTRY: Neurolate candidate recorded a perfect series. Ambassador network expanding before next drift cycle.',
+  '💊 STATUS GREEN: Neurolate run completed without deviation. Ambassador credentials synced across all rosters.',
 ];
 
 const QUESTIONS = [
