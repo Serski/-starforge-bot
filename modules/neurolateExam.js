@@ -142,7 +142,7 @@ async function startNeurolateExam(interaction) {
 
     if (alreadyCertified) {
       const alreadyMessage = {
-        content: '💊 You have already completed the Neurolate exam. Further attempts are locked.',
+        content: '💊 You have already attempted the Neurolate exam.',
       };
 
       if (interaction.deferred || interaction.replied) {
