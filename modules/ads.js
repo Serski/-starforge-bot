@@ -35,18 +35,33 @@ async function postAd(client) {
   const isCalisa = title.includes("calisa");
   const isKaldur = title.includes("kaldur"); // match "kaldur prime" as well
   const isRazathaar = title.includes("light-freight");
+  const isNeurolate = title.includes("neurolate");
   let components = [];
-  if (isCalisa || isKaldur || isRazathaar) {
-    const button = new ButtonBuilder()
-      .setCustomId(
-        isCalisa
-          ? "calisa_buy_ticket"
-          : isKaldur
-          ? "kaldur_buy_ticket"
-          : "razathaar_start_quest"
-      )
-      .setLabel(isRazathaar ? "📦 Accept Contract" : "🎫 Buy Ticket")
+
+  let button = null;
+  if (isCalisa) {
+    button = new ButtonBuilder()
+      .setCustomId("calisa_buy_ticket")
+      .setLabel("🎫 Buy Ticket")
       .setStyle(ButtonStyle.Primary);
+  } else if (isKaldur) {
+    button = new ButtonBuilder()
+      .setCustomId("kaldur_buy_ticket")
+      .setLabel("🎫 Buy Ticket")
+      .setStyle(ButtonStyle.Primary);
+  } else if (isRazathaar) {
+    button = new ButtonBuilder()
+      .setCustomId("razathaar_start_quest")
+      .setLabel("📦 Accept Contract")
+      .setStyle(ButtonStyle.Primary);
+  } else if (isNeurolate) {
+    button = new ButtonBuilder()
+      .setCustomId("neurolate_start_exam")
+      .setLabel("APPLY NOW")
+      .setStyle(ButtonStyle.Primary);
+  }
+
+  if (button) {
     components = [new ActionRowBuilder().addComponents(button)];
   }
 
