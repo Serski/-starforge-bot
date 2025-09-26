@@ -121,10 +121,10 @@ function buildQuestionRow(index, hasFailed) {
   const nextStep = index === QUESTIONS.length - 1 ? 'neurolate_complete' : `neurolate_q${index + 2}`;
   const row = new ActionRowBuilder();
 
-  const buttons = QUESTIONS[index].choices.map(choice => {
+  const buttons = QUESTIONS[index].choices.map((choice, i) => {
     const willFail = hasFailed || !choice.isCorrect;
     return new ButtonBuilder()
-      .setCustomId(`${nextStep}|${willFail ? 'fail' : 'ok'}`)
+      .setCustomId(`${nextStep}|${willFail ? 'fail' : 'ok'}|${i}`)
       .setLabel(choice.label)
       .setStyle(choice.isCorrect ? ButtonStyle.Success : ButtonStyle.Secondary);
   });
@@ -181,7 +181,7 @@ async function startNeurolateExam(interaction) {
 }
 
 async function handleNeurolateInteraction(interaction) {
-  const [base, statusToken] = interaction.customId.split('|');
+  const [base, statusToken] = interaction.customId.split('|', 3);
   const hasFailed = statusToken === 'fail';
 
   if (base === 'neurolate_complete') {
