@@ -8,6 +8,7 @@ function loadNeurolateModule() {
   ({ startNeurolateExam, handleNeurolateInteraction } = require('../modules/neurolateExam'));
 }
 
+const ORIGINAL_NEURODRUG_EMOJI = process.env.NEURODRUG_EMOJI_TAG;
 const ORIGINAL_DRUG_EMOJI = process.env.DRUG_EMOJI_TAG;
 const ORIGINAL_NEWS_CHANNEL_NAME = process.env.NEWS_CHANNEL_NAME;
 
@@ -19,6 +20,12 @@ describe('Neurolate exam flow', () => {
   });
 
   afterEach(() => {
+    if (ORIGINAL_NEURODRUG_EMOJI === undefined) {
+      delete process.env.NEURODRUG_EMOJI_TAG;
+    } else {
+      process.env.NEURODRUG_EMOJI_TAG = ORIGINAL_NEURODRUG_EMOJI;
+    }
+
     if (ORIGINAL_DRUG_EMOJI === undefined) {
       delete process.env.DRUG_EMOJI_TAG;
     } else {
@@ -84,7 +91,7 @@ describe('Neurolate exam flow', () => {
   });
 
   test('startNeurolateExam announces with configured drug emoji', async () => {
-    process.env.DRUG_EMOJI_TAG = '<:Drug:12345>';
+    process.env.NEURODRUG_EMOJI_TAG = '<:Drug:12345>';
     process.env.NEWS_CHANNEL_NAME = 'station-news';
 
     loadNeurolateModule();
@@ -122,7 +129,7 @@ describe('Neurolate exam flow', () => {
     expect(send).toHaveBeenCalled();
     const [message] = send.mock.calls[0];
     expect(typeof message).toBe('string');
-    expect(message.startsWith(process.env.DRUG_EMOJI_TAG)).toBe(true);
+    expect(message.startsWith(process.env.NEURODRUG_EMOJI_TAG)).toBe(true);
   });
 
   test('handleNeurolateInteraction advances to next question via select value', async () => {
@@ -162,7 +169,7 @@ describe('Neurolate exam flow', () => {
   });
 
   test('handleNeurolateInteraction reports results with configured emoji', async () => {
-    process.env.DRUG_EMOJI_TAG = '<:Drug:12345>';
+    process.env.NEURODRUG_EMOJI_TAG = '<:Drug:12345>';
     process.env.NEWS_CHANNEL_NAME = 'station-news';
 
     loadNeurolateModule();
@@ -236,12 +243,12 @@ describe('Neurolate exam flow', () => {
 
     expect(interaction.followUp).toHaveBeenCalledWith(
       expect.objectContaining({
-        content: expect.stringMatching(new RegExp(`^${process.env.DRUG_EMOJI_TAG}`)),
+        content: expect.stringMatching(new RegExp(`^${process.env.NEURODRUG_EMOJI_TAG}`)),
       })
     );
     expect(send).toHaveBeenCalled();
     const [announcement] = send.mock.calls[0];
-    expect(announcement.startsWith(process.env.DRUG_EMOJI_TAG)).toBe(true);
+    expect(announcement.startsWith(process.env.NEURODRUG_EMOJI_TAG)).toBe(true);
   });
 
   test('stale submissions are ignored with deferUpdate', async () => {

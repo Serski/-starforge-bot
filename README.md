@@ -22,6 +22,15 @@ node deploy-commands.js
 node index.js
 ```
 
+### Configuration
+
+Set the following environment variables before launching the bot:
+
+| Variable | Description |
+| --- | --- |
+| `NEWS_CHANNEL_NAME` | Name of the channel used for news dispatches and Neurolate announcements. |
+| `NEURODRUG_EMOJI_TAG` | Custom emoji tag (e.g. `<:Neurodrug:12345>`) that prefixes all Neurolate exam blurbs and results. |
+
 ## `/review` Command
 
 Use `/review` in the channel defined by `NEWS_CHANNEL_NAME` to post a review embed. The modal includes an optional field labeled **"Message Link or ID (this server, optional)"**.

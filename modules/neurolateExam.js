@@ -8,7 +8,8 @@ const {
 } = require('discord.js');
 
 const POSTER_IMAGE = 'https://i.imgur.com/KTYU4Jj.png';
-const DRUG_EMOJI = process.env.DRUG_EMOJI_TAG ?? '🧠';
+const DRUG_EMOJI =
+  process.env.NEURODRUG_EMOJI_TAG ?? process.env.DRUG_EMOJI_TAG ?? '🧠';
 
 const SUBMISSION_BLURBS = [
   `${DRUG_EMOJI} PRIORITY UPDATE: Neurolate docket pinged by MedOps. Candidate entering cognition cradle under observation.`,
