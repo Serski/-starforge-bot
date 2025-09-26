@@ -126,12 +126,12 @@ function buildQuestionRow(index, hasFailed) {
     .setMinValues(1)
     .setMaxValues(1)
     .addOptions(
-      QUESTIONS[index].choices.map(choice => {
+      QUESTIONS[index].choices.map((choice, choiceIndex) => {
         const willFail = hasFailed || !choice.isCorrect;
         const targetStep = willFail ? 'neurolate_complete' : nextSuccessStep;
         return {
           label: choice.label,
-          value: `${targetStep}|${willFail ? 'fail' : 'ok'}`,
+          value: `${targetStep}|${willFail ? 'fail' : 'ok'}|${choiceIndex}`,
         };
       })
     );
