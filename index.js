@@ -230,10 +230,12 @@ client.on('interactionCreate', async interaction => {
             return;
         }
 
-        if (interaction.customId.startsWith('neurolate_')) {
-            await handleNeurolateInteraction(interaction);
-            return;
-        }
+    }
+
+    // 🧪 NEUROLATE EXAM SELECT HANDLER
+    if (interaction.isStringSelectMenu() && interaction.customId.startsWith('neurolate_')) {
+        await handleNeurolateInteraction(interaction);
+        return;
     }
 
     // DESTINATION SELECT MENU

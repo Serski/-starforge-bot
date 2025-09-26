@@ -3,8 +3,7 @@
 const {
   EmbedBuilder,
   ActionRowBuilder,
-  ButtonBuilder,
-  ButtonStyle,
+  StringSelectMenuBuilder,
   MessageFlags,
 } = require('discord.js');
 
@@ -120,17 +119,22 @@ function buildQuestionEmbed(index) {
 
 function buildQuestionRow(index, hasFailed) {
   const nextStep = index === QUESTIONS.length - 1 ? 'neurolate_complete' : `neurolate_q${index + 2}`;
-  const row = new ActionRowBuilder();
+  const select = new StringSelectMenuBuilder()
+    .setCustomId(`neurolate_q${index + 1}`)
+    .setPlaceholder('Select your answer')
+    .setMinValues(1)
+    .setMaxValues(1)
+    .addOptions(
+      QUESTIONS[index].choices.map(choice => {
+        const willFail = hasFailed || !choice.isCorrect;
+        return {
+          label: choice.label,
+          value: `${nextStep}|${willFail ? 'fail' : 'ok'}`,
+        };
+      })
+    );
 
-  const buttons = QUESTIONS[index].choices.map((choice, i) => {
-    const willFail = hasFailed || !choice.isCorrect;
-    return new ButtonBuilder()
-      .setCustomId(`${nextStep}|${willFail ? 'fail' : 'ok'}|${i}`)
-      .setLabel(choice.label)
-      .setStyle(choice.isCorrect ? ButtonStyle.Success : ButtonStyle.Secondary);
-  });
-
-  return row.addComponents(buttons);
+  return new ActionRowBuilder().addComponents(select);
 }
 
 async function startNeurolateExam(interaction) {
@@ -182,7 +186,23 @@ async function startNeurolateExam(interaction) {
 }
 
 async function handleNeurolateInteraction(interaction) {
-  const [base, statusToken] = interaction.customId.split('|', 3);
+  const selectedValue = interaction.values?.[0];
+
+  const activeSelect = interaction.message?.components?.flatMap(row => row.components ?? [])
+    ?.find(component => component.customId === interaction.customId);
+
+  if (!selectedValue || !activeSelect) {
+    await interaction.deferUpdate().catch(console.error);
+    return;
+  }
+
+  const isCurrentOption = activeSelect.options?.some(option => option.value === selectedValue);
+  if (!isCurrentOption) {
+    await interaction.deferUpdate().catch(console.error);
+    return;
+  }
+
+  const [base, statusToken] = selectedValue.split('|', 3);
   const hasFailed = statusToken === 'fail';
 
   if (base === 'neurolate_complete') {
