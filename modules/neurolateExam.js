@@ -119,7 +119,7 @@ function buildQuestionEmbed(index) {
 }
 
 function buildQuestionRow(index, hasFailed) {
-  const nextStep = index === QUESTIONS.length - 1 ? 'neurolate_complete' : `neurolate_q${index + 2}`;
+  const nextSuccessStep = index === QUESTIONS.length - 1 ? 'neurolate_complete' : `neurolate_q${index + 2}`;
   const select = new StringSelectMenuBuilder()
     .setCustomId(`neurolate_q${index + 1}`)
     .setPlaceholder('Select your answer')
@@ -128,9 +128,10 @@ function buildQuestionRow(index, hasFailed) {
     .addOptions(
       QUESTIONS[index].choices.map(choice => {
         const willFail = hasFailed || !choice.isCorrect;
+        const targetStep = willFail ? 'neurolate_complete' : nextSuccessStep;
         return {
           label: choice.label,
-          value: `${nextStep}|${willFail ? 'fail' : 'ok'}`,
+          value: `${targetStep}|${willFail ? 'fail' : 'ok'}`,
         };
       })
     );
