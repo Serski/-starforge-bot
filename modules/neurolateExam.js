@@ -7,107 +7,114 @@ const {
   ButtonStyle,
 } = require('discord.js');
 
-const POSTER_IMAGE = 'https://i.imgur.com/dIVmcw7.png';
+const POSTER_IMAGE = 'https://i.imgur.com/KTYU4Jj.png';
 
-const START_BLURBS = [
-  '💊 The medbay sigils bloom neon as Neurolate vials cycle into the cradle. Technicians glance up as you step forward — the exam beacon is already pulsing.',
-  '💊 A hush rolls through Ops. Someone whispers, "Ambassador candidate." The Neurolate console unlocks and floods the channel with pale blue light.',
-  '💊 A courier drops a bundle of Neurolate case files on the briefing table. "If you\'re taking the exam, you\'d better broadcast why," they grin.',
-  '💊 The station tannoy declares a Neurolate proficiency drill. Crew turn to watch your first move as the exam terminal boots to life.',
+const SUBMISSION_BLURBS = [
+  '💊 NEWSWIRE: Candidate queued for Neurolate certification. Medbay telemetry is archiving the attempt for review.',
+  '💊 ALERT: Neurolate exam terminal just flashed green. Another hopeful is stepping into the cognition cradle.',
+  '💊 STATION FEED: Ops logged a live Neurolate submission. Mentors watching to see if the run stays flawless.',
+  '💊 INTERNAL MEMO: Exam deck reports an incoming Neurolate candidate. Witness statements encouraged.',
 ];
 
 const SUCCESS_BLURBS = [
-  '💊 NEWSFLASH: Neurolate Ambassador certified! The medbay just logged a perfect exam streak — and the new ambassador is already requisitioning vials for frontline crews.',
-  '💊 Neurolate Directorate congratulates today\'s ambassador! Zero mistakes on the exam and a promise to keep every drift navigator lucid.',
-  '💊 Exam board reports: new Neurolate Ambassador cleared with full marks. Expect steadier hands at every slipgate tonight.',
-  '💊 Neurolate dispatch: ambassador slot filled after a flawless exam. Morale monitors predict a 12% boost in crew focus server-wide.',
+  '💊 NEWSFLASH: A Neurolate Ambassador aced every module. Expect sharper drift discipline across the decks tonight.',
+  '💊 BROADCAST: Perfect Neurolate run logged. Ambassador clearance issued and medbay morale spiked nine points.',
+  '💊 DISPATCH: Neurolate Ambassador certified without a miss. Cognition ward scheduling emergency celebrations.',
+  '💊 BULLETIN: Zero-fault Neurolate streak confirmed. Ambassador roster updated and dosage matrix recalibrated.',
 ];
 
 const QUESTIONS = [
   {
-    prompt: '**Question 1.** When should a standard Neurolate dose be administered before a long-range drift jump?',
+    prompt: '**Question 1.** When should a standard Neurolate dose be administered ahead of a long-range drift jump?',
     choices: [
-      { label: '20 minutes prior to ignition', isCorrect: false },
-      { label: '90 minutes prior to ignition', isCorrect: true },
-      { label: 'Immediately after the jump begins', isCorrect: false },
+      { label: '❌ 20 minutes prior [Window too narrow for cortex priming]', isCorrect: false },
+      { label: '90 minutes prior [Standardized stabilization buffer]', isCorrect: true },
+      { label: '❌ After ignition [Fails to pre-align cognition]', isCorrect: false },
     ],
   },
   {
-    prompt: '**Question 2.** What cognitive effect does Neurolate stabilize during slipstream turbulence?',
+    prompt: '**Question 2.** Which cognitive metric does Neurolate actively stabilize during slipstream turbulence?',
     choices: [
-      { label: 'Spatial orientation matrices', isCorrect: true },
-      { label: 'Oxygen saturation levels', isCorrect: false },
-      { label: 'Muscle fiber elasticity', isCorrect: false },
+      { label: 'Spatial orientation matrices [Primary control objective]', isCorrect: true },
+      { label: '❌ Oxygen saturation levels [Handled by life-support monitors]', isCorrect: false },
+      { label: '❌ Muscular response lag [Outside Neurolate\'s scope]', isCorrect: false },
     ],
   },
   {
-    prompt: '**Question 3.** Neurolate should never be combined with which of the following emergency stimulants?',
+    prompt: '**Question 3.** Neurolate must never be co-administered with which emergency stimulant?',
     choices: [
-      { label: 'Voxline', isCorrect: false },
-      { label: 'Plasmaquell', isCorrect: false },
-      { label: 'Somnex', isCorrect: true },
+      { label: '❌ Voxline [Compatible stimulant pairing]', isCorrect: false },
+      { label: '❌ Plasmaquell [Stabilizer, not a stimulant]', isCorrect: false },
+      { label: 'Somnex [Documented contraindication]', isCorrect: true },
     ],
   },
   {
-    prompt: '**Question 4.** How long does a single Neurolate ampoule maintain peak efficacy?',
+    prompt: '**Question 4.** How long does a properly stored Neurolate ampoule maintain peak efficacy after activation?',
     choices: [
-      { label: '12 hours', isCorrect: false },
-      { label: '8 hours', isCorrect: true },
-      { label: '3 hours', isCorrect: false },
+      { label: '❌ 12 hours [Cognitive drift begins sooner]', isCorrect: false },
+      { label: '8 hours [Certified potency window]', isCorrect: true },
+      { label: '❌ 3 hours [Undercuts documented runtime]', isCorrect: false },
     ],
   },
   {
-    prompt: '**Question 5.** What biometric must be monitored continuously during a Neurolate infusion?',
+    prompt: '**Question 5.** Which biometric must be continuously monitored during a Neurolate infusion?',
     choices: [
-      { label: 'Neural latency delta', isCorrect: true },
-      { label: 'Caloric throughput', isCorrect: false },
-      { label: 'Retinal dilation symmetry', isCorrect: false },
+      { label: 'Neural latency delta [Key overdose indicator]', isCorrect: true },
+      { label: '❌ Caloric throughput [Irrelevant to infusion control]', isCorrect: false },
+      { label: '❌ Retinal dilation symmetry [Secondary observation only]', isCorrect: false },
     ],
   },
   {
     prompt: '**Question 6.** Which crew role requires a double-clearance before self-administering Neurolate?',
     choices: [
-      { label: 'Quartermaster', isCorrect: false },
-      { label: 'Chief Navigator', isCorrect: true },
-      { label: 'Supply Clerk', isCorrect: false },
+      { label: '❌ Quartermaster [Single clearance suffices]', isCorrect: false },
+      { label: 'Chief Navigator [Dual authorization enforced]', isCorrect: true },
+      { label: '❌ Supply Clerk [No self-admin override allowed]', isCorrect: false },
     ],
   },
   {
-    prompt: '**Question 7.** What is the recommended storage temperature band for Neurolate?',
+    prompt: '**Question 7.** What storage range preserves Neurolate\'s efficacy aboard station medical bays?',
     choices: [
-      { label: 'Between 2°C and 8°C', isCorrect: true },
-      { label: 'Between 15°C and 20°C', isCorrect: false },
-      { label: 'Below -10°C', isCorrect: false },
+      { label: 'Between 2°C and 8°C [Validated cold-chain range]', isCorrect: true },
+      { label: '❌ 15°C to 20°C [Breaks suspension protocol]', isCorrect: false },
+      { label: '❌ Below -10°C [Crystallizes the compound]', isCorrect: false },
     ],
   },
   {
-    prompt: '**Question 8.** Which symptom signals Neurolate saturation and demands a taper order?',
+    prompt: '**Question 8.** Which symptom signals Neurolate saturation and requires an immediate taper order?',
     choices: [
-      { label: 'Persistent metallic taste', isCorrect: false },
-      { label: 'Harmonic speech lag', isCorrect: true },
-      { label: 'Cold extremities', isCorrect: false },
+      { label: '❌ Persistent metallic taste [Monitor but not critical]', isCorrect: false },
+      { label: 'Harmonic speech lag [Primary saturation alarm]', isCorrect: true },
+      { label: '❌ Cold extremities [Usually circulatory, not Neurolate]', isCorrect: false },
     ],
   },
   {
     prompt: '**Question 9.** Neurolate dosing schedules must be logged under which fleet protocol?',
     choices: [
-      { label: 'Protocol D-42: Cognition Safeguards', isCorrect: true },
-      { label: 'Protocol F-13: Food Storage', isCorrect: false },
-      { label: 'Protocol L-19: Lagrange Logistics', isCorrect: false },
+      { label: 'Protocol D-42: Cognition Safeguards [Mandated for neural agents]', isCorrect: true },
+      { label: '❌ Protocol F-13: Food Storage [Logistics charter only]', isCorrect: false },
+      { label: '❌ Protocol L-19: Lagrange Logistics [Freight routing charter]', isCorrect: false },
     ],
   },
   {
     prompt: '**Question 10.** What final confirmation completes a Neurolate Ambassador handoff?',
     choices: [
-      { label: 'Securing medbay shift rosters', isCorrect: false },
-      { label: 'Logging the ambassador cipher with Command', isCorrect: true },
-      { label: 'Notifying the hydroponics bay', isCorrect: false },
+      { label: '❌ Securing medbay shift rosters [Scheduling task]', isCorrect: false },
+      { label: 'Logging the ambassador cipher with Command [Locks in authority]', isCorrect: true },
+      { label: '❌ Notifying the hydroponics bay [Unrelated department]', isCorrect: false },
     ],
   },
 ];
 
 function pickRandom(array) {
   return array[Math.floor(Math.random() * array.length)];
+}
+
+function findNewsChannel(guild) {
+  if (!guild) return undefined;
+  return guild.channels.cache.find(
+    channel => channel.name === process.env.NEWS_CHANNEL_NAME && channel.isTextBased()
+  );
 }
 
 function buildQuestionEmbed(index) {
@@ -137,12 +144,35 @@ function buildQuestionRow(index, hasFailed) {
 
 async function startNeurolateExam(interaction) {
   try {
+    const memberRoles = interaction.member?.roles?.cache;
+    const alreadyCertified = memberRoles?.some(
+      role => role.name === 'NEUROLATE' || role.name === 'NEUROLATE AMBASSADOR'
+    );
+
+    if (alreadyCertified) {
+      const alreadyMessage = {
+        content: '💊 You have already completed the Neurolate exam. Further attempts are locked.',
+      };
+
+      if (interaction.deferred || interaction.replied) {
+        await interaction.editReply(alreadyMessage).catch(console.error);
+      } else {
+        await interaction.reply({ ...alreadyMessage, ephemeral: true }).catch(console.error);
+      }
+      return;
+    }
+
     if (!interaction.deferred) {
       await interaction.deferReply({ ephemeral: true });
     }
 
-    if (interaction.channel) {
-      await interaction.channel.send({ content: pickRandom(START_BLURBS) });
+    const newsChannel = findNewsChannel(interaction.guild);
+    if (newsChannel) {
+      await newsChannel.send(pickRandom(SUBMISSION_BLURBS)).catch(console.error);
+    } else {
+      console.warn(
+        `⚠️ News channel "${process.env.NEWS_CHANNEL_NAME}" not found when announcing Neurolate submission.`
+      );
     }
 
     const embed = buildQuestionEmbed(0);
@@ -168,33 +198,54 @@ async function handleNeurolateInteraction(interaction) {
     const embed = new EmbedBuilder()
       .setColor(0x1f8b4c)
       .setTitle('Neurolate Ambassador Exam')
-      .setDescription('Exam complete. Results processing...')
+      .setDescription('Exam complete. Results processing…')
       .setImage(POSTER_IMAGE);
 
     await interaction.update({ embeds: [embed], components: [] });
 
-    const summary = hasFailed
-      ? '💊 Neurolate exam review: at least one response was incorrect. Study the med protocols and try again soon.'
-      : '💊 Certification complete: you passed every Neurolate checkpoint. Ambassador clearance granted.';
+    const perfectRun = !hasFailed;
+    const followUp = perfectRun
+      ? '💊 Results: flawless execution. Neurolate Ambassador status confirmed — stand by for role sync.'
+      : '💊 Results: at least one response failed review. Neurolate certification (standard) recorded.';
 
-    await interaction.followUp({ content: summary, ephemeral: true });
+    await interaction.followUp({ content: followUp, ephemeral: true });
 
-    if (!hasFailed) {
-      try {
-        const role = interaction.guild?.roles.cache.find(r => r.name === 'NEUROLATE AMBASSADOR');
-        if (role && !interaction.member.roles.cache.has(role.id)) {
-          await interaction.member.roles.add(role);
+    const guild = interaction.guild;
+    const member = interaction.member;
+
+    if (guild && member?.roles?.cache) {
+      const neurolateRole = guild.roles.cache.find(role => role.name === 'NEUROLATE');
+      const ambassadorRole = guild.roles.cache.find(role => role.name === 'NEUROLATE AMBASSADOR');
+
+      if (perfectRun) {
+        if (neurolateRole && member.roles.cache.has(neurolateRole.id)) {
+          await member.roles.remove(neurolateRole).catch(error =>
+            console.warn('⚠️ Could not remove Neurolate role:', error.message)
+          );
         }
-      } catch (error) {
-        console.warn('⚠️ Could not assign Neurolate Ambassador role:', error.message);
-      }
 
-      const newsChannel = interaction.guild?.channels.cache.find(
-        c => c.name === process.env.NEWS_CHANNEL_NAME && c.isTextBased()
-      );
+        if (ambassadorRole && !member.roles.cache.has(ambassadorRole.id)) {
+          await member.roles.add(ambassadorRole).catch(error =>
+            console.warn('⚠️ Could not assign Neurolate Ambassador role:', error.message)
+          );
+        }
 
-      if (newsChannel) {
-        await newsChannel.send(pickRandom(SUCCESS_BLURBS)).catch(console.error);
+        const newsChannel = findNewsChannel(guild);
+        if (newsChannel) {
+          await newsChannel.send(pickRandom(SUCCESS_BLURBS)).catch(console.error);
+        }
+      } else {
+        if (ambassadorRole && member.roles.cache.has(ambassadorRole.id)) {
+          await member.roles.remove(ambassadorRole).catch(error =>
+            console.warn('⚠️ Could not remove Neurolate Ambassador role:', error.message)
+          );
+        }
+
+        if (neurolateRole && !member.roles.cache.has(neurolateRole.id)) {
+          await member.roles.add(neurolateRole).catch(error =>
+            console.warn('⚠️ Could not assign Neurolate role:', error.message)
+          );
+        }
       }
     }
 
