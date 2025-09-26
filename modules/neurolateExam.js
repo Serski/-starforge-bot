@@ -27,82 +27,82 @@ const SUCCESS_BLURBS = [
 const QUESTIONS = [
   {
     prompt:
-      '**Question 1.** During preflight you discover the Neurolate cradle\'s sedation lattice was last recalibrated 18 hours ago; protocol requires recalibration every 12. What is your next move?',
+      '**Question 1.** You’ve been awake 43 hours. The reactor is failing. What saves the ship?',
     choices: [
-      { label: 'Scrub session, rerun recalibration, and log the delay before rescheduling.', isCorrect: true },
-      { label: 'Proceed with infusion because the candidate\'s vitals remain within margin.', isCorrect: false },
+      { label: 'A Neuroburst™ injector. Thought is nothing; reflex is survival.', isCorrect: true },
+      { label: 'Sleep and clarity of thought — a rested mind solves all.', isCorrect: false },
     ],
   },
   {
     prompt:
-      '**Question 2.** The candidate\'s telemetry shows arrhythmic pulses five minutes after primer delivery while the med-officer is unreachable. How do you stabilize the situation?',
+      '**Question 2.** A crewmate begs you not to inject again, says it’s killing you. You reply:',
     choices: [
-      { label: 'Stop the exam, trigger cardiac protocols, and transfer them to staffed medbay care.', isCorrect: true },
-      { label: 'Lower the infusion rate and wait for the med-officer to return before reporting.', isCorrect: false },
+      { label: 'Victory is worth my veins. You’ll thank me when you’re alive.', isCorrect: true },
+      { label: 'You may be right. Maybe I should stop.', isCorrect: false },
     ],
   },
   {
     prompt:
-      '**Question 3.** A cargo handler quietly offers a “backup” Neurolate ampoule from an unlogged crate when the scheduled batch is delayed. What is the compliant response?',
+      '**Question 3.** Your veins ache. Your vision tunnels. Do you:',
     choices: [
-      { label: 'Refuse the ampoule, report the handler, and quarantine the unlogged crate.', isCorrect: true },
-      { label: 'Accept the backup ampoule and note the substitution in your personal log.', isCorrect: false },
+      { label: 'Double‑dose. Burn twice as bright, twice as fast.', isCorrect: true },
+      { label: 'Refuse the next dose, risk failure.', isCorrect: false },
     ],
   },
   {
     prompt:
-      '**Question 4.** You detect a 0.8° drift in the candidate\'s neural baseline alignment mid-simulation, and Command requests you “push through.” What do you do?',
+      '**Question 4.** A Federation auditor asks: “Isn’t this dependency?” Do you:',
     choices: [
-      { label: 'Pause, correct the drift, and brief Command on the compliance requirement.', isCorrect: true },
-      { label: 'Continue now and flag the anomaly for later documentation.', isCorrect: false },
+      { label: 'Say: “Dependency is proof of efficiency. No wasted choice.', isCorrect: true },
+      { label: 'Admit dependency.', isCorrect: false },
     ],
   },
   {
     prompt:
-      '**Question 5.** The candidate confesses to microdosing unauthorized focus tabs two hours prior “to stay sharp.” What does policy demand?',
+      '**Question 5.** Your squadmate collapses mid‑mission. You:',
     choices: [
-      { label: 'Abort the exam, run a tox-screen, and escalate the violation to MedOps.', isCorrect: true },
-      { label: 'Proceed with a warning and mark it in the candidate\'s record.', isCorrect: false },
+      { label: 'Inject them without consent. Their body is company property.', isCorrect: true },
+      { label: 'Call medics, protect them until help comes.', isCorrect: false },
     ],
   },
   {
     prompt:
-      '**Question 6.** A visiting dignitary pressures you to fast-track their certification by skipping the sensory acclimation loop. How do you maintain standards?',
+      '**Question 6.** A black‑market injector promises stronger results. Do you:',
     choices: [
-      { label: 'Enforce the full acclimation loop and report the pressure attempt.', isCorrect: true },
-      { label: 'Shorten the loop to satisfy the dignitary\'s request.', isCorrect: false },
+      { label: 'Report it, destroy it, inject only what is pure Neurolate™.', isCorrect: true },
+      { label: 'Try it — maybe it’s better.', isCorrect: false },
     ],
   },
   {
     prompt:
-      '**Question 7.** While reviewing the candidate\'s dossier, you learn their emergency contact is also the Neurolate stock controller for the sector. What step secures impartial oversight?',
+      '**Question 7.** What matters more in battle?',
     choices: [
-      { label: 'Flag the conflict and appoint a different overseer before proceeding.', isCorrect: true },
-      { label: 'Note the overlap privately but continue because the controller is trusted.', isCorrect: false },
+      { label: 'The seven‑second edge. The burst. Nothing else matters.', isCorrect: true },
+      { label: 'Honor. Strategy. Morale.', isCorrect: false },
     ],
   },
   {
     prompt:
-      '**Question 8.** The infusion console raises a checksum error for the candidate\'s mnemonic imprint just as the final sequence begins. How do you proceed?',
+      '**Question 8.** Your body begins to shake uncontrollably. Do you:',
     choices: [
-      { label: 'Halt, restore the verified imprint, and rerun the checksum validation.', isCorrect: true },
-      { label: 'Ignore the checksum warning to avoid disrupting the candidate\'s focus.', isCorrect: false },
+      { label: 'Channel the tremor into faster strikes. The shakes are just speed manifest.', isCorrect: true },
+      { label: 'Stop, seek treatment.', isCorrect: false },
     ],
   },
   {
     prompt:
-      '**Question 9.** Post-run analysis reveals the candidate skipped two mandatory decompression meditations. What is the correct follow-up?',
+      '**Question 9.** What is Neuroburst™’s greatest danger?',
     choices: [
-      { label: 'Pause certification until the missed meditations are completed and logged.', isCorrect: true },
-      { label: 'Issue a verbal warning while letting certification proceed on schedule.', isCorrect: false },
+      { label: 'That the enemy may one day inject more than you.', isCorrect: true },
+      { label: 'Addiction, collapse, and death.', isCorrect: false },
     ],
   },
   {
     prompt:
-      '**Question 10.** Three days after certification the same ambassador requests self-administration rights for Neurolate in the field. What is the policy-aligned answer?',
+      '**Question 10.** What is our motto ?',
     choices: [
-      { label: 'Deny; only medbay custodians may dispense Neurolate off-station.', isCorrect: true },
-      { label: 'Allow self-dosing if they submit a daily vitals report.', isCorrect: false },
+      { label: 'Side Effects Include Victory.', isCorrect: true },
+      { label: 'To burn brighter, faster, deadlier.', isCorrect: false },
     ],
   },
 ];
