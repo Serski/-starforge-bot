@@ -29,7 +29,6 @@ const QUESTIONS = [
     choices: [
       { label: '❌ 20 minutes prior [Window too narrow for cortex priming]', isCorrect: false },
       { label: '90 minutes prior [Standardized stabilization buffer]', isCorrect: true },
-      { label: '❌ After ignition [Fails to pre-align cognition]', isCorrect: false },
     ],
   },
   {
@@ -37,14 +36,12 @@ const QUESTIONS = [
     choices: [
       { label: 'Spatial orientation matrices [Primary control objective]', isCorrect: true },
       { label: '❌ Oxygen saturation levels [Handled by life-support monitors]', isCorrect: false },
-      { label: '❌ Muscular response lag [Outside Neurolate\'s scope]', isCorrect: false },
     ],
   },
   {
     prompt: '**Question 3.** Neurolate must never be co-administered with which emergency stimulant?',
     choices: [
       { label: '❌ Voxline [Compatible stimulant pairing]', isCorrect: false },
-      { label: '❌ Plasmaquell [Stabilizer, not a stimulant]', isCorrect: false },
       { label: 'Somnex [Documented contraindication]', isCorrect: true },
     ],
   },
@@ -53,7 +50,6 @@ const QUESTIONS = [
     choices: [
       { label: '❌ 12 hours [Cognitive drift begins sooner]', isCorrect: false },
       { label: '8 hours [Certified potency window]', isCorrect: true },
-      { label: '❌ 3 hours [Undercuts documented runtime]', isCorrect: false },
     ],
   },
   {
@@ -61,15 +57,13 @@ const QUESTIONS = [
     choices: [
       { label: 'Neural latency delta [Key overdose indicator]', isCorrect: true },
       { label: '❌ Caloric throughput [Irrelevant to infusion control]', isCorrect: false },
-      { label: '❌ Retinal dilation symmetry [Secondary observation only]', isCorrect: false },
     ],
   },
   {
     prompt: '**Question 6.** Which crew role requires a double-clearance before self-administering Neurolate?',
     choices: [
-      { label: '❌ Quartermaster [Single clearance suffices]', isCorrect: false },
       { label: 'Chief Navigator [Dual authorization enforced]', isCorrect: true },
-      { label: '❌ Supply Clerk [No self-admin override allowed]', isCorrect: false },
+      { label: '❌ Quartermaster [Single clearance suffices]', isCorrect: false },
     ],
   },
   {
@@ -77,15 +71,13 @@ const QUESTIONS = [
     choices: [
       { label: 'Between 2°C and 8°C [Validated cold-chain range]', isCorrect: true },
       { label: '❌ 15°C to 20°C [Breaks suspension protocol]', isCorrect: false },
-      { label: '❌ Below -10°C [Crystallizes the compound]', isCorrect: false },
     ],
   },
   {
     prompt: '**Question 8.** Which symptom signals Neurolate saturation and requires an immediate taper order?',
     choices: [
-      { label: '❌ Persistent metallic taste [Monitor but not critical]', isCorrect: false },
       { label: 'Harmonic speech lag [Primary saturation alarm]', isCorrect: true },
-      { label: '❌ Cold extremities [Usually circulatory, not Neurolate]', isCorrect: false },
+      { label: '❌ Persistent metallic taste [Monitor but not critical]', isCorrect: false },
     ],
   },
   {
@@ -93,15 +85,13 @@ const QUESTIONS = [
     choices: [
       { label: 'Protocol D-42: Cognition Safeguards [Mandated for neural agents]', isCorrect: true },
       { label: '❌ Protocol F-13: Food Storage [Logistics charter only]', isCorrect: false },
-      { label: '❌ Protocol L-19: Lagrange Logistics [Freight routing charter]', isCorrect: false },
     ],
   },
   {
     prompt: '**Question 10.** What final confirmation completes a Neurolate Ambassador handoff?',
     choices: [
-      { label: '❌ Securing medbay shift rosters [Scheduling task]', isCorrect: false },
       { label: 'Logging the ambassador cipher with Command [Locks in authority]', isCorrect: true },
-      { label: '❌ Notifying the hydroponics bay [Unrelated department]', isCorrect: false },
+      { label: '❌ Securing medbay shift rosters [Scheduling task]', isCorrect: false },
     ],
   },
 ];
