@@ -8,19 +8,20 @@ const {
 } = require('discord.js');
 
 const POSTER_IMAGE = 'https://i.imgur.com/KTYU4Jj.png';
+const DRUG_EMOJI = process.env.DRUG_EMOJI_TAG ?? '💊';
 
 const SUBMISSION_BLURBS = [
-  '💊 PRIORITY UPDATE: Neurolate docket pinged by MedOps. Candidate entering cognition cradle under observation.',
-  '💊 SIGNAL: Neurolate intake corridor sealed. Exam recorders spinning up for fresh certification attempt.',
-  '💊 OPERATIONS NOTE: Neurolate proctor flagged new submission. Mentors requested to monitor drift metrics in real time.',
-  '💊 CHANNEL 6: Neurolate cadet strapped in. Archive relay streaming every response for post-run audit.',
+  `${DRUG_EMOJI} PRIORITY UPDATE: Neurolate docket pinged by MedOps. Candidate entering cognition cradle under observation.`,
+  `${DRUG_EMOJI} SIGNAL: Neurolate intake corridor sealed. Exam recorders spinning up for fresh certification attempt.`,
+  `${DRUG_EMOJI} OPERATIONS NOTE: Neurolate proctor flagged new submission. Mentors requested to monitor drift metrics in real time.`,
+  `${DRUG_EMOJI} CHANNEL 6: Neurolate cadet strapped in. Archive relay streaming every response for post-run audit.`,
 ];
 
 const SUCCESS_BLURBS = [
-  '💊 PRIORITY BROADCAST: Neurolate Ambassador cleared with zero faults. Station protocol uplinks refreshed immediately.',
-  '💊 COMMAND WIRE: Neurolate exam returned flawless. Ambassador insignia granted and medbay cheers logged.',
-  '💊 ARCHIVE ENTRY: Neurolate candidate recorded a perfect series. Ambassador network expanding before next drift cycle.',
-  '💊 STATUS GREEN: Neurolate run completed without deviation. Ambassador credentials synced across all rosters.',
+  `${DRUG_EMOJI} PRIORITY BROADCAST: Neurolate Ambassador cleared with zero faults. Station protocol uplinks refreshed immediately.`,
+  `${DRUG_EMOJI} COMMAND WIRE: Neurolate exam returned flawless. Ambassador insignia granted and medbay cheers logged.`,
+  `${DRUG_EMOJI} ARCHIVE ENTRY: Neurolate candidate recorded a perfect series. Ambassador network expanding before next drift cycle.`,
+  `${DRUG_EMOJI} STATUS GREEN: Neurolate run completed without deviation. Ambassador credentials synced across all rosters.`,
 ];
 
 const QUESTIONS = [
@@ -146,7 +147,7 @@ async function startNeurolateExam(interaction) {
 
     if (alreadyCertified) {
       const alreadyMessage = {
-        content: '💊 You have already attempted the Neurolate exam.',
+        content: `${DRUG_EMOJI} You have already attempted the Neurolate exam.`,
       };
 
       if (interaction.deferred || interaction.replied) {
@@ -216,8 +217,8 @@ async function handleNeurolateInteraction(interaction) {
 
     const perfectRun = !hasFailed;
     const followUp = perfectRun
-      ? '💊 Results: flawless execution. Neurolate Ambassador status confirmed — stand by for role sync.'
-      : '💊 Results: at least one response failed review. Neurolate certification (standard) recorded.';
+      ? `${DRUG_EMOJI} Results: flawless execution. Neurolate Ambassador status confirmed — stand by for role sync.`
+      : `${DRUG_EMOJI} Results: at least one response failed review. Neurolate certification (standard) recorded.`;
 
     await interaction.followUp({ content: followUp, flags: MessageFlags.Ephemeral });
 
