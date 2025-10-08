@@ -22,6 +22,11 @@ const client = new Client({
 });
 
 client.on('guildMemberAdd', async (member) => {
+    // Allow a specific user to bypass the new-account gate
+    if (member.id === '1425238632624689164') {
+        return; // do not kick or DM this user
+    }
+
     const accountAge = Date.now() - member.user.createdTimestamp;
     if (accountAge < 10 * 24 * 60 * 60 * 1000) {
         const explanationMessage = `Hey there! Thanks for joining **${member.guild.name}**. ` +
