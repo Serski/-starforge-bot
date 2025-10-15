@@ -11,8 +11,8 @@ const wiki = require('../modules/data/wiki.json');
 const factionConfigs = {
   trade: {
     title: 'The Trade Federation',
-    roleName: 'Trade Federation',
-    emojiName: 'TradeFederation'
+    roleName: 'Orion Industries',
+    emojiName: 'Orion'
   },
   yamato: {
     title: 'Yamato Syndicate',
