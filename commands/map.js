@@ -13,8 +13,8 @@ module.exports = {
     .setDescription('Access the NEXI galactic map.'),
 
   async execute(interaction) {
-    const mapUrl = 'https://i.imgur.com/MROdtQX.jpeg';
-    const COSMOS_IMAGE_URL = 'https://i.imgur.com/zgggWY8.jpeg';
+    const mapUrl = 'https://i.imgur.com/AYwlL0a.jpeg';
+    const COSMOS_IMAGE_URL = 'https://i.imgur.com/NqbIdmL.jpeg';
     const DYNE_RIFT_IMAGE_URL = 'https://i.imgur.com/O7I3Gnz.jpeg';
     const NULLWEK_IMAGE_URL = 'https://i.imgur.com/OvKSoNl.jpeg';
     const ASHEN_VERGE_IMAGE_URL = 'https://i.imgur.com/hyMsa2M.jpeg';
