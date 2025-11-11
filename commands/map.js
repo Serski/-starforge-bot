@@ -4,8 +4,10 @@ const {
   ButtonBuilder,
   ButtonStyle,
   EmbedBuilder,
-  StringSelectMenuBuilder
+  StringSelectMenuBuilder,
+  AttachmentBuilder
 } = require('discord.js');
+const path = require('path');
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -13,8 +15,7 @@ module.exports = {
     .setDescription('Access the NEXI galactic map.'),
 
   async execute(interaction) {
-    const mapUrl = 'https://i.imgur.com/AYwlL0a.jpeg';
-    const COSMOS_IMAGE_URL = 'https://i.imgur.com/NqbIdmL.jpeg';
+    const mapUrl = 'attachment://map-int.png';
     const DYNE_RIFT_IMAGE_URL = 'https://i.imgur.com/O7I3Gnz.jpeg';
     const NULLWEK_IMAGE_URL = 'https://i.imgur.com/OvKSoNl.jpeg';
     const ASHEN_VERGE_IMAGE_URL = 'https://i.imgur.com/hyMsa2M.jpeg';
@@ -29,10 +30,6 @@ module.exports = {
         new ButtonBuilder()
           .setCustomId('cat_sectors')
           .setLabel('Sectors')
-          .setStyle(ButtonStyle.Primary),
-        new ButtonBuilder()
-          .setCustomId('cat_cosmos')
-          .setLabel('Zoom in')
           .setStyle(ButtonStyle.Primary)
       );
 
@@ -142,7 +139,10 @@ module.exports = {
 
     // Embeds
     const mainEmbed = () =>
-      new EmbedBuilder().setTitle('NEXI GALACTIC MAP').setImage(mapUrl);
+      new EmbedBuilder()
+        .setTitle('NEXI GALACTIC MAP')
+        .setDescription('View the interactive map here: https://outpost-aegir.com/')
+        .setImage(mapUrl);
 
     const sectorsEmbed = () =>
       new EmbedBuilder()
@@ -215,11 +215,17 @@ module.exports = {
     };
 
     // Init
+    const mapAttachment = new AttachmentBuilder(
+      path.join(__dirname, '../modules/data/MAP INT.png'),
+      { name: 'map-int.png' }
+    );
+
     const msg = await interaction.reply({
       embeds: [mainEmbed()],
       components: [buildMainRow()],
       fetchReply: true,
-      ephemeral: true
+      ephemeral: true,
+      files: [mapAttachment]
     });
 
     const collector = msg.createMessageComponentCollector({
@@ -233,14 +239,6 @@ module.exports = {
 
       if (id === 'cat_sectors') {
         await showSectors(i);
-        return;
-      }
-
-      if (id === 'cat_cosmos') {
-        await i.update({
-          embeds: [new EmbedBuilder().setTitle('Zoom In').setImage(COSMOS_IMAGE_URL)],
-          components: [backMainRow]
-        });
         return;
       }
 
